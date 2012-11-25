@@ -1,0 +1,28 @@
+=======Kas tai:=======
+„Conky“ scenarijus skirtas orų peržiūrai. Dabartinių oro sąlygų šaltinis - http://weather.com , 4(5,6) dienų prognozė - http://meteo.lt
+
+=======Diegimas ir konfigūracija:=======
+$ chmod a+x INSTALL isverst_ora.sh oras.sh weath_com_metric
+
+Ir tada paleidžiam INSTALL failą:)
+
+=======Naudojimas=======
+1. Į savo esamo ~/.conkyrc TEXT sritį pridedam viską po „TEXT“ iš failo „.conky“.
+
+2. arba paleidžiam naują conky langą tik su oru:
+$ conky -c kelias_iki_failu/.conky
+mano atveju  
+conky -c /home/gymka/.scripts/oras/.conky &
+
+=======conky.rc=======
+Tai mano naudojamas .conkyrc failas.
+
+=======Padėkos=======
+Originaliai weath_com_metric sukūrė TeoBigusGeekus, aš padariau kelis pakeitimus:
+	*pakeičiau koki duomenys rodomi ir kaip išdėstomi
+	*padariau jog vėjas būtų rodomas metrais per sekundę, o ne kilometrais per valandą
+	*padariau jog vėjo kryptis ir vėjo greitis būtų rodomi kaip du skirtingi duomenys
+	*pridėjau atnaujinimo laiko rodymą
+	*pridėjau galimybę lokalizuot
+	*išverčiau į Lietuvių kalbą(dar nebaigiau)
+4 dienų prognozę parašė gymka <gymka@archlinux.lt>
