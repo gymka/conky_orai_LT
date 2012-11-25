@@ -34,24 +34,24 @@ stippled_borders 3
 
 
 # border width
-border_width 10
+border_width 10 
 
 # Default colors and also border colors, grey90 == #ee7443
 default_color grey90
-
+ 
 #own_window_colour brown
 #own_window_transparent yes
 
 
 # Text alignment, other possible values are commented
-#alignment top_left
-alignment top_right  
+alignment top_left
+#alignment top_right  
 #alignment bottom_left
 #alignment bottom_right   
 maximum_width 290
 # Gap between borders of screen and text
-gap_x 10  
-gap_y 0 
+gap_x 990
+gap_y 0
 # stuff after 'TEXT' will be formatted on screen 
 TEXT  
 ${execpi 600 /home/gymka/Dev/conky_orai_LT/weath_com_metric}
