@@ -1,5 +1,5 @@
 =======Kas tai:=======
-„Conky“ scenarijus skirtas orų peržiūrai. Dabartinių oro sąlygų šaltinis - http://weather.com , 4(5,6) dienų prognozė - http://meteo.lt
+„Conky“ scenarijus skirtas orų peržiūrai. Dabartinių oro sąlygų šaltinis - http://weather.com , 7 dienų prognozė - http://meteo.lt
 
 ======Priklausomybės:======
 conky, wget.
@@ -22,10 +22,10 @@ Tai mano naudojamas .conkyrc failas.
 
 =======Padėkos=======
 Originaliai weath_com_metric sukūrė TeoBigusGeekus, aš padariau kelis pakeitimus:
-	*pakeičiau koki duomenys rodomi ir kaip išdėstomi
+	*pakeičiau kokie duomenys rodomi ir kaip išdėstomi
 	*padariau jog vėjas būtų rodomas metrais per sekundę, o ne kilometrais per valandą
 	*padariau jog vėjo kryptis ir vėjo greitis būtų rodomi kaip du skirtingi duomenys
 	*pridėjau atnaujinimo laiko rodymą
 	*pridėjau galimybę lokalizuot
 	*išverčiau į Lietuvių kalbą(dar nebaigiau)
-4 dienų prognozę parašė gymka <gymka@archlinux.lt>
+7 dienų prognozę parašė gymka <gymka@archlinux.lt>
