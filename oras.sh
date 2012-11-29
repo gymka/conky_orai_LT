@@ -26,27 +26,27 @@ wget -O $kelias/oras.txt 'http://meteo.lt/oru_prognoze.php'
 if  [[ "$miestas" == "Vilnius" ]]
 then
 	#Vilnius
-	miestas=(1 6 11 16 21 26 31 36 41 46) #puslapis kartais rodo 4 dienas kartais 5. scenarijus ima 5 nepaisant to ar yra tokia info
+	miestas=(1 6 11 16 21 26 31 36 41 46 51 56 61 67) 
 elif [[ "$miestas" == "Klaipėda" ]]
 then
 	#Klapėda
-	miestas=(3 8 13 18 23 28 33 38 43 48)
+	miestas=(3 8 13 18 23 28 33 38 43 48 53 58 63 68)
 elif [[ "$miestas" == "Šiauliai" ]]
 then
 	#Šiauliai
-	miestas=(4 9 14 19 24 29 34 39 44 49)
+	miestas=(4 9 14 19 24 29 34 39 44 49 54 59 64 69)
 elif [[ "$miestas" == "Panevėžys" ]]
 then
 	#Panevėžys
-	miestas=(5 10 15 20 25 30 35 40 45 50)
+	miestas=(5 10 15 20 25 30 35 40 45 50 55 60 65 70)
 else 
 	#Kaunas
-	miestas=(2 7 12 17 22 27 32 37 42 47)
+	miestas=(2 7 12 17 22 27 32 37 42 47 52 57 62 67)
 fi
 
-temperatura=$(cat $kelias/oras.txt |sed  -n 's/.*t_plius\">\(.*\)<\/span>.*\|.*t_minus\">\(.*\)<\/span>.*/\1\2/p' | sed -n -e ${miestas[0]}'p' -e ${miestas[1]}'p' -e ${miestas[2]}'p' -e ${miestas[3]}'p' -e ${miestas[4]}'p' -e ${miestas[5]}'p' -e ${miestas[6]}'p' -e ${miestas[7]}'p' -e ${miestas[8]}'p' -e ${miestas[9]}'p'|tr ' ' '\n'>$kelias/temp.txt)
+temperatura=$(cat $kelias/oras.txt |sed  -n 's/.*t_plius\">\(.*\)<\/span>.*\|.*t_minus\">\(.*\)<\/span>.*/\1\2/p' | sed -n -e ${miestas[0]}'p' -e ${miestas[1]}'p' -e ${miestas[2]}'p' -e ${miestas[3]}'p' -e ${miestas[4]}'p' -e ${miestas[5]}'p' -e ${miestas[6]}'p' -e ${miestas[7]}'p' -e ${miestas[8]}'p' -e ${miestas[9]}'p' -e ${miestas[10]}'p' -e ${miestas[11]}'p'  -e ${miestas[12]}'p' -e ${miestas[13]}'p'  |tr ' ' '\n'>$kelias/temp.txt)
 
-dangus=$(cat $kelias/oras.txt | sed -n 's/.*graf_zenklai\/met_reiskiniai\/\(.*\)\.gif\".*$/\1/p'|sed -n -e ${miestas[0]}'p' -e ${miestas[1]}'p' -e ${miestas[2]}'p' -e ${miestas[3]}'p' -e ${miestas[4]}'p' -e ${miestas[5]}'p' -e ${miestas[6]}'p' -e ${miestas[7]}'p' -e ${miestas[8]}'p' -e ${miestas[9]}'p'|tr ' ' '\n'>$kelias/dangus.txt)
+dangus=$(cat $kelias/oras.txt | sed -n 's/.*graf_zenklai\/met_reiskiniai\/\(.*\)\.gif\".*$/\1/p'|sed -n -e ${miestas[0]}'p' -e ${miestas[1]}'p' -e ${miestas[2]}'p' -e ${miestas[3]}'p' -e ${miestas[4]}'p' -e ${miestas[5]}'p' -e ${miestas[6]}'p' -e ${miestas[7]}'p' -e ${miestas[8]}'p' -e ${miestas[9]}'p' -e ${miestas[10]}'p' -e ${miestas[11]}'p'  -e ${miestas[12]}'p' -e ${miestas[13]}'p'|tr ' ' '\n'>$kelias/dangus.txt)
 
 diena=$(cat $kelias/oras.txt | sed -n 's/.*sav_diena\">\(.*\)<\/span>.*/\1/p'>$kelias/diena.txt)
 diena=($(<$kelias/diena.txt))

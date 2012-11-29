@@ -32,7 +32,6 @@ uppercase no # set to yes if you want all text to be in uppercase
 # Stippled borders?
 stippled_borders 3
 
-
 # border width
 border_width 10 
 
