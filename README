@@ -9,7 +9,7 @@ conky, wget, paste.
 =======Diegimas ir konfigūracija:=======
 $ chmod a+x INSTALL isverst_ora.sh oras.sh weath_com_metric
 
-Ir tada paleidžiam INSTALL failą:)
+Ir tada terminale(tam aplanke kur yra tas failas) paleidžiam INSTALL failą:)
 
 =======Naudojimas=======
 1. Į savo esamo ~/.conkyrc TEXT sritį pridedam viską po „TEXT“ iš failo „.conky“.

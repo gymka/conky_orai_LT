@@ -39,7 +39,7 @@ border_width 10
 default_color grey90
  
 #own_window_colour brown
-#own_window_transparent yes
+#own_window_transparent yes 
 
 
 # Text alignment, other possible values are commented

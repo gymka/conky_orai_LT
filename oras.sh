@@ -25,7 +25,14 @@ temperatura=$(grep "<span class = \"oplm_t_" $kelias/oras.txt|sed -n 's/.*\">\([
 dangus=$(grep "<img src=\"prog_failai/graf_zenklai/.*\.gif\" alt=\".*\" title=\".*\" />" $kelias/oras.txt|sed 's/<img src=\"prog_failai\/graf_zenklai\/met_reiskiniai\/\(.*\).gif\" alt.*/\1/'|sed 's/<.*>//'|sed 's/[\t ]*//g'>$kelias/dangus.txt)
 diena=$(grep -m 1 "span class=\"oplm_sav_diena\">.*</span>" $kelias/oras.txt |sed 's/<\/span>/\n/g'|sed 's/<.*>//'|sed 's/[\t ]*//g'>$kelias/diena.txt)
 
-miestai=(1 6 7 12 13 18 19 24 25 30 31 36 37 42 43 48 49 54 55 60) #skaičiai sudėti į masyvą, kad būtų lengviau perjungt naudojamus skaičius. vakar buvo 7 dienos, šiandien tik 6, jei taip bus visada reikės dviejų masyvų.
+if [[ $(sed -n '7p' diena.txt) == '' ]] #kartais rodo 6 kartais 7 dienas, todėl naudojami 2 skirtingi masyvai.
+then
+#ne visa savaitė
+miestai=(1 6 7 12 13 18 19 24 25 30 31 36 37 42 43 48 49 54 55 60)
+else 
+#visa savaitė
+miestai=(1 7 8 14 15 21 22 28 29 35 36 42 43 49 50 56 57 63 64 70) 
+fi
 
 function palikt_tik_reikalingus_duomenis {
 	sed -n "${1},${2}p" $kelias/temp.txt>$kelias/temp1.txt
