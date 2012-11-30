@@ -13,70 +13,55 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	
 	Copyright (C) 2012 gymka <gymka at archlinux.lt>'
+#konfigūracija
 kelias=/home/gymka/Dev/conky_orai_LT
 . $kelias/config
 IFS='
 '
-rm $kelias/oras.txt 
 
+#duomenų gavimas ir apdorojimas
 wget -O $kelias/oras.txt 'http://meteo.lt/oru_prognoze.php'
 temperatura=$(grep "<span class = \"oplm_t_" $kelias/oras.txt|sed -n 's/.*\">\([0-9,-]*\) .*/\1/p'>$kelias/temp.txt)
 dangus=$(grep "<img src=\"prog_failai/graf_zenklai/.*\.gif\" alt=\".*\" title=\".*\" />" $kelias/oras.txt|sed 's/<img src=\"prog_failai\/graf_zenklai\/met_reiskiniai\/\(.*\).gif\" alt.*/\1/'|sed 's/<.*>//'|sed 's/[\t ]*//g'>$kelias/dangus.txt)
+diena=$(grep -m 1 "span class=\"oplm_sav_diena\">.*</span>" $kelias/oras.txt |sed 's/<\/span>/\n/g'|sed 's/<.*>//'|sed 's/[\t ]*//g'>$kelias/diena.txt)
+
+miestai=(1 6 7 12 13 18 19 24 25 30 31 36 37 42 43 48 49 54 55 60) #skaičiai sudėti į masyvą, kad būtų lengviau perjungt naudojamus skaičius. vakar buvo 7 dienos, šiandien tik 6, jei taip bus visada reikės dviejų masyvų.
+
+function palikt_tik_reikalingus_duomenis {
+	sed -n "${1},${2}p" $kelias/temp.txt>$kelias/temp1.txt
+	sed -n "${3},${4}p" $kelias/temp.txt>$kelias/temp2.txt
+	paste -d \\n $kelias/temp1.txt $kelias/temp2.txt>$kelias/temp.txt
+	sed -n "${1},${2}p" $kelias/dangus.txt>$kelias/dangus1.txt
+	sed -n "${3},${4}p" $kelias/dangus.txt>$kelias/dangus2.txt
+	paste -d \\n $kelias/dangus1.txt $kelias/dangus2.txt>$kelias/dangus.txt
+}
 
 if  [[ "$miestas" == "Vilnius" ]]
 then
 	#Vilnius
-	sed -n '1,6p' $kelias/temp.txt>$kelias/temp1.txt
-	sed -n '7,13p' $kelias/temp.txt>$kelias/temp2.txt
-	paste -d \\n $kelias/temp1.txt $kelias/temp2.txt>$kelias/temp.txt
-	sed -n '1,6p' $kelias/dangus.txt>$kelias/dangus1.txt
-	sed -n '7,13p' $kelias/dangus.txt>$kelias/dangus2.txt
-	paste -d \\n $kelias/dangus1.txt $kelias/dangus2.txt>$kelias/dangus.txt
+	palikt_tik_reikalingus_duomenis ${miestai[0]} ${miestai[1]} ${miestai[2]} ${miestai[3]}
 elif [[ "$miestas" == "Klaipėda" ]]
 then
 	#Klapėda
-	sed -n '25,30p' $kelias/temp.txt>$kelias/temp1.txt
-	sed -n '31,36p' $kelias/temp.txt>$kelias/temp2.txt
-	paste -d \\n $kelias/temp1.txt $kelias/temp2.txt>$kelias/temp.txt
-	sed -n '25,30p' $kelias/dangus.txt>$kelias/dangus1.txt
-	sed -n '31,36p' $kelias/dangus.txt>$kelias/dangus2.txt
-	paste -d \\n $kelias/dangus1.txt $kelias/dangus2.txt>$kelias/dangus.txt
+	palikt_tik_reikalingus_duomenis ${miestai[8]} ${miestai[9]} ${miestai[10]} ${miestai[11]}
 elif [[ "$miestas" == "Šiauliai" ]]
 then
 	#Šiauliai
-	sed -n '37,42p' $kelias/temp.txt>$kelias/temp1.txt
-	sed -n '43,48p' $kelias/temp.txt>$kelias/temp2.txt
-	paste -d \\n $kelias/temp1.txt $kelias/temp2.txt>$kelias/temp.txt
-	sed -n '37,42p' $kelias/dangus.txt>$kelias/dangus1.txt
-	sed -n '43,48p' $kelias/dangus.txt>$kelias/dangus2.txt
-	paste -d \\n $kelias/dangus1.txt $kelias/dangus2.txt>$kelias/dangus.txt
+	palikt_tik_reikalingus_duomenis ${miestai[12]} ${miestai[13]} ${miestai[14]} ${miestai[15]}
 elif [[ "$miestas" == "Panevėžys" ]]
 then
 	#Panevėžys
-	sed -n '49,54p' $kelias/temp.txt>$kelias/temp1.txt
-	sed -n '55,60p' $kelias/temp.txt>$kelias/temp2.txt
-	paste -d \\n $kelias/temp1.txt $kelias/temp2.txt>$kelias/temp.txt
-	sed -n '49,54p' $kelias/dangus.txt>$kelias/dangus1.txt
-	sed -n '55,60p' $kelias/dangus.txt>$kelias/dangus2.txt
-	paste -d \\n $kelias/dangus1.txt $kelias/dangus2.txt>$kelias/dangus.txt
+	palikt_tik_reikalingus_duomenis ${miestai[16]} ${miestai[17]} ${miestai[18]} ${miestai[19]}
 else 
 	#Kaunas
-	sed -n '13,18p' $kelias/temp.txt>$kelias/temp1.txt
-	sed -n '19,24p' $kelias/temp.txt>$kelias/temp2.txt
-	paste -d \\n $kelias/temp1.txt $kelias/temp2.txt>$kelias/temp.txt
-	sed -n '13,18p' $kelias/dangus.txt>$kelias/dangus1.txt
-	sed -n '19,24p' $kelias/dangus.txt>$kelias/dangus2.txt
-	paste -d \\n $kelias/dangus1.txt $kelias/dangus2.txt>$kelias/dangus.txt
+	palikt_tik_reikalingus_duomenis ${miestai[4]} ${miestai[5]} ${miestai[6]} ${miestai[7]}
 fi
 rm $kelias/temp1.txt $kelias/temp2.txt $kelias/dangus2.txt $kelias/dangus1.txt
-diena=$(grep -m 1 "span class=\"oplm_sav_diena\">.*</span>" $kelias/oras.txt |sed 's/<\/span>/\n/g'|sed 's/<.*>//'|sed 's/[\t ]*//g'>$kelias/diena.txt)
-diena=($(<$kelias/diena.txt))
-y=1
+
 d=($(<$kelias/dangus.txt))
 
-for ((i=0; i<14; i++))
+for ((i=1; i<15; i++))
 do	
-	ln -s -f "$kelias/piktogramos/${d[$y-1]}.png" "$kelias/$y.png"
-	let y=y+1
+	ln -s -f "$kelias/piktogramos/${d[$i-1]}.png" "$kelias/$i.png"
 done
 rm $kelias/oras.txt
