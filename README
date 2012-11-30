@@ -2,7 +2,7 @@
 „Conky“ scenarijus skirtas orų peržiūrai. Dabartinių oro sąlygų šaltinis - http://weather.com , 7 dienų prognozė - http://meteo.lt
 
 ======Priklausomybės:======
-conky, wget.
+conky, wget, paste.
 
 =======Diegimas ir konfigūracija:=======
 $ chmod a+x INSTALL isverst_ora.sh oras.sh weath_com_metric
