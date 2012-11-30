@@ -15,17 +15,16 @@
 	Copyright (C) 2012 gymka <gymka at archlinux.lt>'
 #konfigūracija
 kelias=/home/gymka/Dev/conky_orai_LT
-. $kelias/config
+miestas="Kaunas"
 IFS='
 '
-
 #duomenų gavimas ir apdorojimas
 wget -O $kelias/oras.txt 'http://meteo.lt/oru_prognoze.php'
 temperatura=$(grep "<span class = \"oplm_t_" $kelias/oras.txt|sed -n 's/.*\">\([0-9,-]*\) .*/\1/p'>$kelias/temp.txt)
 dangus=$(grep "<img src=\"prog_failai/graf_zenklai/.*\.gif\" alt=\".*\" title=\".*\" />" $kelias/oras.txt|sed 's/<img src=\"prog_failai\/graf_zenklai\/met_reiskiniai\/\(.*\).gif\" alt.*/\1/'|sed 's/<.*>//'|sed 's/[\t ]*//g'>$kelias/dangus.txt)
 diena=$(grep -m 1 "span class=\"oplm_sav_diena\">.*</span>" $kelias/oras.txt |sed 's/<\/span>/\n/g'|sed 's/<.*>//'|sed 's/[\t ]*//g'>$kelias/diena.txt)
 
-if [[ $(sed -n '7p' diena.txt) == '' ]] #kartais rodo 6 kartais 7 dienas, todėl naudojami 2 skirtingi masyvai.
+if [[ $(sed -n '7p' $kelias/diena.txt) == '' ]] #kartais rodo 6 kartais 7 dienas, todėl naudojami 2 skirtingi masyvai.
 then
 #ne visa savaitė
 miestai=(1 6 7 12 13 18 19 24 25 30 31 36 37 42 43 48 49 54 55 60)
@@ -59,7 +58,8 @@ elif [[ "$miestas" == "Panevėžys" ]]
 then
 	#Panevėžys
 	palikt_tik_reikalingus_duomenis ${miestai[16]} ${miestai[17]} ${miestai[18]} ${miestai[19]}
-else 
+elif [[ "$miestas" == "Kaunas" ]]
+then
 	#Kaunas
 	palikt_tik_reikalingus_duomenis ${miestai[4]} ${miestai[5]} ${miestai[6]} ${miestai[7]}
 fi

@@ -15,7 +15,7 @@
 	Copyright (C) 2012 gymka <gymka at archlinux.lt>
 	Paremta TeoBigusGeekus kodu.'
 kelias=/home/gymka/Dev/conky_orai_LT
-. $kelias/config
+miestas="Kaunas"
 
 if [[ "$miestas" == "Vilnius" ]]
 then
