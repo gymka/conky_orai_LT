@@ -24,7 +24,7 @@ temperatura=$(grep "<span class = \"oplm_t_" $kelias/oras.txt|sed -n 's/.*\">\([
 dangus=$(grep "<img src=\"prog_failai/graf_zenklai/.*\.gif\" alt=\".*\" title=\".*\" />" $kelias/oras.txt|sed 's/<img src=\"prog_failai\/graf_zenklai\/met_reiskiniai\/\(.*\).gif\" alt.*/\1/'|sed 's/<.*>//'|sed 's/[\t ]*//g'>$kelias/dangus.txt)
 diena=$(grep -m 1 "span class=\"oplm_sav_diena\">.*</span>" $kelias/oras.txt |sed 's/<\/span>/\n/g'|sed 's/<.*>//'|sed 's/[\t ]*//g'>$kelias/diena.txt)
 
-if [[ $(sed -n '7p' $kelias/diena.txt) == '' ]] #kartais rodo 6 kartais 7 dienas, todėl naudojami 2 skirtingi masyvai.
+if [[ $(wc -l <$kelias/diena.txt) < '8' ]] #kartais rodo 6 kartais 7 dienas, todėl naudojami 2 skirtingi masyvai. diena.txt faile paskutinė eilutė yra '\r\n' todėl sąlygoj 8, o ne 7.
 then
 #ne visa savaitė
 miestai=(1 6 7 12 13 18 19 24 25 30 31 36 37 42 43 48 49 54 55 60)
