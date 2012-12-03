@@ -50,7 +50,7 @@ alignment top_left
 maximum_width 290
 # Gap between borders of screen and text
 gap_x 990
-gap_y 0
+gap_y 30
 # stuff after 'TEXT' will be formatted on screen 
 TEXT  
 ${execpi 600 /home/gymka/Dev/conky_orai_LT/weath_com_metric}

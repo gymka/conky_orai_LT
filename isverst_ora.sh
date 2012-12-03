@@ -111,11 +111,13 @@ uv_org=$(sed -n '12p' $kelias/raw_rn|tr '[:upper:]' '[:lower:]'|sed 's/^$/???/')
 
 if [[ -z ${vejas[$vejas_org]-} ]]; #jei nėra tokios reikšmės tai arba jau išversta arba gauta nežinoma būsena, todėl paliekam originalią.
 	then vejas2=$vejas_org
+		echo "Vėjas: $vejas_org">>$kelias/neisversta.txt 
 	else vejas2=${vejas[$vejas_org]}
 fi 
 
 if [[ -z ${dangus[$dangus_org]-} ]]; #jei nėra tokios reikšmės tai arba jau išversta arba gauta nežinoma būsena, todėl paliekam originalią.
 	then dangus2=$dangus_org 
+		echo "Dangus: $dangus_org">>$kelias/neisversta.txt 
 	else dangus2=${dangus[$dangus_org]}
 fi 
 
