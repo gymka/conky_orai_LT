@@ -72,20 +72,21 @@ dangus["light rain shower"]="protarpiais lengvas lietus"
 dangus["light rain"]="protarpiais lietus"
 dangus["???"]="???"
 
-vejas["s"]="pietų"
-vejas["n"]="šiaurės"
-vejas["e"]="rytų"
-vejas["w"]="vakarų"
-vejas["ne"]="šiaurės rytų"
-vejas["nw"]="šiaurės vakarų"
-vejas["se"]="pietryčių"
-vejas["sw"]="pietvakarių"
-vejas["nne"]="šiaurės šiaurės rytų"
-vejas["ssw"]="pietų pietvakarių"
-vejas["wsw"]="vakarų pietvakarių"
-vejas["sse"]="pietų pietryčių"
-vejas["ese"]="rytų pietryčių"
-vejas["nnw"]="šiaurės šiaurės vakarų"
+vejas["s"]="P"
+vejas["n"]="Š"
+vejas["e"]="R"
+vejas["w"]="V"
+vejas["ne"]="ŠR"
+vejas["nw"]="ŠV"
+vejas["se"]="PR"
+vejas["sw"]="PV"
+vejas["nne"]="ŠŠR"
+vejas["ssw"]="PPV"
+vejas["wsw"]="VPV"
+vejas["sse"]="PPR"
+vejas["ese"]="RPT"
+vejas["nnw"]="ŠŠV"
+vejas["wnw"]="VŠV"
 vejas["???"]="???"
 
 uv["0 - low"]="0 - žemas"
@@ -112,12 +113,14 @@ uv_org=$(sed -n '12p' $kelias/raw_rn|tr '[:upper:]' '[:lower:]'|sed 's/^$/???/')
 if [[ -z ${vejas[$vejas_org]-} ]]; #jei nėra tokios reikšmės tai arba jau išversta arba gauta nežinoma būsena, todėl paliekam originalią.
 	then vejas2=$vejas_org
 		echo "Vėjas: $vejas_org">>$kelias/neisversta.txt 
+		sort -u $kelias/neisversta.txt -o $kelias/neisversta.txt
 	else vejas2=${vejas[$vejas_org]}
 fi 
 
 if [[ -z ${dangus[$dangus_org]-} ]]; #jei nėra tokios reikšmės tai arba jau išversta arba gauta nežinoma būsena, todėl paliekam originalią.
 	then dangus2=$dangus_org 
 		echo "Dangus: $dangus_org">>$kelias/neisversta.txt 
+		sort -u $kelias/neisversta.txt -o $kelias/neisversta.txt
 	else dangus2=${dangus[$dangus_org]}
 fi 
 
