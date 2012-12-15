@@ -56,8 +56,8 @@ else
 		sed -i -e 's/^.*wxicon\/120\///g' -e s'/png.*$/png/g' -e 's/^.*"wx-temp">//g' $kelias/raw_rn
 		sed -i -e 's/^.*wx-dir-arrow wind-dir-//g' -e 's/"><\/div>.*$//g' -e 's/<\/span>.*$//g' -e 's/^.*">//g' -e 's/&deg;//g' $kelias/raw_rn
 		image=$(sed -n 1p $kelias/raw_rn)
-		if [[ $(sed -n 6p $kelias/raw_rn) == "Calm" ]]; then
-			sed -i '6s/$/\n/' $kelias/raw_rn
+		if [[ $(sed -n 6p $kelias/raw_rn) == "calm" ]]; then
+			sed -i '6s/$nėra vėjo/\n/' $kelias/raw_rn
 		fi
 		#vejas turi but metrais per sekunde, o ne kilometrais per valanda
 		vejas_km=$(sed -n 7p $kelias/raw_rn)
