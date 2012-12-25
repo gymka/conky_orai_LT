@@ -2,8 +2,8 @@
 own_window yes
 own_window_type normal
 own_window_transparent yes
-own_window_hints undecorated,below,skip_taskbar,skip_pager
-own_window_argb_visual no
+own_window_hints undecorated,below,skip_taskbar,skip_pager 
+own_window_argb_visual no  
 #own_window_argb_value 0
 override_utf8_locale yes
 
@@ -20,7 +20,7 @@ update_interval 1.0
 # Minimum size of text area
 # minimum_size 250 5
 
-# Draw shades?
+# Draw shades?  
 draw_shades no
 
 # Text stuff
@@ -32,42 +32,52 @@ uppercase no # set to yes if you want all text to be in uppercase
 # Stippled borders?
 stippled_borders 3
 
-
 # border width
-border_width 10
+border_width 10 
 
 # Default colors and also border colors, grey90 == #ee7443
 default_color grey90
-
+ 
 #own_window_colour brown
-#own_window_transparent yes
+#own_window_transparent yes 
 
 
 # Text alignment, other possible values are commented
-#alignment top_left
-alignment top_right
+alignment top_left
+#alignment top_right  
 #alignment bottom_left
-#alignment bottom_right
-maximum_width 400
+#alignment bottom_right   
+maximum_width 290
 # Gap between borders of screen and text
-gap_x 40  
-gap_y 10 
+gap_x 990
+gap_y 30
+
+#Orų duomenys
+#temperatūra
+template0 ${execpi 3600 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/temp.txt}
+#diena
+template1 ${execpi 3600 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/diena.txt}
+#raw_rn
+template2 ${execpi 1200 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/raw_rn}
+#paveiksliukas
+template3 ${image /home/gymka/Dev/conky_orai_LT/\1.png -s \2 -p \3 -n}
 # stuff after 'TEXT' will be formatted on screen 
+
 TEXT  
 ${execpi 600 /home/gymka/Dev/conky_orai_LT/weath_com_metric}
-${goto 160}${color ffe595}Dangus: $color${alignr}${execpi 1200 sed -n '4p' /home/gymka/Dev/conky_orai_LT/raw_rn}${image /home/gymka/Dev/conky_orai_LT/now.png -p 0,0 -s 120x120 -n}
-${goto 160}${color ffe595}Vėjo kryptis: $color${alignr}${execpi 1200 sed -n '6p' /home/gymka/Dev/conky_orai_LT/raw_rn} $color
-${goto 160}${color ffe595}Vėjo stiprumas:$color${alignr}${execpi 1200 sed -n '7p' /home/gymka/Dev/conky_orai_LT/raw_rn}m/s
-${goto 160}${color ffe595}Drėgnumas: $color${alignr}${execpi 1200 sed -n '8p' /home/gymka/Dev/conky_orai_LT/raw_rn}
-${goto 160}${color ffe595}Matomumas: $color${alignr}${execpi 1200 sed -n '10p' /home/gymka/Dev/conky_orai_LT/raw_rn}
-${goto 160}${color ffe595}Slėgis: $color${alignr}${execpi 1200 sed -n '11p' /home/gymka/Dev/conky_orai_LT/raw_rn}
-${goto 160}${color ffe595}UV indeksas: $color${alignr}${execpi 1200 sed -n '12p' /home/gymka/Dev/conky_orai_LT/raw_rn}
-${goto 160}${color ffe595}Atnaujinta: $color${alignr}${execpi 1200 sed -n '14p' /home/gymka/Dev/conky_orai_LT/raw_rn}
-${goto 60}$color${font :size=13}${execpi 1200 sed -n '3p' /home/gymka/Dev/conky_orai_LT/raw_rn}°C${font}
+${goto 160}${color ffe595}Dangus: $color${alignr}${template2 4}${template3 now 120x120 0,0}
+${goto 160}${color ffe595}Vėjo kryptis: $color${alignr}${template2 6} $color
+${goto 160}${color ffe595}Vėjo stiprumas:$color${alignr}${template2 7}m/s
+${goto 160}${color ffe595}Drėgnumas: $color${alignr}${template2 8}
+${goto 160}${color ffe595}Matomumas: $color${alignr}${template2 10}
+${goto 160}${color ffe595}Slėgis: $color${alignr}${template2 11}
+${goto 160}${color ffe595}UV indeksas: $color${alignr}${template2 12}
+${goto 160}${color ffe595}Atnaujinta: $color${alignr}${template2 14}
+${goto 60}$color${font :size=13}${template2 3}°C${font}
 ${execpi 1200 /home/gymka/Dev/conky_orai_LT/oras.sh}
-${goto 20}${execpi 3600 sed -n '1p' /home/gymka/Dev/conky_orai_LT/diena.txt}${goto 110}${execpi 3600 sed -n '2p' /home/gymka/Dev/conky_orai_LT/diena.txt}${goto 190}${execpi 3600 sed -n '3p' /home/gymka/Dev/conky_orai_LT/diena.txt}
+${goto 20}${template1 1}${goto 110}${template1 2}${goto 190}${template1 3}
 
 
 
-${goto 27}${execpi 3600 sed -n '1p' /home/gymka/Dev/conky_orai_LT/temp.txt}${goto 69}${execpi 3600 sed -n '2p' /home/gymka/Dev/conky_orai_LT/temp.txt}${goto 111}${execpi 3600 sed -n '3p' /home/gymka/Dev/conky_orai_LT/temp.txt}${goto 153}${execpi 3600 sed -n '4p' /home/gymka/Dev/conky_orai_LT/temp.txt}${goto 193}${execpi 3600 sed -n '5p' /home/gymka/Dev/conky_orai_LT/temp.txt}${goto 233}${execpi 3600 sed -n '6p' /home/gymka/Dev/conky_orai_LT/temp.txt}
-${image /home/gymka/Dev/conky_orai_LT/1.png -s 40x40 -p 0,148 -n}${image /home/gymka/Dev/conky_orai_LT/2.png -s 40x40 -p 40,148 -n}${image /home/gymka/Dev/conky_orai_LT/3.png -s 40x40 -p 85,148 -n}${image /home/gymka/Dev/conky_orai_LT/4.png -s 40x40 -p 125,148 -n}${image /home/gymka/Dev/conky_orai_LT/5.png -s 40x40 -p 165,148 -n}${image /home/gymka/Dev/conky_orai_LT/6.png -s 40x40 -p 205,148 -n}$color 
+${goto 27}${template0 1}${goto 69}${template0 2}${goto 111}${template0 3}${goto 153}${template0 4}${goto 193}${template0 5}${goto 233}${template0 6}
+${template3 1 40x40 0,148}${template3 2 40x40 40,148}${template3 3 40x40 85,148}${template3 4 40x40 125,148}${template3 5 40x40 165,148}${template3 6 40x40 205,148}$color

@@ -46,7 +46,7 @@ else
 		#############
 		# Right now #
 		#############
-grep -o 'updated">.*Local Time' $kelias/raw_rn > kkkk
+
 	laikas12=$(grep -o -m 1 'updated">.*Local Time' $kelias/raw_rn|sed  '1s/.*2012, \(.*\)Local.*/\1/')
 	laikas24=$(date -d $laikas12 +%H:%M)
 
