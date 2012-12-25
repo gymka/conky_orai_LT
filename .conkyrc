@@ -61,6 +61,8 @@ template1 ${execpi 3600 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/diena.txt}
 template2 ${execpi 1200 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/raw_rn}
 #paveiksliukas
 template3 ${image /home/gymka/Dev/conky_orai_LT/\1.png -s \2 -p \3 -n}
+#if else
+template4 ${if_match ${template0 \1}>0}${color red}${template0 \1}$color${endif}${if_match ${template0 \1}<0}${color blue}${template0 \1}$color${endif}${if_match ${template0 \1}==0}${color gray}${template0 \1}$color${endif}
 # stuff after 'TEXT' will be formatted on screen 
 
 TEXT  
@@ -73,13 +75,13 @@ ${goto 160}${color ffe595}Matomumas: $color${alignr}${template2 10}
 ${goto 160}${color ffe595}Slėgis: $color${alignr}${template2 11}
 ${goto 160}${color ffe595}UV indeksas: $color${alignr}${template2 12}
 ${goto 160}${color ffe595}Atnaujinta: $color${alignr}${template2 14}
-${goto 60}$color${font :size=13}${template2 3}°C${font}
+${goto 60}$color${font :size=15}${template2 3}°C${font}
 ${execpi 1200 /home/gymka/Dev/conky_orai_LT/oras.sh}
 ${goto 20}${template1 1}${goto 110}${template1 2}${goto 190}${template1 3}
 
 
 
-${goto 27}${template0 1}${goto 69}${template0 2}${goto 111}${template0 3}${goto 153}${template0 4}${goto 193}${template0 5}${goto 233}${template0 6}
+${font :size=10}${goto 27}${template4 1}${goto 69}${template4 2}${goto 111}${template4 3}${goto 153}${template4 4}${goto 193}${template4 5}${goto 233}${template4 6}${font}
 ${template3 1 40x40 0,148}${template3 2 40x40 40,148}${template3 3 40x40 85,148}${template3 4 40x40 125,148}${template3 5 40x40 165,148}${template3 6 40x40 205,148}$color ${font :size=10}${color gray}Sistema ${hr 2}$color${font}
 OS: ${goto 150}${pre_exec lsb_release -d | cut -f 2} $machine 
 Branduolys: ${goto 150}$kernel 
