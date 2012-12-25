@@ -62,7 +62,7 @@ template2 ${execpi 1200 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/raw_rn}
 #paveiksliukas
 template3 ${image /home/gymka/Dev/conky_orai_LT/\1.png -s \2 -p \3 -n}
 #if else
-template4 ${if_match ${template0 \1}>0}${color red}${template0 \1}$color${endif}${if_match ${template0 \1}<0}${color blue}${template0 \1}$color${endif}${if_match ${template0 \1}==0}${color gray}${template0 \1}$color${endif}
+template4 ${if_match ${template0 \1}>0}${color red}${template0 \1}$color${endif}${if_match ${template0 \1}<0}${color deepskyblue}${template0 \1}$color${endif}${if_match ${template0 \1}==0}${color gray}${template0 \1}$color${endif}
 # stuff after 'TEXT' will be formatted on screen 
 
 TEXT  
