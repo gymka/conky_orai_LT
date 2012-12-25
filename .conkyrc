@@ -51,25 +51,36 @@ maximum_width 290
 # Gap between borders of screen and text
 gap_x 990
 gap_y 30
+
+#Orų duomenys
+#temperatūra
+template0 ${execpi 3600 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/temp.txt}
+#diena
+template1 ${execpi 3600 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/diena.txt}
+#raw_rn
+template2 ${execpi 1200 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/raw_rn}
+#paveiksliukas
+template3 ${image /home/gymka/Dev/conky_orai_LT/\1.png -s \2 -p \3 -n}
 # stuff after 'TEXT' will be formatted on screen 
+
 TEXT  
 ${execpi 600 /home/gymka/Dev/conky_orai_LT/weath_com_metric}
-${goto 160}${color ffe595}Dangus: $color${alignr}${execpi 1200 sed -n '4p' /home/gymka/Dev/conky_orai_LT/raw_rn}${image /home/gymka/Dev/conky_orai_LT/now.png -p 0,0 -s 120x120 -n}
-${goto 160}${color ffe595}Vėjo kryptis: $color${alignr}${execpi 1200 sed -n '6p' /home/gymka/Dev/conky_orai_LT/raw_rn} $color
-${goto 160}${color ffe595}Vėjo stiprumas:$color${alignr}${execpi 1200 sed -n '7p' /home/gymka/Dev/conky_orai_LT/raw_rn}m/s
-${goto 160}${color ffe595}Drėgnumas: $color${alignr}${execpi 1200 sed -n '8p' /home/gymka/Dev/conky_orai_LT/raw_rn}
-${goto 160}${color ffe595}Matomumas: $color${alignr}${execpi 1200 sed -n '10p' /home/gymka/Dev/conky_orai_LT/raw_rn}
-${goto 160}${color ffe595}Slėgis: $color${alignr}${execpi 1200 sed -n '11p' /home/gymka/Dev/conky_orai_LT/raw_rn}
-${goto 160}${color ffe595}UV indeksas: $color${alignr}${execpi 1200 sed -n '12p' /home/gymka/Dev/conky_orai_LT/raw_rn}
-${goto 160}${color ffe595}Atnaujinta: $color${alignr}${execpi 1200 sed -n '14p' /home/gymka/Dev/conky_orai_LT/raw_rn}
-${goto 60}$color${font :size=13}${execpi 1200 sed -n '3p' /home/gymka/Dev/conky_orai_LT/raw_rn}°C${font}
+${goto 160}${color ffe595}Dangus: $color${alignr}${template2 4}${template3 now 120x120 0,0}
+${goto 160}${color ffe595}Vėjo kryptis: $color${alignr}${template2 6} $color
+${goto 160}${color ffe595}Vėjo stiprumas:$color${alignr}${template2 7}m/s
+${goto 160}${color ffe595}Drėgnumas: $color${alignr}${template2 8}
+${goto 160}${color ffe595}Matomumas: $color${alignr}${template2 10}
+${goto 160}${color ffe595}Slėgis: $color${alignr}${template2 11}
+${goto 160}${color ffe595}UV indeksas: $color${alignr}${template2 12}
+${goto 160}${color ffe595}Atnaujinta: $color${alignr}${template2 14}
+${goto 60}$color${font :size=13}${template2 3}°C${font}
 ${execpi 1200 /home/gymka/Dev/conky_orai_LT/oras.sh}
-${goto 20}${execpi 3600 sed -n '1p' /home/gymka/Dev/conky_orai_LT/diena.txt}${goto 110}${execpi 3600 sed -n '2p' /home/gymka/Dev/conky_orai_LT/diena.txt}${goto 190}${execpi 3600 sed -n '3p' /home/gymka/Dev/conky_orai_LT/diena.txt}
+${goto 20}${template1 1}${goto 110}${template1 2}${goto 190}${template1 3}
 
- 
 
-${goto 27}${execpi 3600 sed -n '1p' /home/gymka/Dev/conky_orai_LT/temp.txt}${goto 69}${execpi 3600 sed -n '2p' /home/gymka/Dev/conky_orai_LT/temp.txt}${goto 111}${execpi 3600 sed -n '3p' /home/gymka/Dev/conky_orai_LT/temp.txt}${goto 153}${execpi 3600 sed -n '4p' /home/gymka/Dev/conky_orai_LT/temp.txt}${goto 193}${execpi 3600 sed -n '5p' /home/gymka/Dev/conky_orai_LT/temp.txt}${goto 233}${execpi 3600 sed -n '6p' /home/gymka/Dev/conky_orai_LT/temp.txt}
-${image /home/gymka/Dev/conky_orai_LT/1.png -s 40x40 -p 0,148 -n}${image /home/gymka/Dev/conky_orai_LT/2.png -s 40x40 -p 40,148 -n}${image /home/gymka/Dev/conky_orai_LT/3.png -s 40x40 -p 85,148 -n}${image /home/gymka/Dev/conky_orai_LT/4.png -s 40x40 -p 125,148 -n}${image /home/gymka/Dev/conky_orai_LT/5.png -s 40x40 -p 165,148 -n}${image /home/gymka/Dev/conky_orai_LT/6.png -s 40x40 -p 205,148 -n}$color ${font :size=10}${color gray}Sistema ${hr 2}$color${font}
+
+${goto 27}${template0 1}${goto 69}${template0 2}${goto 111}${template0 3}${goto 153}${template0 4}${goto 193}${template0 5}${goto 233}${template0 6}
+${template3 1 40x40 0,148}${template3 2 40x40 40,148}${template3 3 40x40 85,148}${template3 4 40x40 125,148}${template3 5 40x40 165,148}${template3 6 40x40 205,148}$color ${font :size=10}${color gray}Sistema ${hr 2}$color${font}
 OS: ${goto 150}${pre_exec lsb_release -d | cut -f 2} $machine 
 Branduolys: ${goto 150}$kernel 
 Uptime: ${goto 150}${uptime}
@@ -109,6 +120,6 @@ ${font :size=10}${color gray}Tinklas (${addr eth0}) ${hr 2}$color${font}
 Pars.: $color${downspeed eth0}/s ${goto 170}Išs.: ${upspeed eth0}/s
 ${downspeedgraph eth0 25,140 000000 ff0000} ${alignr}${upspeedgraph eth0 
 25,140 000000 00ff00}$color
-Viso: ${totaldown eth0} ${alignr}Viso: ${totalup eth0}
+Viso: ${totaldown eth0} ${alignr}Viso: ${totalup eth0} 
 ${hr 2}
 ${execpi 7200 /home/gymka/Dev/conky_orai_LT/int.sh}
