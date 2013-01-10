@@ -24,13 +24,22 @@ temperatura=$(grep "<span class = \"oplm_t_" $kelias/oras.txt|sed -n 's/.*\">\([
 dangus=$(grep "<img src=\"prog_failai/graf_zenklai/.*\.gif\" alt=\".*\" title=\".*\" />" $kelias/oras.txt|sed 's/<img src=\"prog_failai\/graf_zenklai\/met_reiskiniai\/\(.*\).gif\" alt.*/\1/'|sed 's/<.*>//'|sed 's/[\t ]*//g'>$kelias/dangus.txt)
 diena=$(grep -m 1 "span class=\"oplm_sav_diena\">.*</span>" $kelias/oras.txt |sed 's/<\/span>/\n/g'|sed 's/<.*>//'|sed 's/[\t ]*//g'>$kelias/diena.txt)
 
-if [[ $(wc -l <$kelias/diena.txt) < '8' ]] #kartais rodo 6 kartais 7 dienas, todėl naudojami 2 skirtingi masyvai. diena.txt faile paskutinė eilutė yra '\r\n' todėl sąlygoj 8, o ne 7.
+if [[ $(wc -l <$kelias/diena.txt) -eq '7' ]] #kartais rodo 6 kartais 7 dienas, todėl naudojami skirtingi masyvai. diena.txt faile paskutinė eilutė yra '\r\n' todėl sąlygoj +1
 then
 #ne visa savaitė
 miestai=(1 6 7 12 13 18 19 24 25 30 31 36 37 42 43 48 49 54 55 60)
-else 
+fi
+
+if  [[ $(wc -l <$kelias/diena.txt) -eq '8' ]]
+then
 #visa savaitė
 miestai=(1 7 8 14 15 21 22 28 29 35 36 42 43 49 50 56 57 63 64 70) 
+fi
+
+if  [[ $(wc -l <$kelias/diena.txt) -eq '6' ]]
+#5 dienos
+then
+miestai=(1 5 6 10 11 15 16 20 21 25 26 30 31 34 35 39 40 44 45 49) 
 fi
 
 function palikt_tik_reikalingus_duomenis {
