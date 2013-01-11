@@ -18,29 +18,25 @@ kelias=/home/gymka/Dev/conky_orai_LT
 miestas="Kaunas"
 IFS='
 '
+
 #duomenų gavimas ir apdorojimas
 wget -O $kelias/oras.txt 'http://meteo.lt/oru_prognoze.php'
 temperatura=$(grep "<span class = \"oplm_t_" $kelias/oras.txt|sed -n 's/.*\">\([0-9,+,-]*\) .*/\1/p'>$kelias/temp.txt)
 dangus=$(grep "<img src=\"prog_failai/graf_zenklai/.*\.gif\" alt=\".*\" title=\".*\" />" $kelias/oras.txt|sed 's/<img src=\"prog_failai\/graf_zenklai\/met_reiskiniai\/\(.*\).gif\" alt.*/\1/'|sed 's/<.*>//'|sed 's/[\t ]*//g'>$kelias/dangus.txt)
 diena=$(grep -m 1 "span class=\"oplm_sav_diena\">.*</span>" $kelias/oras.txt |sed 's/<\/span>/\n/g'|sed 's/<.*>//'|sed 's/[\t ]*//g'>$kelias/diena.txt)
 
-if [[ $(wc -l <$kelias/diena.txt) -eq '7' ]] #kartais rodo 6 kartais 7 dienas, todėl naudojami skirtingi masyvai. diena.txt faile paskutinė eilutė yra '\r\n' todėl sąlygoj +1
-then
-#ne visa savaitė
-miestai=(1 6 7 12 13 18 19 24 25 30 31 36 37 42 43 48 49 54 55 60)
-fi
+function sukurt_miestu_masyva {
+pridet=$(expr $1 - 2)
 
-if  [[ $(wc -l <$kelias/diena.txt) -eq '8' ]]
-then
-#visa savaitė
-miestai=(1 7 8 14 15 21 22 28 29 35 36 42 43 49 50 56 57 63 64 70) 
-fi
+miestai=("${miestai[@]}" "1")
+miestai=("${miestai[@]}" "$(expr 1 + ${pridet})")
 
-if  [[ $(wc -l <$kelias/diena.txt) -eq '6' ]]
-#5 dienos
-then
-miestai=(1 5 6 10 11 15 16 20 21 25 26 30 31 34 35 39 40 44 45 49) 
-fi
+for x in {2..19..2}
+	do
+		miestai=("${miestai[@]}" $(expr ${miestai[$x-1]} + 1))		
+		miestai=("${miestai[@]}" $(expr ${miestai[$x]} + ${pridet}))
+done
+}
 
 function palikt_tik_reikalingus_duomenis {
 	sed -n "${1},${2}p" $kelias/temp.txt>$kelias/temp1.txt
@@ -50,6 +46,8 @@ function palikt_tik_reikalingus_duomenis {
 	sed -n "${3},${4}p" $kelias/dangus.txt>$kelias/dangus2.txt
 	paste -d \\n $kelias/dangus1.txt $kelias/dangus2.txt>$kelias/dangus.txt
 }
+
+sukurt_miestu_masyva $(wc -l <$kelias/diena.txt) 
 
 if  [[ "$miestas" == "Vilnius" ]]
 then
