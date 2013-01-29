@@ -14,7 +14,6 @@
 	
 	Copyright (C) 2012 gymka <gymka at archlinux.lt>'
 kelias=/home/gymka/Dev/conky_orai_LT
-. $kelias/config
 
 set -u
 vejas_km=$(sed -n 7p $kelias/raw_rn)

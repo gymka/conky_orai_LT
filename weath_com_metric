@@ -35,7 +35,7 @@ fi
 mv $kelias/raw_rn $kelias/raw_rn_senas
 
 kill -STOP $(pidof conky)
-wget --user-agent="Firefox" --load-cookies $kelias/cookie -O $kelias/raw_rn $addr_now
+wget --tries=10 --retry-connrefused --wait=1 --user-agent="Firefox" --load-cookies $kelias/cookie -O $kelias/raw_rn $addr_now
 
 size=$(stat -c%s $kelias/raw_rn) #jei dydis 0, kilo bėdų ir prognozė negauta, todėl reik naudot prieš tai buvusią prognozę
 if [[ $size -eq '0' ]]; then

@@ -1,0 +1,900 @@
+		<img class="wx-weather-icon wx-hide" src="http://s.imwx.com/v.20120328.084208//img/wxicon/120/20.png" height="120" width="120" alt="Fog">
+		<span class="wx-value wx-hide" itemprop="weather-icon">http://s.imwx.com/v.20120328.084208//img/wxicon/120/20.png</span>     
+        <ul>
+			<li class="wx-temp wx-hide">
+					<span class="wx-value" itemprop="temperature-celsius">-11</span><sup>&deg;C</sup>
+			</li>
+			<li class="wx-phrase wx-hide">
+				<span class="wx-value" itemprop="weather-phrase">Fog</span>
+			</li>
+			<li class="wx-feels wx-hide">
+						 <i><span class="wx-value" itemprop="feels-like-temperature-celsius">-11</span>&deg;C</i>
+			</li> 
+		</ul> 
+	<div class="wx-cc-blocks">
+		<div class="wx-cc-blocks-1">
+				<span class="wx-temp">Calm</span>
+			<h3>WIND</h3>
+		</div>
+		<div class="wx-vert-divider"></div>		
+		<div class="wx-cc-blocks-2">
+					<span class="wx-temp" itemprop="humidity">82%</span>
+		<h3>HUMIDITY</h3></div>
+		<div class="wx-vert-divider"></div>			
+		<div class="wx-cc-blocks-3">
+       		<span class="wx-temp" itemprop="dewpoint">-13&deg;</span>
+			<h3>DEW POINT<span class="wx-icon wx-long wx-info wx-ie7-zindex">
+			 <!--[if lte IE 7]><span class="wx-pointer"></span><![endif]-->
+			 <i>Humidity becomes more noticeable as the dew point rises above 60°F.  Readings above 75°F can feel stifling.</i>
+			 </span></h3></div>	
+		<div class="wwx-clear-content"></div>		
+		<div class="wx-cc-subblocks">			
+			<div class="wx-cc-blocks-1">
+			            <span class="wx-temp" itemprop="visibility-kilometer">2.5 km</span>
+				<h3>Visibility</h3>
+			</div>
+			<div class="wx-vert-divider"></div>
+			<div class="wx-cc-blocks-2">
+			          <span class="wx-temp" itemprop="barometric-pressure-millibars">1011.85 mb
+			          	<span class="wx-dir-arrow wx-pressure-steady"></span>
+			          </span>
+				<h3 class="">Pressure</h3>
+			</div>
+			<div class="wx-vert-divider"></div>			
+			<div class="wx-cc-blocks-3">	
+	           			<span class="wx-temp" itemprop="uv-index">0 - Low</span>
+				<h3>UV Index</h3>
+			</div>				
+			<div class="wx-clear"></div>				
+		</div>	
+		<div class="wx-clear"></div>	
+	 	<div class="wx-daylight wx-hide">
+						<span class="label">: </span>
+						<span class="wx-value">7 hrs 9 min</span>
+		</div>  
+	</div>
+<div class="wx-nowcast">
+</div>
+	<div class="wx-arrow-list"><ul class="wx-links">
+				<li class=""> 
+					<a class="" href="/weather/today/LHXX0002"  location="" from="rightnow_Conditions_cc_rightnow_1" title="">Today's Forecast</a>
+</li>
+	</ul></div>
+</div> 
+<script>
+	(function (jQuery) {
+		var pco = TWC.pco;
+		var testPcoData = {}; 
+	    jQuery(document).ready(function() {
+	    	jQuery('.wx-obs-pco-data').each( function(index, Element) {
+	    		var pcoMod = jQuery(Element);
+	    		var locId = pcoMod.attr("data-location-id");
+	    		var locType = pcoMod.attr("data-location-type");
+	    		var locPresName = pcoMod.attr("data-location-presentation-name"); 
+	    		var pcoCCDataKey = [locId,":",locType].join('');
+	    		var pcoCCData = {};
+	    			pcoCCData['location-presentation-name'] = locPresName;
+	    			testPcoData['location-presentation-name'] = locPresName;
+		    		pcoMod.find(".wx-value").filter("[itemprop]").each( function(index, Element) {
+		    			var pcoItem = jQuery(Element);
+		    			pcoCCData[pcoItem.attr('itemprop')] = pcoItem.html();
+			    		testPcoData[pcoItem.attr('itemprop')] = pcoItem.html();
+		    		});
+	    	});
+	    });
+		jQuery(document).ready(function() {
+			jQuery('.wx-current').each( function(index, Element) {
+				var ccMod = jQuery(Element);
+	    		var locId = ccMod.attr("data-location-id");
+	    		var locType = ccMod.attr("data-location-type");
+	    		var pcoCCDataKey = [locId,":",locType].join('');
+		    		var appId = 144457238950063;
+				   	var name =  encodeURIComponent("The Weather Channel");
+				   	var description = encodeURIComponent("The Weather is " + testPcoData['weather-phrase'] + " and Temperature is " + testPcoData['g-celsius']);
+				   	var caption =  encodeURIComponent("The Current Conditions for " + testPcoData['location-presentation-name']);
+				   	var pictureUrl = encodeURIComponent(testPcoData['weather-icon']);
+				   	var link = encodeURIComponent("http://www.weather.com/weather/today/" + locId);
+				   	var redirectUrl =  encodeURIComponent("http://www.weather.com/");
+				    var fbUrl = "https://www.facebook.com/dialog/feed?app_id="+appId+"&name="+name+"&description="+description+"&caption="+caption+"&picture="+pictureUrl+"&link="+link+"&redirect_uri="+redirectUrl;
+		    		ccMod.find(".wx-fb-share").first().attr('href',fbUrl);
+	    	});
+		});
+	})(jQuery);        
+</script>
+	<div class="wx-free-title ">
+				<h3>Stories That Affect Me</h3>
+	</div>
+					<div class="wx-module wx-mod1 wx-corsican wx-1x155M wx-render-mode"
+						id="pagelet_mod_1" data-vr-zone="rightnow_Media_top1">
+						<div class="wx-inner" data-vr-contentbox=""></div>
+					</div>
+					<div class="wx-module wx-mod1 wx-corsican wx-2x155M wx-render-mode"
+						id="pagelet_mod_2" data-vr-zone="rightnow_Media_top2">
+						<div class="wx-inner" data-vr-contentbox=""></div>
+					</div>
+			<div class="wx-map wx-cc-map wx-grid3of6 wx-module pagelet "  data-severelocation="false" data-location="LHXX0002"  data-location-type="1" data-overlay="" data-zoom="" data-tropical="" data-mapsize="3" data-fragid="frag_newccMap_3268" data-modulecode="CCMap" data-pageid="63217">
+			</div>	
+		</div>
+									<div class="wx-clear-content"></div>
+		<div id="WX_Mid300" class="wx-module wx-gptADS"  >
+			<span class="wx-adText">Advertisement</span>
+		<script>
+			A21.notifyRegistered('WX_Mid300');
+		</script>  
+	</div>
+					<div class="wx-module wx-mod1 wx-corsican wx-2x288M wx-render-mode"
+						id="pagelet_mod_3" data-vr-zone="rightnow_Media_btm1">
+						<div class="wx-inner" data-vr-contentbox=""></div>
+					</div>
+					<div class="wx-module wx-mod1 wx-corsican wx-2x238 wx-render-mode"
+						id="pagelet_mod_4" data-vr-zone="rightnow_Media_btm4">
+						<div class="wx-inner" data-vr-contentbox=""></div>
+					</div>
+		<div id="WX_MiniDriver1" class="wx-module wx-gptADS"  >
+		<script>
+			A21.notifyRegistered('WX_MiniDriver1');
+		</script>  
+	</div>
+		<div id="WX_MiniDriver2" class="wx-module wx-gptADS"  >
+		<script>
+			A21.notifyRegistered('WX_MiniDriver2');
+		</script>  
+	</div>
+									<div class="wx-clear-content"></div>
+	<div class="wx-module wx-mod1 wx-grid2of6 wx-media-top" data-vr-zone="rightnow_Links_toppicks">
+		<div class="wx-inner">
+			<div class="wx-content">
+				 <h2>Today's Top Picks</h2>
+									<ul class="wx-links wx-stories-featured" >
+										<li class=" "  data-vr-contentbox=""> 
+					<a class="" href="/life/driving/map/interactive/LHXX0002"   from="rightnow_Links_toppicks_links-toppicks" title="">How Safe Is It to Drive&#63;</a>
+</li>
+									</ul>
+									<ul class="wx-links wx-stories-featured" >
+										<li class=" "  data-vr-contentbox=""> 
+					<a class="" href="/health/airquality/is-it-asthma-20120417"   from="rightnow_Links_toppicks_links-toppicks" title="">Could Your Weight Give You Asthma&#63; </a>
+</li>
+									</ul>
+									<ul class="wx-links wx-stories-featured" >
+										<li class=" "  data-vr-contentbox=""> 
+					<a class="" href="/safety/autosafety/winter-survival-kit-20120427"   from="rightnow_Links_toppicks_links-toppicks" title="">10 Things to Keep in Your Car This Winter</a>
+</li>
+									</ul>
+									<ul class="wx-links wx-stories-featured" >
+										<li class=" "  data-vr-contentbox=""> 
+					<a class="" href="/health/aches-pains/new-hunger-pain-connection-20120413"   from="rightnow_Links_toppicks_links-toppicks" title="">How Hunger and Pain Are Connected</a>
+</li>
+									</ul>
+									<ul class="wx-links wx-stories-featured" >
+										<li class=" "  data-vr-contentbox=""> 
+					<a class="" href="/health/airquality/protect-your-family-air-pollution-20120329"   from="rightnow_Links_toppicks_links-toppicks" title="">Protect Your Family From Air Pollution</a>
+</li>
+									</ul>
+									<ul class="wx-links wx-stories-featured" >
+										<li class=" "  data-vr-contentbox=""> 
+					<a class="" href="/news/weather-winter/5-extreme-temperature-drops-20130118"   from="rightnow_Links_toppicks_links-toppicks" title="">5 Incredible Temperature Swings</a>
+</li>
+									</ul>
+									<ul class="wx-links wx-stories-featured" >
+										<li class=" "  data-vr-contentbox=""> 
+					<a class="" href="/video/more-snow-and-ice-into-weekend-33564?collid=/news/top-stories"   from="rightnow_Links_toppicks_links-toppicks" title="">Today&#39;s Top Weather Videos</a>
+</li>
+									</ul>
+									<ul class="wx-links wx-stories-featured" >
+										<li class=" "  data-vr-contentbox=""> 
+					<a class="" href="/travel/top-10/cities-for-shopaholics-20120403"   from="rightnow_Links_toppicks_links-toppicks" title="">Top 10 Cities for Shopaholics</a>
+</li>
+									</ul>
+									<ul class="wx-links wx-stories-featured" >
+										<li class=" "  data-vr-contentbox=""> 
+					<a class="" href="/sports-rec/main"   from="rightnow_Links_toppicks_links-toppicks" title="">Want Your Team&#39;s Game Day Forecast&#63;</a>
+</li>
+									</ul>
+			</div>
+		</div>
+	</div> 
+					<div class="wx-module wx-mod1 wx-corsican wx-2x123 wx-render-mode"
+						id="pagelet_mod_5" data-vr-zone="rightnow_Media_btm3">
+						<div class="wx-inner" data-vr-contentbox=""></div>
+					</div>
+		<div id="WX_Tile1" class="wx-module wx-gptADS"  >
+			<span class="wx-adText">Advertisement</span>
+		<script>
+			A21.notifyRegistered('WX_Tile1');
+		</script>  
+	</div>
+		<div id="WX_Tile2" class="wx-module wx-gptADS"  >
+			<span class="wx-adText">Advertisement</span>
+		<script>
+			A21.notifyRegistered('WX_Tile2');
+		</script>  
+	</div>
+		</div>
+		<div id="wx-rail">
+<!-- DFPP Changes: Pull in adServerURL from config file -->
+<!-- Change Owner: Kulanthaivelu Sankaran -->
+<!-- DFPP Changes End -->
+<div class="wx-module wx-mod1 wx-media-player wx-media-top wx-grid2of6 wx-video-player wx-has-playlist wx-insert-small wx-left  wx-small-nav">
+    <div class="wx-media-container wx-clickable" trackType="action" trackStr="63217" >
+        <div class="wx-clickable wx-play-btn wx-small">Play Video</div>
+        <img width="320" height="180"  alt="Overlay" class="wx-overlay-image" style="display: block;">
+        <div style="display: none;" class="wx-video-player-attributes" data-player-attr='{"adposition":"","auto":"true","gridSize":"wx-grid2of6","description":"false", "relatedLinks":"false", "forceAutoplay":"","primary":"true","headline":"true","playlist":"false","companionAdPos":""}' data-video-player='{"width":"320","height":"180","playerID":"1543561899001","playerKey":"AQ~~,AAAAAAQxtuk~,N9g8AOtC12clyeSXagHTM-99TWigmpdv","videoID":"ref:","adServerURL":"http://pubads.g.doubleclick.net/gampad/ads?env=vp&gdfp_req=1&output=xml_vast2&unviewed_position_start=1"}'></div>
+    </div>
+    <div class="wx-content"> 
+        <h3 class="wx-title"></h3>
+       <div class="wx-autoplay">				
+            <div class="wx-toggle-autoplay wx-icon wx-settings-g-lg wx-clickable wx-hide">
+				<i>Do you want the video to start automatically?</i>
+			</div>
+            <div class="wx-on wx-clickable wx-hide">Autoplay On</div>
+            <div class="wx-off wx-hide">Off</div>
+        </div>       
+    </div>
+    <div class="wx-playlist" style="display: none;">
+        <div class="wx-prev wx-carousel-nav" title="Previous Set">
+            <div class="wx-icon wx-arrow wx-lb-xlg-lt"></div>
+        </div>
+        <div class="wx-thumbnails">
+            <ul>
+ 			<li class="wx-clickable wx-video wx-current" trackType="action" trackStr="63217" data-index="0" data-clip='{"clipid":"33564", "shortURL":"http://wxch.nl/XvZtkS", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/663822_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/663822.jpg", "subcatid":"169", "title":"More Snow  and Ice Into Weekend", "description":"We are watching the potential of another winter storm striking the northeast come this weekend. We are also keeping our eyes on the southeast for freezing conditions come Friday.", "moreUrl1":"http://www.weather.com/news/winter", "moreUrl2":"http://www.weather.com/travel/americas-5-coldest-cities", "moreUrl3":"", "moreText1":"Winter Storm Central", "moreText2":"5 Coldest Cities", "moreText3":"", "duration":""}'>
+								<div class="wx-icon wx-arrow"></div><img src="http://i.imwx.com/web/multimedia/images/miscellaneous/663822_85x64.jpg" width="85" height="64" alt="More Snow  and Ice Into Weekend">More Snow  and Ice Into Weekend</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="1" data-clip='{"clipid":"33914", "shortURL":"http://wxch.nl/SBKGYZ", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666271_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666271.jpg", "subcatid":"169", "title":"Tigers Attack Snowmen ", "description":"Four tigers at a wildlife park in the UK have fun investigating a couple of snowmen in the park. Thanks to a camera inside one of the snowmen, we get an up close look at the tigers.", "moreUrl1":"http://www.weather.com/video/epic-battle-cat-vs-cat-33899", "moreUrl2":"http://www.b.weather.com/news/fish-with-transparent-head-20130122", "moreUrl3":"", "moreText1":"Cat vs. Cat", "moreText2":"Freaky Fish", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666271_85x64.jpg" width="85" height="64" alt="Tigers Attack Snowmen ">Tigers Attack Snowmen </li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="2" data-clip='{"clipid":"33830", "shortURL":"http://wxch.nl/U6EAPG", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665430_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665430.jpg", "subcatid":"169", "title":"Forecast for the Next 3 Months", "description":"What kind of weather can we expect for the rest of winter and the first part of spring? Meteorologists Maria LaRosa and Winter Weather Expert Tom Niziol have the forecast for the next few months.", "moreUrl1":" http://www.weather.com/travel/americas-5-coldest-cities", "moreUrl2":"/newscenter/nationalforecast/index.html", "moreUrl3":"", "moreText1":"Coldest Cities in America", "moreText2":"National Outlook", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/665430_85x64.jpg" width="85" height="64" alt="Forecast for the Next 3 Months">Forecast for the Next 3 Months</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="3" data-clip='{"clipid":"33899", "shortURL":"http://wxch.nl/V5xcl0", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666120_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666120.jpg", "subcatid":"169", "title":"Epic Battle: Cat vs. Cat", "description":"When the kitty-boss of the house named Kit comes face to face with a neighborhood cat, an epic battle ensues. Good thing there&#039;s glass between these two prize fighters or else one of them may be short one of their nine lives!", "moreUrl1":"http://www.weather.com/video/can-dogs-cats-predict-weather-32566", "moreUrl2":"http://www.weather.com/video/a-kitty-wheelchair-33845", "moreUrl3":"", "moreText1":"Dogs and Cats Predicting Weather?", "moreText2":"Video: Kitty Wheelchair", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666120_85x64.jpg" width="85" height="64" alt="Epic Battle: Cat vs. Cat">Epic Battle: Cat vs. Cat</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="4" data-clip='{"clipid":"33891", "shortURL":"http://wxch.nl/SBOHfP", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/plane_guy_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/plane_guy.jpg", "subcatid":"169", "title":"Plane Barely Misses People  ", "description":"A viral video coming out of France shows people riding around on a runway as an airplane barely misses them. It leaves a lot of questions about whether it was staged or why else people would moped on a runway. Thankfully, everyone is ok.", "moreUrl1":"", "moreUrl2":"", "moreUrl3":"", "moreText1":"", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/plane_guy_85x64.jpg" width="85" height="64" alt="Plane Barely Misses People  ">Plane Barely Misses People  </li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="5" data-clip='{"clipid":"33923", "shortURL":"http://wxch.nl/W1aP3X", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666360_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666360.jpg", "subcatid":"169", "title":"What 1-Million Degrees Looks Like", "description":"This is the closest, clearest and hottest view of our sun ever captured by NASA. The High Resolution Coronal Imager, or Hi-C captured these images taken of the one-million degree solar corona.", "moreUrl1":"http://www.weather.com/video/a-tornado-on-the-sun-26136", "moreUrl2":"http://www.weather.com/video/solar-eruption-size-of-20-earths-33585", "moreUrl3":"", "moreText1":"Video: Tornado on the Sun", "moreText2":"Solar Eruption: Size of 20 Earths", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666360_85x64.jpg" width="85" height="64" alt="What 1-Million Degrees Looks Like">What 1-Million Degrees Looks Like</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="6" data-clip='{"clipid":"33883", "shortURL":"http://wxch.nl/XvR1C9", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/fishermen_dangle_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/fishermen_dangle.jpg", "subcatid":"169", "title":"Fishermen Dangle Over Waterfall", "description":"Two Tennessee fishermen in were caught by surprise when their boat&#039;s motor failed. That meant no turning back. According to &#039;Good Morning America&#039; they were stuck for three hours waiting for rescue.", "moreUrl1":"", "moreUrl2":"", "moreUrl3":"", "moreText1":"", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/fishermen_dangle_85x64.jpg" width="85" height="64" alt="Fishermen Dangle Over Waterfall">Fishermen Dangle Over Waterfall</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="7" data-clip='{"clipid":"33926", "shortURL":"http://wxch.nl/WgJHNX", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666378_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666378.jpg", "subcatid":"169", "title":"Cantore on World Economic Forum", "description":"The World Economic Forum is going on in Davos, Switzerland and Meteorologist Jim Cantore from The Weather Channel is there. Hear Jim talk about his first few moments in Switzerland and how he feels the discussions are going.", "moreUrl1":"http://www.weather.com/video/watch-130-years-of-climate-change-33764", "moreUrl2":"http://www.weather.com/video/understanding-climate-change-33450", "moreUrl3":"", "moreText1":"130 Years of Climate Change", "moreText2":"Understanding Climate Change", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666378_85x64.jpg" width="85" height="64" alt="Cantore on World Economic Forum">Cantore on World Economic Forum</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="8" data-clip='{"clipid":"33925", "shortURL":"http://wxch.nl/WgJpqw", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666371_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666371.jpg", "subcatid":"169", "title":"Living in the Icebox of America", "description":"International Falls, Minnesota is one of the coldest places in America. Routinely during the winter temperatures drop below zero which makes everyday things less than easy.", "moreUrl1":"http://www.weather.com/weather/today/International+Falls+MN+USMN0376", "moreUrl2":"http://www.weather.com/travel/americas-5-coldest-cities", "moreUrl3":"", "moreText1":"International Falls Forecast", "moreText2":"5 Coldest US Cities", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666371_85x64.jpg" width="85" height="64" alt="Living in the Icebox of America">Living in the Icebox of America</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="9" data-clip='{"clipid":"33924", "shortURL":"http://wxch.nl/W1aNcq", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666368_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666368.jpg", "subcatid":"169", "title":"After the Crash: Stay in Your Car or Go?", "description":"We&#039;ve seen a number of multicar pile-ups this week in dangerous driving conditions. So if you are in an accident should you stay in your car and wait for help or is it that the wrong move?", "moreUrl1":"http://www.facebook.com/TheWeatherChannel", "moreUrl2":"/outlook/weather-news/news/articles/region-midwest-weather-forecast_2010-03-25", "moreUrl3":"/ready/checklists/wxready/freezing.html", "moreText1":"Like us on Facebook", "moreText2":"Midwest Outlook", "moreText3":"Weather Ready - Freezing", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666368_85x64.jpg" width="85" height="64" alt="After the Crash: Stay in Your Car or Go?">After the Crash: Stay in Your Car or Go?</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="10" data-clip='{"clipid":"33913", "shortURL":"http://wxch.nl/SBEwbf", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666254_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666254.jpg", "subcatid":"169", "title":"Will Climate Change Impact Davos?", "description":"CNBC Correspondent Andrew Ross Sorkin looks at the chances climate change will have a meaningful impact on the World Economic Forum in Davos, Switzerland.", "moreUrl1":"http://www.weather.com/home-garden/home/pecan-street-20130122", "moreUrl2":"http://www.weather.com/news/davos-forum-preview-20130121", "moreUrl3":"", "moreText1":"Clean Energy Future", "moreText2":"Re-energizing a Global Economy", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666254_85x64.jpg" width="85" height="64" alt="Will Climate Change Impact Davos?">Will Climate Change Impact Davos?</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="11" data-clip='{"clipid":"33915", "shortURL":"http://wxch.nl/SBMLnA", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666269_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666269.jpg", "subcatid":"169", "title":"Watch Diver Rescue Dolphin ", "description":"Off Hawaii, a bottlenose dolphin swam up to a diver who noticed the animal&#039;s fins tangled in fishing line. The dolphin sticks around for 7 or 8 minutes to let the diver cut away the line.", "moreUrl1":"http://www.b.weather.com/news/fish-with-transparent-head-20130122", "moreUrl2":"http://www.weather.com/video/epic-battle-cat-vs-cat-33899", "moreUrl3":"", "moreText1":"Freaky Fish", "moreText2":"Cat vs. Cat", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666269_85x64.jpg" width="85" height="64" alt="Watch Diver Rescue Dolphin ">Watch Diver Rescue Dolphin </li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="12" data-clip='{"clipid":"33908", "shortURL":"http://wxch.nl/VZSnc2", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/0123bulldozer_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/0123bulldozer.jpg", "subcatid":"169", "title":"5-Year-Old  Operates Bulldozer", "description":"A 5-year-old boy in Thailand sure knows how to use a bulldozer. He skillfully handling the massive vehicle like a seasoned pro.", "moreUrl1":"", "moreUrl2":"", "moreUrl3":"", "moreText1":"", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/0123bulldozer_85x64.jpg" width="85" height="64" alt="5-Year-Old  Operates Bulldozer">5-Year-Old  Operates Bulldozer</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="13" data-clip='{"clipid":"33922", "shortURL":"http://wxch.nl/SCHCLY", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666217_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666217.jpg", "subcatid":"169", "title":"Cuddly Pet or Natural Born Killer?", "description":"New Zealand is experiencing a real cat fight between bird lovers, and cat owners. Prominent businessman and philanthropist, Gareth Morgan, wants to see a drastically reduced population of pet cats. His Cats to Go campaign pomotes the idea.", "moreUrl1":"http://www.weather.com/video/epic-battle-cat-vs-cat-33899", "moreUrl2":"http://www.b.weather.com/news/fish-with-transparent-head-20130122", "moreUrl3":"", "moreText1":"Cat vs. Cat", "moreText2":"Freaky Fish", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666217_85x64.jpg" width="85" height="64" alt="Cuddly Pet or Natural Born Killer?">Cuddly Pet or Natural Born Killer?</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="14" data-clip='{"clipid":"33902", "shortURL":"http://wxch.nl/VZLBTz", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666216_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666216.jpg", "subcatid":"169", "title":"Goat Gets Day in Court", "description":"A goat in Australia had his day in court. Gary the goat was nabbed by police in August for eating flowers outside a Sydney museum. He was fined $365 Dollars. Wednesday a judge dismissed the fine.", "moreUrl1":"http://www.weather.com/video/epic-battle-cat-vs-cat-33899", "moreUrl2":"http://www.b.weather.com/news/fish-with-transparent-head-20130122", "moreUrl3":"", "moreText1":"Cat vs. Cat", "moreText2":"Freaky Fish", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666216_85x64.jpg" width="85" height="64" alt="Goat Gets Day in Court">Goat Gets Day in Court</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="15" data-clip='{"clipid":"33927", "shortURL":"http://wxch.nl/TonK0L", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666379_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666379.jpg", "subcatid":"169", "title":"Climate Change on World Stage", "description":"The debate about climate change is taking center stage at the World Economic Forum in Davos, Switzerland. The Weather Channel is there as well, keeping you up to speed on what world leaders are talking about.", "moreUrl1":"http://www.weather.com/video/watch-130-years-of-climate-change-33764", "moreUrl2":"http://www.weather.com/video/understanding-climate-change-33450", "moreUrl3":"", "moreText1":"130 Years of Climate Change", "moreText2":"Understanding Climate Change", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666379_85x64.jpg" width="85" height="64" alt="Climate Change on World Stage">Climate Change on World Stage</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="16" data-clip='{"clipid":"33894", "shortURL":"http://wxch.nl/Ti1NjY", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666092_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666092.jpg", "subcatid":"169", "title":"Giant Whale Shocks Divers", "description":"Scuba divers off the coast of Japan were enjoying the sites when a Humpback whale decided to check them out. The whale swims into the diver&#039;s visual range which is, to say the least, a little startling!", "moreUrl1":"http://www.weather.com/news/whales-photos-20121017", "moreUrl2":"http://www.weather.com/news/noise-harming-whales-20120816", "moreUrl3":"", "moreText1":"Photos: Living with Whales", "moreText2":"Study: Noise Harms Whales", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666092_85x64.jpg" width="85" height="64" alt="Giant Whale Shocks Divers">Giant Whale Shocks Divers</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="17" data-clip='{"clipid":"33898", "shortURL":"http://wxch.nl/WrgRs1", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666133_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666133.jpg", "subcatid":"169", "title":"Ultimate Test: Will Truck Fly?", "description":"Take some friends, a brand new pickup truck and the need for speed and what do you get? A stunt that should only be performed by professionals!", "moreUrl1":"http://www.weather.com/news/crash-shocking-video-20121118", "moreUrl2":"http://www.weather.com/news/trucker-sun-exposure-20120605", "moreUrl3":"", "moreText1":"Truck Crashes Through Intersection", "moreText2":"Trucker&#039;s Face Effected by Sun", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666133_85x64.jpg" width="85" height="64" alt="Ultimate Test: Will Truck Fly?">Ultimate Test: Will Truck Fly?</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="18" data-clip='{"clipid":"365", "shortURL":"http://wxch.nl/TnadXx", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/stormwatch_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/stormwatch.jpg", "subcatid":"169", "title":"Wintry Mess Ahead", "description":"A wintry mess is taking shape Thursday night and Friday from the Midwest, to the Tennessee Valley and Mid-Atlantic. Some locations will see freezing rain and very dangerous driving conditions.", "moreUrl1":"http://www.weather.com/video/blizzard-moves-east-33423", "moreUrl2":"http://www.b.weather.com/news/winter", "moreUrl3":"", "moreText1":"Winter Weather Update", "moreText2":"Winter Weather Central ", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/stormwatch_85x64.jpg" width="85" height="64" alt="Wintry Mess Ahead">Wintry Mess Ahead</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="19" data-clip='{"clipid":"33886", "shortURL":"http://wxch.nl/XvYlOn", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/boulder_bedroom_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/boulder_bedroom.jpg", "subcatid":"169", "title":"Boulder Crashes Through Bedroom", "description":"A Utah woman heard a rumbling sound while in her bedroom, and rolled over just in the nick of time. &#039;Fox &amp; Friends&#039; reports the boulder did pin her leg, but she was still able to call for help.", "moreUrl1":"http://www.weather.com/news/boulder-smashes-into-bedroom-20130121", "moreUrl2":"", "moreUrl3":"", "moreText1":"Miracle Survival After Boulder", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/boulder_bedroom_85x64.jpg" width="85" height="64" alt="Boulder Crashes Through Bedroom">Boulder Crashes Through Bedroom</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="20" data-clip='{"clipid":"33909", "shortURL":"http://wxch.nl/Vr6g0J", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/0123bbcsnow_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/0123bbcsnow.jpg", "subcatid":"169", "title":"Snow Strands Travelers", "description":"Heavy snow in the UK is causing big problems throughout the country.  ", "moreUrl1":"", "moreUrl2":"", "moreUrl3":"", "moreText1":"", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/0123bbcsnow_85x64.jpg" width="85" height="64" alt="Snow Strands Travelers">Snow Strands Travelers</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="21" data-clip='{"clipid":"33911", "shortURL":"http://wxch.nl/VraCFg", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/0123bottle_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/0123bottle.jpg", "subcatid":"169", "title":"76-Year-Old Message in a Bottle  ", "description":"Last November, a father and son found a bottle on a New Zealand beach. When they opened it, they found a message written 76 years ago.", "moreUrl1":"", "moreUrl2":"", "moreUrl3":"", "moreText1":"", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/0123bottle_85x64.jpg" width="85" height="64" alt="76-Year-Old Message in a Bottle  ">76-Year-Old Message in a Bottle  </li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="22" data-clip='{"clipid":"33905", "shortURL":"http://wxch.nl/VZSe8p", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666225_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666225.jpg", "subcatid":"169", "title":"Rising Sea Level Concerns", "description":"Jim Cantore meteorologist speaks with Dr. Chris Field, a climate researcher, about the growing threat of rising sea levels.", "moreUrl1":" http://www.weather.com/home-garden/home/pecan-street-20130122", "moreUrl2":"/news/main", "moreUrl3":"", "moreText1":"Clean Energy Future", "moreText2":"More Weather News", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666225_85x64.jpg" width="85" height="64" alt="Rising Sea Level Concerns">Rising Sea Level Concerns</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="23" data-clip='{"clipid":"33901", "shortURL":"http://wxch.nl/XxtNuQ", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666210_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666210.jpg", "subcatid":"169", "title":"Dam Causes Icy Wonderland ", "description":"A water release at the Fontana Dam in Western North Carolina in freezing weather created a winter wonderland.", "moreUrl1":"http://www.weather.com/travel/worlds-most-amazing-dams-20130110", "moreUrl2":"http://www.weather.com/news/weather-winter/winter-seasonal-outlook-january-20130122", "moreUrl3":"", "moreText1":"Most Amazing Dams", "moreText2":"Winter to End in a Bang", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666210_85x64.jpg" width="85" height="64" alt="Dam Causes Icy Wonderland ">Dam Causes Icy Wonderland </li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="24" data-clip='{"clipid":"364", "shortURL":"http://wxch.nl/KDFcsG", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/national_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/national.jpg", "subcatid":"169", "title":"A National Look at the Next 3 Days", "description":"Three-day forecast for the entire US, updated each morning and afternoon.", "moreUrl1":"http://www.weather.com/weather/videos/news-41/top-stories-169/weekend-severe-threat-365", "moreUrl2":"http://www.weather.com/news/weather-winter/winter-weather-watch-2012-2013", "moreUrl3":"", "moreText1":"Storm Watch", "moreText2":"Winter Weather Watch", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/national_85x64.jpg" width="85" height="64" alt="A National Look at the Next 3 Days">A National Look at the Next 3 Days</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="25" data-clip='{"clipid":"33900", "shortURL":"http://wxch.nl/XxruIn", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666173_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666173.jpg", "subcatid":"169", "title":"Boiling Water Trick", "description":"What does one do when temperatures drop to -18 degrees? This iWitness user from Escanaba, Michigan decided to try the boiling water to ice trick.", "moreUrl1":"http://iwitness.weather.com/service/displayVideoUpload.kickAction?as=148597", "moreUrl2":"http://www.facebook.com/TheWeatherChannel", "moreUrl3":"", "moreText1":"Submit Your Video", "moreText2":"Like us on Facebook", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666173_85x64.jpg" width="85" height="64" alt="Boiling Water Trick">Boiling Water Trick</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="26" data-clip='{"clipid":"33904", "shortURL":"http://wxch.nl/VZOsw3", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666227_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666227.jpg", "subcatid":"169", "title":"Changing Attitudes on Warming", "description":"The Weather Channel meteorologist  Jim Cantore spoke with climate researcher Dr. Chris Field about the record warmth in 2012, and the how many are changing their opinion about global warming. .", "moreUrl1":"http://www.weather.com/home-garden/home/pecan-street-20130122", "moreUrl2":"/news/main", "moreUrl3":"", "moreText1":"Clean Energy Future", "moreText2":"More Weather News", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666227_85x64.jpg" width="85" height="64" alt="Changing Attitudes on Warming">Changing Attitudes on Warming</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="27" data-clip='{"clipid":"33897", "shortURL":"http://wxch.nl/Wre2qV", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666118_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666118.jpg", "subcatid":"169", "title":"Puppies Attack Feet!", "description":"When a girl wearing some interesting slippers steps into a pen with seven puppies, hilarity ensues. The dogs can&#039;t stop attacking the footwear!", "moreUrl1":"http://www.weather.com/video/puppy-saved-by-vodka-33811", "moreUrl2":"http://www.weather.com/outlook/home-family/pets/articles/cold-weather-pet-tips_2012-01-27?page=7", "moreUrl3":"", "moreText1":"Vodka Saves Puppy", "moreText2":"Winter Pet Care", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666118_85x64.jpg" width="85" height="64" alt="Puppies Attack Feet!">Puppies Attack Feet!</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="28" data-clip='{"clipid":"33887", "shortURL":"http://wxch.nl/Sw8WeO", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666035_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666035.jpg", "subcatid":"169", "title":"Crazy Twist on Ice Climbing", "description":"Who says you need a mountain to enjoy ice climbing? These enterprising Iowans are working with what they have: Farm silos! This group has been climbing ice-covered silos near Cedar Falls for 14 years.", "moreUrl1":"http://www.weather.com/travel/weather-bucket-list-20130121", "moreUrl2":"http://www.weather.com/health/cold-flu/cold-plunge-below-zero-frostbite-20130115", "moreUrl3":"", "moreText1":"Weather Bucket List", "moreText2":"Where is the Cold?", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666035_85x64.jpg" width="85" height="64" alt="Crazy Twist on Ice Climbing">Crazy Twist on Ice Climbing</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="29" data-clip='{"clipid":"33903", "shortURL":"http://wxch.nl/VZLAiy", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666215_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666215.jpg", "subcatid":"169", "title":"Still Waiting for Big Snow", "description":"Winter Storm Jove didn&#039;t pack much of a punch, many people in Boston are happy it missed them. But The Weather Channel meteorologist Kelly Cass reports the city didn&#039;t take any chances.", "moreUrl1":"http://www.weather.com/news/weather-winter/winter-seasonal-outlook-january-20130122", "moreUrl2":"http://www.weather.com/video/more-snow-into-weekend-33564?", "moreUrl3":"", "moreText1":"Winter to end in a Bang", "moreText2":"Winter Weather Update", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666215_85x64.jpg" width="85" height="64" alt="Still Waiting for Big Snow">Still Waiting for Big Snow</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="30" data-clip='{"clipid":"33874", "shortURL":"http://wxch.nl/11NXj74", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665901_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665901.jpg", "subcatid":"169", "title":"Raw: 50-Car Pileup in Ohio", "description":"Whiteout conditions caused a sudden loss of visibility on Ohio&#039;s I-275 Monday, followed by a massive pile up. A 12-year-old girl was killed in the 50+ vehicle wreck. This Cincinnati Inquirer video is silent.", "moreUrl1":"/outlook/weather-news/news/articles/region-midwest-weather-forecast_2010-03-25", "moreUrl2":"http://www.weather.com/activities/driving/drivingsafety/drivingsafetytips/snow.html", "moreUrl3":"http://www.weather.com/family-kids/pets/dogs-in-snow-20130114", "moreText1":"Midwest Outlook", "moreText2":"Diving in Snow Safety Tips", "moreText3":"25 Dogs in Snow", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/665901_85x64.jpg" width="85" height="64" alt="Raw: 50-Car Pileup in Ohio">Raw: 50-Car Pileup in Ohio</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="31" data-clip='{"clipid":"33876", "shortURL":"http://wxch.nl/10jTRfo", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665903_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665903.jpg", "subcatid":"169", "title":"TOO Cold for Ice Castles?", "description":"In Bloomington, Minnesota a group called Ice Castles builds giant structures made of ice crystals, but with extremely cold temperatures, they are actually having problems harvesting the crystals.", "moreUrl1":"http://www.weather.com/video/more-snow-on-the-way-33564", "moreUrl2":"http://www.weather.com/video/watch-car-flip-on-icy-interstate-33805", "moreUrl3":"", "moreText1":"More Snow on the Way", "moreText2":"Watch Car Flip on Icy Interstate", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/665903_85x64.jpg" width="85" height="64" alt="TOO Cold for Ice Castles?">TOO Cold for Ice Castles?</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="32" data-clip='{"clipid":"33906", "shortURL":"http://wxch.nl/VZQPyV", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666229_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666229.jpg", "subcatid":"169", "title":"Weather Wizard: Freezing Rain", "description":"Weather Wizard Mark Elliot explains the difference between snow, sleet, and freezing rain.", "moreUrl1":"/news/main", "moreUrl2":"/outlook/travel/", "moreUrl3":"", "moreText1":"More Weather News", "moreText2":"Travel Outlook", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666229_85x64.jpg" width="85" height="64" alt="Weather Wizard: Freezing Rain">Weather Wizard: Freezing Rain</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="33" data-clip='{"clipid":"33893", "shortURL":"http://wxch.nl/10Flqoo", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666097_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666097.jpg", "subcatid":"169", "title":"The Science Behind Wind Chill", "description":"The Weather Channel Meteorologist Mark Elliot explains the science behind how the wind chill affects the human body&#039;s temperature levels.", "moreUrl1":"/news/main", "moreUrl2":"why-bridges-freeze-first-32249", "moreUrl3":"science-behind-inversion-33579", "moreText1":"More Weather News", "moreText2":"Why bridges freeze", "moreText3":"Science  Behind Inversion", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666097_85x64.jpg" width="85" height="64" alt="The Science Behind Wind Chill">The Science Behind Wind Chill</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="34" data-clip='{"clipid":"33881", "shortURL":"http://wxch.nl/Td5cAt", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665936_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665936.jpg", "subcatid":"169", "title":"SO CUTE: Snow Covered Pug!", "description":"This little guy is named Tucker. He lives in Canada and is the mascot for the website BandMark.com. He also is a pretty big fan of the snow!", "moreUrl1":"http://www.weather.com/video/skier-gets-it-in-the-face-33878", "moreUrl2":"http://www.weather.com/video/lion-versus-camera-33879", "moreUrl3":"", "moreText1":"Skier Gets it in the Face!", "moreText2":"Lion Versus Camera", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/665936_85x64.jpg" width="85" height="64" alt="SO CUTE: Snow Covered Pug!">SO CUTE: Snow Covered Pug!</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="35" data-clip='{"clipid":"33875", "shortURL":"http://wxch.nl/10jNaKg", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665905_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665905.jpg", "subcatid":"169", "title":"The Problems with Going Green", "description":"A new report shows that climate change ranked among the top global risks in the annual world economic forum survey of more than a thousand experts. The Weather Channel reporter, Dave Malkoff, explains the concerns surrounding the report.", "moreUrl1":"http://www.weather.com/video/climate-change-on-local-level-33771", "moreUrl2":"http://www.weather.com/video/forecast-for-the-next-3-months-33830", "moreUrl3":"", "moreText1":"Climate Change on Local Level", "moreText2":"Forecast for the Next 3 Months", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/665905_85x64.jpg" width="85" height="64" alt="The Problems with Going Green">The Problems with Going Green</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="36" data-clip='{"clipid":"33895", "shortURL":"http://wxch.nl/VoXHUf", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666125_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666125.jpg", "subcatid":"169", "title":"The President on Climate and Energy", "description":"One of the most talked about topics stemming from President Barack Obama&#039;s inauguration speech are his comments on climate change and sustainable energy. The Weather Channel takes a listen to what he said and investigates the implications.", "moreUrl1":"http://www.weather.com/news/obama-climate-change-20130122", "moreUrl2":"http://www.weather.com/news/weather-hurricanes/sandy-climate-change-debate-20121030", "moreUrl3":"", "moreText1":"More: Obama on Climate Change", "moreText2":"Sandy Stirs Climate Debate", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666125_85x64.jpg" width="85" height="64" alt="The President on Climate and Energy">The President on Climate and Energy</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="37" data-clip='{"clipid":"33888", "shortURL":"http://wxch.nl/WGU4sj", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666069_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/666069.jpg", "subcatid":"169", "title":"Snakes Seen From Space", "description":"In a twenty-four hour period, the Geostationary Operational Environmental Satellite captured these mesmerizing snake-like clouds. The long thin trails captured off the U.S. west coast are actually clouds seeded by particles in ship exhaust.", "moreUrl1":"http://www.weather.com/news/nasa-phobos-mission-20130122", "moreUrl2":"http://www.weather.com/travel/worlds-most-amazing-dams-20130110", "moreUrl3":"", "moreText1":"Would You Attack a Mars Moon?", "moreText2":"The Biggest Dam Is?", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/666069_85x64.jpg" width="85" height="64" alt="Snakes Seen From Space">Snakes Seen From Space</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="38" data-clip='{"clipid":"33889", "shortURL":"http://wxch.nl/WGz590", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/517649681_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/517649681.jpg", "subcatid":"169", "title":"Growth Tops Davos Agenda", "description":"Global growth will top the agenda at the World Economic Forum in Davos, Switzerland, as the world&#039;s movers and shakers discuss whether the recovery can be sustained. WSJ&#039;s Tracy Corrigan looks at topics that will dominate the meeting.", "moreUrl1":"http://www.weather.com/news/davos-forum-preview-20130121", "moreUrl2":"", "moreUrl3":"", "moreText1":"Re-energizing a Global Economy", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/517649681_85x64.jpg" width="85" height="64" alt="Growth Tops Davos Agenda">Growth Tops Davos Agenda</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="39" data-clip='{"clipid":"33884", "shortURL":"http://wxch.nl/XvV8OT", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/oh_pileup_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/oh_pileup.jpg", "subcatid":"169", "title":"Girl Killed in Pileup", "description":"A young girl died in Ohio after three major traffic accidents Monday. Icy roads, and blowing snow contributed to wrecks that sent twenty more injured people to the hospital.", "moreUrl1":"http://www.weather.com/news/weather-winter/ohio-snow-interstate-crashes-20130121", "moreUrl2":"http://www.weather.com/travel/americas-5-coldest-cities", "moreUrl3":"", "moreText1":"Ohio Interstate Crashes", "moreText2":"Is Your City the Coldest?", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/oh_pileup_85x64.jpg" width="85" height="64" alt="Girl Killed in Pileup">Girl Killed in Pileup</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="40" data-clip='{"clipid":"33872", "shortURL":"http://wxch.nl/10jQ0Po", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/517648782_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/517648782.jpg", "subcatid":"169", "title":"One Way to Tackle a Shark", "description":"When this shark was spotted swimming close to shore in Australia, one brave swimmer took action and moved the 6.5-foot dusky whaler shark back into deeper water.", "moreUrl1":"", "moreUrl2":"", "moreUrl3":"", "moreText1":"", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/517648782_85x64.jpg" width="85" height="64" alt="One Way to Tackle a Shark">One Way to Tackle a Shark</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="41" data-clip='{"clipid":"33890", "shortURL":"http://wxch.nl/WGAYCq", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/fat_crashes_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/fat_crashes.jpg", "subcatid":"169", "title":"Obese More Likely to Die in Crashes", "description":"Researchers at University of California, Berkeley studied the correlation between being severely overweight and dying in a car crash.", "moreUrl1":"http://www.weather.com/health/obese-drivers-risk-20130122", "moreUrl2":"", "moreUrl3":"", "moreText1":"Crashes More Deadly for Fat Drivers", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/fat_crashes_85x64.jpg" width="85" height="64" alt="Obese More Likely to Die in Crashes">Obese More Likely to Die in Crashes</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="42" data-clip='{"clipid":"33882", "shortURL":"http://wxch.nl/VhRmxH", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/snow_schools_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/snow_schools.jpg", "subcatid":"169", "title":"Snow Closes Many UK Schools", "description":"Thousands of UK schools are closed because of snow and freezing conditions. However, many Brits are asking why are some open, and others close by, closed?", "moreUrl1":"", "moreUrl2":"", "moreUrl3":"", "moreText1":"", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/snow_schools_85x64.jpg" width="85" height="64" alt="Snow Closes Many UK Schools">Snow Closes Many UK Schools</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="43" data-clip='{"clipid":"33878", "shortURL":"http://wxch.nl/11MV0RK", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665923_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665923.jpg", "subcatid":"169", "title":"Skier Gets it in the Face!", "description":"A skier in Salt Lake City took a camera with him down a steep run. He was rewarded with a blast of snow to the face and some awesome video.", "moreUrl1":"http://www.weather.com/outlook/weather-news/news/articles/tahoe-skier-survives-accident_2012-04-02", "moreUrl2":"http://www.weather.com/video/learn-about-the-muscles-used-in-snow-skiing-31832", "moreUrl3":"", "moreText1":"Burried Skier Survives", "moreText2":"Video: Muscles Used in Skiing", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/665923_85x64.jpg" width="85" height="64" alt="Skier Gets it in the Face!">Skier Gets it in the Face!</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="44" data-clip='{"clipid":"33879", "shortURL":"http://wxch.nl/WnWR9T", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665929_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665929.jpg", "subcatid":"169", "title":"Lion Versus Camera", "description":"What happens when you take a camera, put it on a remote control car and send it into a lion&#039;s area in Kenya? The result is some awesome video showing what happens when a lion is anything but camera-shy.", "moreUrl1":"http://www.weather.com/news/dog-confused-for-lion-911-calls-20130110", "moreUrl2":"http://www.weather.com/news/20120630-keeping-zoo-animals-cool-20120630", "moreUrl3":"", "moreText1":"Dog Looks Like Lion", "moreText2":"Zoo Animals Keep Cool", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/665929_85x64.jpg" width="85" height="64" alt="Lion Versus Camera">Lion Versus Camera</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="45" data-clip='{"clipid":"33880", "shortURL":"http://wxch.nl/WnY5SA", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665932_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665932.jpg", "subcatid":"169", "title":"Dolphin Freed From Fishing Line", "description":"Divers swimming in Hawaii noticed a dolphin near them apparently asking for help. Upon further inspection, divers noticed fishing line wrapped around the dolphin&#039;s fin.", "moreUrl1":"http://www.weather.com/news/incredible-dolphin-image-20130108", "moreUrl2":"http://www.weather.com/video/hundreds-of-dolphins-jump-around-boat-29393", "moreUrl3":"", "moreText1":"Crazy Dolphin Image", "moreText2":"Dolphin Stampede!", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/665932_85x64.jpg" width="85" height="64" alt="Dolphin Freed From Fishing Line">Dolphin Freed From Fishing Line</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="46" data-clip='{"clipid":"33805", "shortURL":"http://wxch.nl/UwuyXa", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665098_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665098.jpg", "subcatid":"169", "title":"Watch Car Flip on Icy Interstate ", "description":"Tennessee Department of Transportation cameras captured video of a vehicle flipping after it hit a patch of ice on an interstate in Memphis.", "moreUrl1":"/news/main", "moreUrl2":"http://iwitness.weather.com/service/displayVideoUpload.kickAction?as=148597", "moreUrl3":"", "moreText1":"More Weather News", "moreText2":"Submit Your Video", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/665098_85x64.jpg" width="85" height="64" alt="Watch Car Flip on Icy Interstate ">Watch Car Flip on Icy Interstate </li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="47" data-clip='{"clipid":"33870", "shortURL":"http://wxch.nl/YiZKOk", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/seal_boat_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/seal_boat.jpg", "subcatid":"169", "title":"Seal Hops in Family Boat", "description":"A Brisbane, Australia, family caught this thrilling encounter with a fur seal on camera. This brave sea critter has been hitching boat rides for at least a week. The family said the seal acted like a dog, allowing the children to pet it.", "moreUrl1":"", "moreUrl2":"", "moreUrl3":"", "moreText1":"", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/seal_boat_85x64.jpg" width="85" height="64" alt="Seal Hops in Family Boat">Seal Hops in Family Boat</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="48" data-clip='{"clipid":"33863", "shortURL":"http://wxch.nl/XR03vI", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/bad_bats_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/bad_bats.jpg", "subcatid":"169", "title":"Bats Behaving Badly!", "description":"Bats residing in Great Smoky Mountains National Park are diving towards visitors and flying during the day. Visitors were recently warned by officials that bats are not hibernating normally this winter.", "moreUrl1":"http://www.weather.com/sports-rec/hunting/python-hunt-florida-20130121", "moreUrl2":"http://www.weather.com/sports-rec/kranium-bike-helmet-20130118", "moreUrl3":"", "moreText1":"Florida Python Hunt", "moreText2":"Woodpecker Inspires Helmet Design", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/bad_bats_85x64.jpg" width="85" height="64" alt="Bats Behaving Badly!">Bats Behaving Badly!</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="49" data-clip='{"clipid":"33869", "shortURL":"http://wxch.nl/13WUAaX", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/cg_rescue_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/cg_rescue.jpg", "subcatid":"169", "title":"Dramatic Rescue Caught on Cam", "description":"The U.S. Coast Guard rescued 12 people from a scientific research and survey ship that capsized 140 miles south of Mobile, AL. The crew made it into two life rafts before the boat sank early Friday morning.", "moreUrl1":"", "moreUrl2":"", "moreUrl3":"", "moreText1":"", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/cg_rescue_85x64.jpg" width="85" height="64" alt="Dramatic Rescue Caught on Cam">Dramatic Rescue Caught on Cam</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="50" data-clip='{"clipid":"33873", "shortURL":"http://wxch.nl/Yj37Ve", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665849_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665849.jpg", "subcatid":"169", "title":"Obama on Climate Change", "description":"During his inauguration speech, President Obama he will respond to the threat of climate change during his second term in office.", "moreUrl1":"", "moreUrl2":"", "moreUrl3":"", "moreText1":"", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/665849_85x64.jpg" width="85" height="64" alt="Obama on Climate Change">Obama on Climate Change</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="51" data-clip='{"clipid":"33847", "shortURL":"http://wxch.nl/WraQLU", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665409_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665409.jpg", "subcatid":"169", "title":"Man on Mars?", "description":"A private Dutch company is planning to send humans to Mars by 2023. Think you&#039;ve got what it takes to travel to the Red Planet?   See what one candidate says he&#039;s leaving behind. ", "moreUrl1":"http://www.weather.com/video/if-earth-had-mars-weather-33815", "moreUrl2":"http://www.weather.com/video/could-humans-live-on-mars-33816", "moreUrl3":"", "moreText1":"If Earth Had Mars Weather", "moreText2":"Could Humans Live On Mars?", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/665409_85x64.jpg" width="85" height="64" alt="Man on Mars?">Man on Mars?</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="52" data-clip='{"clipid":"33864", "shortURL":"http://wxch.nl/XR5ACm", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/517648354_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/517648354.jpg", "subcatid":"169", "title":"Snow Woes: Delays and Cancellations", "description":"European airports from the UK to Germany canceled scores of flights over the weekend and into Monday. Snow and low visibility have caused travel bottlenecks across Europe.", "moreUrl1":"http://www.weather.com/news/weather-winter/winter-snow-storm-europe-20130121", "moreUrl2":"http://www.weather.com/travel/10-shocking-snow-cities-20130118", "moreUrl3":"", "moreText1":"Winter Storm Wallops Europe", "moreText2":"Shocking Snow Cities", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/517648354_85x64.jpg" width="85" height="64" alt="Snow Woes: Delays and Cancellations">Snow Woes: Delays and Cancellations</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="53" data-clip='{"clipid":"33853", "shortURL":"http://wxch.nl/11JoFLI", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665626a_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665626a.jpg", "subcatid":"169", "title":"Helmet Cam: Intense Avalanche Rescue", "description":"The Sierra Avalanche Center released this helmet cam video of the moment a skier was swept away, and buried in an avalanche on Echo Peak. Two skiers in the party of 5 were able to rescue him without serious injury.", "moreUrl1":"http://www.weather.com/news/weather-winter/climbers-die-scottish-avalanche-20130120", "moreUrl2":"http://www.weather.com/sports-rec/ski/main", "moreUrl3":"", "moreText1":"Scottish Avalanche Kills 4", "moreText2":"Ski Forecasts", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/665626a_85x64.jpg" width="85" height="64" alt="Helmet Cam: Intense Avalanche Rescue">Helmet Cam: Intense Avalanche Rescue</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="54" data-clip='{"clipid":"33826", "shortURL":"http://wxch.nl/WdkUbs", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665356_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665356.jpg", "subcatid":"169", "title":"Forecasting Weather in a War Zone ", "description":"NBC&#039;s Thanh Truong reports that in the war in Afghanistan meteorologists play a very important role for the U. S. Military.", "moreUrl1":" http://www.weather.com/travel/americas-5-coldest-cities", "moreUrl2":"http://www.weather.com/sports-rec/ski-conditions/six-snowiest-cities-20130105", "moreUrl3":"", "moreText1":"Coldest Cities in America", "moreText2":"6 Snowest U.S. Cities", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/665356_85x64.jpg" width="85" height="64" alt="Forecasting Weather in a War Zone ">Forecasting Weather in a War Zone </li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="55" data-clip='{"clipid":"33855", "shortURL":"http://wxch.nl/UHUiQs", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/517647766_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/517647766.jpg", "subcatid":"169", "title":"NASA Abandons Launch Pad", "description":"NASA has decided to abandon Launch Pad 39-A. Apollo 11, the first mission to land two Americans on the moon, lifted off here.  Space Shuttles also launched from this complex.", "moreUrl1":"http://www.weather.com/tv/tvshows/deadliest-space-weather/main", "moreUrl2":"", "moreUrl3":"", "moreText1":"Deadliest Space Weather", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/517647766_85x64.jpg" width="85" height="64" alt="NASA Abandons Launch Pad">NASA Abandons Launch Pad</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="56" data-clip='{"clipid":"33811", "shortURL":"http://wxch.nl/VMARrL", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/0117puppy_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/0117puppy.jpg", "subcatid":"169", "title":"Puppy Saved By Vodka", "description":"A nine week old puppy named Cleo in Australia consumed antifreeze and had to be rushed to vet.", "moreUrl1":"", "moreUrl2":"", "moreUrl3":"", "moreText1":"", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/0117puppy_85x64.jpg" width="85" height="64" alt="Puppy Saved By Vodka">Puppy Saved By Vodka</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="57" data-clip='{"clipid":"33824", "shortURL":"http://wxch.nl/Wdl6aC", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/0118fireman_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/0118fireman.jpg", "subcatid":"169", "title":"See Snow Crash Down on Fireman", "description":"A fireman in Russia has had a remarkable escape after a pile of snow knocked him off his ladder.", "moreUrl1":"", "moreUrl2":"", "moreUrl3":"", "moreText1":"", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/0118fireman_85x64.jpg" width="85" height="64" alt="See Snow Crash Down on Fireman">See Snow Crash Down on Fireman</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="58" data-clip='{"clipid":"33839", "shortURL":"http://wxch.nl/108NWtD", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/0119shark_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/0119shark.jpg", "subcatid":"169", "title":"Close Encounter with Great White ", "description":"A couple of fisherman off the coast of Australia got a close-up visit from a great white shark", "moreUrl1":"", "moreUrl2":"", "moreUrl3":"", "moreText1":"", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/0119shark_85x64.jpg" width="85" height="64" alt="Close Encounter with Great White ">Close Encounter with Great White </li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="59" data-clip='{"clipid":"33842", "shortURL":"http://wxch.nl/11GmuIP", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665529_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665529.jpg", "subcatid":"169", "title":"Wounded Vet Hit by Avalanche", "description":"An avalanche on New Hampshire&#039;s Mt. Washington swept away three climbers, including a wounded vet making a documentary on the climb.", "moreUrl1":"http://www.weather.com/travel/americas-5-coldest-cities", "moreUrl2":"http://www.weather.com/news/week-in-pictures-20130118", "moreUrl3":"", "moreText1":"Coldest U.S. Cities", "moreText2":"Weather Images of the Week", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/665529_85x64.jpg" width="85" height="64" alt="Wounded Vet Hit by Avalanche">Wounded Vet Hit by Avalanche</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="60" data-clip='{"clipid":"33840", "shortURL":"http://wxch.nl/11JbdYb", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/0119flushot_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/0119flushot.jpg", "subcatid":"169", "title":"Exercise After Your Flu Shot", "description":"A new study indicates that if you exercise right after you get a flu shot, the shot is more effective.  ", "moreUrl1":"", "moreUrl2":"", "moreUrl3":"", "moreText1":"", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/0119flushot_85x64.jpg" width="85" height="64" alt="Exercise After Your Flu Shot">Exercise After Your Flu Shot</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="61" data-clip='{"clipid":"33835", "shortURL":"http://wxch.nl/11HmhoF", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665444_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/665444.jpg", "subcatid":"169", "title":"Tough to Walk on Ice", "description":"A street corner in the United Kingdom proved a little too much for some pedestrians.", "moreUrl1":"http://www.weather.com/travel/americas-5-coldest-cities", "moreUrl2":"http://iwitness.weather.com/service/displayVideoUpload.kickAction?as=148597", "moreUrl3":"", "moreText1":"Coldest Cities in America", "moreText2":"Submit Your Video", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/665444_85x64.jpg" width="85" height="64" alt="Tough to Walk on Ice">Tough to Walk on Ice</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="62" data-clip='{"clipid":"33845", "shortURL":"http://wxch.nl/WrcxJa", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/0119cat_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/0119cat.jpg", "subcatid":"169", "title":"A Kitty Wheelchair", "description":"A cat in Pennsylvania left to die is given a new lease on life thanks to some innovative young minds. ", "moreUrl1":"", "moreUrl2":"", "moreUrl3":"", "moreText1":"", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/0119cat_85x64.jpg" width="85" height="64" alt="A Kitty Wheelchair">A Kitty Wheelchair</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="63" data-clip='{"clipid":"33714", "shortURL":"http://wxch.nl/V2F0qi", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/664103_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/664103.jpg", "subcatid":"169", "title":"Assignment iWitness", "description":"We have a new assignment for our iWitness Weather Reporters: How does this winter compare with the last two?", "moreUrl1":"http://iwitness.weather.com", "moreUrl2":"http://www.facebook.com/theweatherchannel", "moreUrl3":"", "moreText1":"Submit Your Video to iWitness", "moreText2":"Share Your Video On Facebook", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/664103_85x64.jpg" width="85" height="64" alt="Assignment iWitness">Assignment iWitness</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="64" data-clip='{"clipid":"33672", "shortURL":"http://wxch.nl/WQtcES", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/663729_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/663729.jpg", "subcatid":"169", "title":"Mysteries Beneath Lake Michigan", "description":"Meteorologist Jim Cantore takes us on an underwater adventure with shipwreck hunter, Ross Richardson, who has found a passion deep beneath the waters of Lake Michigan where a ship sunk during a blizzard in 1854.", "moreUrl1":"http://www.weather.com/video/go-inside-a-fire-33665", "moreUrl2":"http://www.weather.com/video/what-if-deadly-meteor-hits-earth-33657", "moreUrl3":"", "moreText1":"Go Inside A Fire!", "moreText2":"What if Deadly Meteor Hits Earth?", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/663729_85x64.jpg" width="85" height="64" alt="Mysteries Beneath Lake Michigan">Mysteries Beneath Lake Michigan</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="65" data-clip='{"clipid":"33254", "shortURL":"http://wxch.nl/WbVlrs", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/658581_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/658581.jpg", "subcatid":"169", "title":"We Want Your Winter Weather Videos!", "description":"Would you like to share your great winter weather photos and videos with us? Find out how!", "moreUrl1":"http://www.weather.com/weather/videos/news-41/top-stories-169/20-inches-of-snowin-30-seconds-32676", "moreUrl2":"http://www.weather.com/weather/videos/news-41/top-stories-169/he-did-that-in-the-snow-32710", "moreUrl3":"", "moreText1":"20 Inches Of Snow In 30 Seconds", "moreText2":"He Did That In The Snow", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/658581_85x64.jpg" width="85" height="64" alt="We Want Your Winter Weather Videos!">We Want Your Winter Weather Videos!</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="66" data-clip='{"clipid":"33321", "shortURL":"http://wxch.nl/ZLqqah", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/659048_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/659048.jpg", "subcatid":"169", "title":"My Friends&#039; Weather", "description":"My Friends&#039; Weather is a groundbreaking service that connects the weather to the people in your life. See friends and family who may be affected by weather news, so you can be first to warn them and stay in touch. Mark Elliot takes us for a tour.", "moreUrl1":"", "moreUrl2":"", "moreUrl3":"", "moreText1":"", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/659048_85x64.jpg" width="85" height="64" alt="My Friends&#039; Weather">My Friends' Weather</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="67" data-clip='{"clipid":"33322", "shortURL":"http://wxch.nl/ZLteUG", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/659047_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/659047.jpg", "subcatid":"169", "title":"Learn about My Friends&#039; Weather", "description":"My Friends&#039; Weather is a groundbreaking service that connects the weather to the people in your life. See friends and family who may be affected by weather news, so you can be first to warn them and stay in touch. Mark Elliot takes us for a tour.", "moreUrl1":"", "moreUrl2":"", "moreUrl3":"", "moreText1":"", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/659047_85x64.jpg" width="85" height="64" alt="Learn about My Friends&#039; Weather">Learn about My Friends' Weather</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="68" data-clip='{"clipid":"22268", "shortURL":"http://wxch.nl/TVg7gl", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/111020NFLworst_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/111020NFLworst.jpg", "subcatid":"169", "title":"NFL&#039;s 5 Worst Weather Cities", "description":"A little cold weather isn&#039;t going to keep diehard fans away from an NFL game. But how about a blizzard? We take a look at the NFL cities with the worst weather and the fans who love them.", "moreUrl1":"/outlook/weather-news/news/articles                      ", "moreUrl2":"", "moreUrl3":"", "moreText1":"More Weather News", "moreText2":"", "moreText3":"", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/111020NFLworst_85x64.jpg" width="85" height="64" alt="NFL&#039;s 5 Worst Weather Cities">NFL's 5 Worst Weather Cities</li>
+							<li class="wx-clickable wx-video" trackType="action" trackStr="63217" data-index="69" data-clip='{"clipid":"30030", "shortURL":"http://wxch.nl/Rr6dk9", "thumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/628849_122.jpg", "smallThumbURL":"http://i.imwx.com/web/multimedia/images/miscellaneous/628849.jpg", "subcatid":"169", "title":"Safest Weather Cities", "description":"The Weather Channel recently created a list ranking cities on how safe they were based on their weather. Meteorologist Eric Fisher shows us how this list was created and which cities are at the highest and lowest risk.", "moreUrl1":"http://www.weather.com/outlook/weather-news/news/articles/safe-from-nature2_2011-07-28", "moreUrl2":"http://www.weather.com/travel/driving-interstate/families-children-car-seat-safety-20120423", "moreUrl3":"http://www.weather.com/newscenter/", "moreText1":"Where are you Safe?", "moreText2":"Protecting Kids in Cars", "moreText3":"More Weather News", "duration":""}'>
+								<img src="http://i.imwx.com/web/multimedia/images/miscellaneous/628849_85x64.jpg" width="85" height="64" alt="Safest Weather Cities">Safest Weather Cities</li>
+            </ul>
+        </div>
+        <div class="wx-next wx-carousel-nav" title="Next Set">
+            <div class="wx-icon wx-arrow wx-lb-xlg-rt"></div>
+        </div>
+    </div>
+</div>
+		<div id="WX_Top300Variable" class="wx-module wx-gptADS" style="display:none;" >
+			<span class="wx-adText">Advertisement</span>
+		<script>
+			A21.notifyRegistered('WX_Top300Variable');
+		</script>  
+	</div>
+			<div id="mfw_local_suite_show_all_friends" class="wx-hide">true</div>
+	<div id="wx-display-mfw-local-alerts" class="wx-module wx-mod1 wx-grid2of6 wx-nobg wx-mfw-ls-module">
+		  <div class="wx-free-title wx-shadow-title"> 
+    		<h3><img src="http://i.imwx.com/common/My.png">Friends' Weather Alerts</h3>
+  		  </div>
+  		  <div class="wx-inner">
+    		<div class="wx-content">
+				<div id="wx-mfw-fb-login-container" class="wx-hide">
+				      <div class="wx-mfw-ls-info">
+				        <div class="wx-mfw-ls-example">
+				          <a href="">
+				            <img src="http://s.imwx.com/img/social/mfw/image-social-320x109.jpg" width="320" height="109" />
+				          </a>
+				        </div>
+				        <span>Find out when your friends are at risk of bad weather.</span>
+				        <div class="wx-mfw-learn-more"><span class="wx-icon-2 wx-info">&nbsp;</span>
+				        	<span>
+					<a class="" href="/social/tutorial/breakingnow"  target="_blank" vrtrackType="_vrtrack" target="" from="myfriendswx_localert_learnmore" title="Learn more about My Friends' Weather.">Learn More</a>
+							</span>
+						</div>
+				      </div>
+				      <div class="wx-mfw-ls-btn">
+				        <span class="wx-fb-dynamic-login" trackType="action" trackStr="myfriendswx_localert_FBauth_click_module" scope="user_relationships,publish_stream,read_friendlists,user_groups,friends_location,user_location,manage_friendlists" data-show-faces="false" data-width="200" data-max-rows="1">Log in with Facebook</span>
+				      </div>			      
+				</div>
+				<div id="wx-mfw-ls-noalerts-show-area" class="wx-hide">
+			      <div class="wx-mfw-alerts-info">
+			        <div class="wx-mfw-alerts-subtitle">No friends currently at risk</div>
+			        <div class="wx-icon-social wx-mfw-ls-null-icon"></div>
+			        <div class="wx-clear"></div>
+			      </div>
+				  <div class="wx-mfw-alerts-help">
+			        Want to customize who you see here?
+			        <div class="wx-mfw-alerts-help-link">
+			        <span class="wx-mfw-alerts-help-link-txt">
+			        <a href="#" class="wx-mfw-facebook-list-editor" trackType="action" trackStr="myfriendswx_localert_managefriends_module">
+			          <span class="wx-icon wx-settings-g-lg"></span>
+			           Add </a> </span>
+			         to your Family and Close Friends lists.</div>
+			      </div>			      
+			      	<div class="wx-mfw-alerts-info wx-gray-bar-top">        
+				        <div class="wx-mfw-viewalert-link">
+					<a class="" href="/social/my-friends-weather/localalerts"  target="" from="myfriendswx_localert_fullpagelink" title="Link to go to landing page.">View alerts for all friends</a>
+				        </div>
+				        <div class="wx-mfw-learn-more"><span class="wx-icon-2 wx-info">&nbsp;</span>
+				        	<span>
+					<a class="" href="/social/tutorial/breakingnow"  target="_blank" vrtrackType="_vrtrack" target="" from="myfriendswx_localert_learnmore" title="Learn more about My Friends' Weather.">Help</a>
+							</span></div>
+				        <div class="wx-clear"></div>
+				    </div>
+			     </div>
+				<div id="wx-mfw-ls-emptylists-show-area" class="wx-hide">
+			      <div class="wx-mfw-alerts-info">
+			        <div class="wx-mfw-alerts-subtitle">We check weather alerts for people in your Family and Close Friends lists.</div>
+			        	<div class="wx-fb-add-list">
+				        	<div class="wx-icon-social wx-mfw-ls-list-icon"></div> Your lists are currently empty.
+				        </div>
+				      <div class="wx-mfw-ls-btn">
+				        <span class="wx-mfw-facebook-list-editor wx-fb-add-list-btn" trackType="action" trackStr="myfriendswx_localert_managefriends_module_button"><span class="wx-icon-social wx-fb-add"></span>Add friends to lists</span>
+				      </div>			        
+			        <div class="wx-clear"></div>
+			      </div>
+			      	<div class="wx-mfw-alerts-info wx-gray-bar-top">        
+				        <div class="wx-mfw-viewalert-link">
+					<a class="" href="/social/my-friends-weather/localalerts"  target="" from="myfriendswx_localert_fullpagelink" title="Link to go to landing page.">View alerts for all friends</a>
+				        </div>
+				        <div class="wx-mfw-learn-more"><span class="wx-icon-2 wx-info">&nbsp;</span>
+				        	<span>
+					<a class="" href="/social/tutorial/breakingnow"  target="_blank" vrtrackType="_vrtrack" target="" from="myfriendswx_localert_learnmore" title="Learn more about My Friends' Weather.">Help</a>
+							</span>
+						</div>
+				        <div class="wx-clear"></div>
+				    </div>
+			     </div>
+			    <div id="wx-mfw-ls-loading-bar-area" class="wx-hide">
+			    	<div id="wx-mfw-loading-container"></div>
+			    	<div id="wx-mfw-loading-progress"></div>
+			    </div>	     
+				<div id="wx-mfw-local-alerts-show-area" class="wx-hide">
+					<div id="WX_Tag" style="display:none"></div>
+					<div class="wx-mfw-alerts-info">
+				        <div class="wx-mfw-alerts-subtitle2">Friends under local weather alerts</div>
+				        <div class="wx-mfw-alerts-subtxt">Click a face to notify your friends!</div>
+				     </div>
+					<div id="wx-mfw-all-local-alerts" class="wx-mfw-ls-friend-view">
+					</div>
+				  <div class="wx-mfw-alerts-help">
+			        Want to customize who you see here?
+			        <div class="wx-mfw-alerts-help-link">
+			        <span class="wx-mfw-alerts-help-link-txt">
+			        <a href="#" class="wx-mfw-facebook-list-editor" trackType="action" trackStr="myfriendswx_localert_managefriends_module">
+			          <span class="wx-icon wx-settings-g-lg"></span>
+			           Add</a> </span>
+			         to your Family and Close Friends lists.</div>
+			      </div>						
+							<div class="wx-mfw-ls-sponsored">
+								<div class="wx-mfw-ls-sponsored-text">Made possible by</div>				
+								<div class="wx-mfw-ls-sponsored-ad">
+									<div id="WX_SocialSevere" class="wx-module wx-gptADS"></div>
+								</div>
+							</div>
+					<div class="wx-mfw-alerts-info wx-gray-bar-top">        
+				        <div class="wx-mfw-viewalert-link">
+					<a class="" href="/social/my-friends-weather/localalerts"  target="" from="myfriendswx_localert_fullpagelink" title="Link to go to landing page.">View alerts for all friends</a>
+				        </div>
+				        <div class="wx-mfw-learn-more">
+				        	<span class="wx-icon-2 wx-info">&nbsp;</span>
+				        	<span>
+					<a class="" href="/social/tutorial/breakingnow"  target="_blank" vrtrackType="_vrtrack" target="" from="myfriendswx_localert_learnmore" title="Link to tutorial page.">Learn more</a>
+				        	</span>
+				        </div>
+				        <div class="wx-clear"></div>
+				    </div>				    
+				</div>
+			</div>
+	</div>
+</div>
+	<!--  
+	<div class="wx-fb-dynamic-login" scope="manage_friendlists"></div>
+	-->
+	<div class="wx-module wx-grid2of6 wx-mod1  wx-local-tweets-hdr"> 
+		<div class="wx-inner">
+			<div class="wx-content">
+				<h2>Trending</h2>			
+			</div>
+		</div>
+	</div>
+		<div id="WX_PaidSearch" class="wx-module wx-gptADS"  >
+			<span class="wx-adText">Advertisement</span>
+		<script>
+			A21.notifyRegistered('WX_PaidSearch');
+		</script>  
+	</div>
+					<div class="wx-module wx-mod1 wx-corsican wx-1x155M wx-render-mode"
+						id="pagelet_mod_6" data-vr-zone="rightnow_Media_btmtools">
+						<div class="wx-inner" data-vr-contentbox=""></div>
+					</div>
+					<div class="wx-module wx-mod1 wx-corsican wx-1x155M wx-render-mode"
+						id="pagelet_mod_7" data-vr-zone="rightnow_Media_cooltools">
+						<div class="wx-inner" data-vr-contentbox=""></div>
+					</div>
+		<div id="WX_Bot300" class="wx-module wx-gptADS"  >
+			<span class="wx-adText">Advertisement</span>
+		<script>
+			A21.notifyRegistered('WX_Bot300');
+		</script>  
+	</div>
+		</div>
+		</div>
+		<div id="wx-bottom-wrap">
+		<div id="wx-bottom-bg">
+		<div id="wx-bottom-inner">
+<script src="http://tags.crwdcntrl.net/c/1884/cc.js?ns=_cc1884" id="LOTCC_1884"></script>
+<script>
+ // The below code is put in by HCL folks for lotame settings in pco. This should ideally get called before page load completes and ad cust_params construction happens after that.
+ // Modified By: Kulanthaivelu Sankaran
+ // Modified: Removed onDocumentReady dependency to kickoff this operation asap before ad calls kicks off and added comma support for Audience array.
+(function($){
+	$(document).ready(function() {
+		var url1 = 'http://ad.crwdcntrl.net/5/c=1884/pe=y/callback=?';
+		$.ajax({
+			url: url1,
+			dataType: 'jsonp',
+			cache: true,	  
+			type:'GET',
+			timeout: 5000,
+			success: function(data) {	 
+				if (TWC.pco.get('user.lotame')==null || typeof (TWC.pco.get('user.lotame'))=="undefined") { 
+					TWC.pco.setUser('lotame', {});
+				}
+				var lot_tpid, lot_abbr, lot_id, lotame;		
+				lotame = TWC.pco.get('user.lotame');	
+				lot_tpid = lotame.lot_tpid;
+				lot_abbr = lotame.lot_abbr;
+				lot_id = lotame.lot_id;
+				lotame.lot_tpid = data.Profile.tpid;
+				var audienceLength = data.Profile.Audiences.Audience.length;
+				if(audienceLength > 0) {
+					lot_abbr = '';
+					lot_id = '';
+					for (var cci = 0; cci < audienceLength; cci++)	{			
+					   lot_abbr += (data.Profile.Audiences.Audience[cci].abbr + (cci < audienceLength-1 ? ',' : ''));
+					   lot_id +=  (data.Profile.Audiences.Audience[cci].id + (cci < audienceLength-1 ? ',' : ''));
+					}
+					lotame.lot_abbr = lot_abbr;
+					lotame.lot_id = lot_id;
+				}
+				TWC.pco.setUser('lotame', lotame);
+				if(_cc1884) {
+					if(TWC.pco.get("user")!=null && typeof(TWC.pco.get("user"))!="undefined"){ 
+						_cc1884.add("age",TWC.pco.get("user").age); 
+						_cc1884.add("gender",TWC.pco.get("user").gender); 
+						_cc1884.add("seg", "claritas_"+TWC.pco.get("user").claritas); 
+						_cc1884.add("seg","preferredDeclaration_"+TWC.pco.get("user").preferredDeclaration); 
+						if(TWC.pco.get("user.hardDeclarations")!=null && typeof(TWC.pco.get("user.hardDeclarations"))!="undefined"){ 
+							if(TWC.pco.get("user").hardDeclarations.length > 0){
+							    _cc1884.add("seg","hardDeclarations_"+TWC.pco.get("user").hardDeclarations[0]); 
+							}
+						} 
+						if(TWC.pco.get("user.softDeclarations")!=null && typeof(TWC.pco.get("user.softDeclarations"))!="undefined"){ 
+							if(TWC.pco.get("user").softDeclarations.length > 0){
+						   		_cc1884.add("seg","softDeclarations_"+TWC.pco.get("user").softDeclarations[0]); 
+						   	}
+						}	
+						_cc1884.add("seg","preferredLocation_locid_"+TWC.pco.get("user").preferredLocation.locid); 
+						_cc1884.add("seg","preferredLocation_dma_"+TWC.pco.get("user").preferredLocation.dma); 
+						if(TWC.pco.get("user.recentSearchLocations")!=null && typeof(TWC.pco.get("user.recentSearchLocations"))!="undefined"){ 
+							if(TWC.pco.get("user").recentSearchLocations.length > 0){
+				               _cc1884.add("seg","recentSearchLocations_locid_"+TWC.pco.get("user").recentSearchLocations[0].locid); 
+							_cc1884.add("seg","recentSearchLocations_dma_"+TWC.pco.get("user").recentSearchLocations[0].dma); 
+							}
+						}	
+					}		 
+					if(TWC.pco.get("currloc")!=null && typeof(TWC.pco.get("currloc"))!="undefined"){ 
+						_cc1884.add("seg","zip_"+TWC.pco.get("currloc").zip); 
+						_cc1884.add("seg","lon_"+TWC.pco.get("currloc").lon); 
+						_cc1884.add("seg","locid_"+TWC.pco.get("currloc").locid); 
+						_cc1884.add("seg","dma_"+TWC.pco.get("currloc").dma); 
+						_cc1884.add("seg","claritas_"+TWC.pco.get("currloc").claritas); 
+						_cc1884.add("seg","state_"+TWC.pco.get("currloc").state); 
+						_cc1884.add("seg","locTimeZoneAbbr_"+TWC.pco.get("currloc").locTimeZoneAbbr); 
+						_cc1884.add("seg","city_"+TWC.pco.get("currloc").city); 
+						_cc1884.add("seg","country_"+TWC.pco.get("currloc").country); 
+						_cc1884.add("seg","locdate_"+TWC.pco.get("currloc").locdate); 
+						_cc1884.add("seg","loctype_"+TWC.pco.get("currloc").loctype); 
+						_cc1884.add("seg","locname_"+TWC.pco.get("currloc").locname); 
+						if(TWC.pco.get("currloc.gpr")!=null && typeof(TWC.pco.get("currloc.gpr"))!="undefined"){ 
+							if(TWC.pco.get("currloc").gpr.length > 0){
+								_cc1884.add("seg","gpr_"+TWC.pco.get("currloc").gpr[0]); 
+							}
+						} 
+						_cc1884.add("seg","lat_"+TWC.pco.get("currloc").lat); 
+						}	
+						if(TWC.pco.get("page")!=null && typeof(TWC.pco.get("page"))!="undefined"){ 
+							_cc1884.add("seg","loctime_",TWC.pco.get("page").loctime); 
+							_cc1884.add("seg","pageId_"+TWC.pco.get("page").pageId); 
+							_cc1884.add("seg","locale_"+TWC.pco.get("page").locale); 
+							_cc1884.add("seg","lang_"+TWC.pco.get("page").lang); 
+							_cc1884.add("seg","ampm_"+TWC.pco.get("page").ampm); 
+						} 
+						if(TWC.pco.get("ad")!=null && typeof(TWC.pco.get("ad"))!="undefined"){ 			
+								if(TWC.pco.get("ad.site")!=null && typeof(TWC.pco.get("ad.site"))!="undefined"){ 
+								_cc1884.add("seg","site_"+TWC.pco.get("ad").site); 
+						} 
+						if(TWC.pco.get("ad.pageIdCode")!=null && typeof(TWC.pco.get("ad.pageIdCode"))!="undefined"){ 
+								_cc1884.add("seg","pageIdCode_"+TWC.pco.get("ad").pageIdCode); 
+						} 
+						if(TWC.pco.get("ad.mode")!=null && typeof(TWC.pco.get("ad.mode"))!="undefined"){ 
+								_cc1884.add("seg","mode_"+TWC.pco.get("ad").mode); 
+						} 
+						if(TWC.pco.get("ad.pageDeclaration")!=null && typeof(TWC.pco.get("ad.pageDeclaration"))!="undefined"){ 
+								_cc1884.add("seg","pageDeclaration_"+TWC.pco.get("ad").pageDeclaration); 
+						} 
+						if(TWC.pco.get("ad.zone")!=null && typeof(TWC.pco.get("ad.zone"))!="undefined"){ 
+								_cc1884.add("seg","zone_"+TWC.pco.get("ad").zone); 
+						} 
+					} 
+					if(TWC.pco.get("wx")!=null && typeof(TWC.pco.get("wx"))!="undefined"){ 
+						_cc1884.add("seg","wind_"+TWC.pco.get("wx").wind); 
+						_cc1884.add("seg","hum_"+TWC.pco.get("wx").hum); 
+						_cc1884.add("seg","relativeHumidity_"+TWC.pco.get("wx").relativeHumidity); 
+						_cc1884.add("seg","cwsh_"+TWC.pco.get("wx").fcast.cwsh); 
+						_cc1884.add("seg","cwsl_"+TWC.pco.get("wx").fcast.cwsl); 
+						_cc1884.add("seg","fsnw_"+TWC.pco.get("wx").fcast.fsnw); 
+						_cc1884.add("seg","tempH_"+TWC.pco.get("wx").fcast.tempH); 
+						_cc1884.add("seg","tempHR_"+TWC.pco.get("wx").fcast.tempHR); 
+						_cc1884.add("seg","tempL_"+TWC.pco.get("wx").fcast.tempL); 
+						_cc1884.add("seg","tempLR_"+TWC.pco.get("wx").fcast.tempLR); 
+						_cc1884.add("seg","fc1_"+TWC.pco.get("wx").fcast.cond.fc1); 
+						_cc1884.add("seg","fc2_"+TWC.pco.get("wx").fcast.cond.fc2); 
+						_cc1884.add("seg","fc3_"+TWC.pco.get("wx").fcast.cond.fc3); 
+						_cc1884.add("seg","cond_"+TWC.pco.get("wx").cond); 
+						_cc1884.add("seg","snw_"+TWC.pco.get("wx").snw); 
+						_cc1884.add("seg","tempR_"+TWC.pco.get("wx").tempR); 
+						_cc1884.add("seg","windSpeed_"+TWC.pco.get("wx").windSpeed); 
+						_cc1884.add("seg","pollen_"+TWC.pco.get("wx").pollen); 
+						_cc1884.add("seg","baroTendency_"+TWC.pco.get("wx").baroTendency); 
+						_cc1884.add("seg","uv_"+TWC.pco.get("wx").uv); 
+						_cc1884.add("seg","uvIndex_"+TWC.pco.get("wx").uvIndex); 
+						_cc1884.add("seg","temp_"+TWC.pco.get("wx").temp); 
+						if(TWC.pco.get("wx.severe")!=null && typeof(TWC.pco.get("wx.severe"))!="undefined"){ 
+							if(TWC.pco.get("wx").severe.length > 0){
+							_cc1884.add("seg","severe_"+TWC.pco.get("wx").severe[0]); 
+							}
+						} 
+						_cc1884.add("seg","realTemp_"+TWC.pco.get("wx").realTemp);	
+					}	
+					_cc1884.bcp();
+				}
+		  }, error: function (jqXHR, textStatus, errorThrown) {
+		  }
+		});
+	});
+})(jQuery);
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1069483923;
+var google_conversion_label = "y3bYCMfJgQIQk4_8_QM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1069483923/?value=0&amp;label=y3bYCMfJgQIQk4_8_QM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<!--  key="/weather/right-now-footer-static" -->
+<div id="wx-footer">   
+   	<div class="wx-search">
+		<form name="twc-google-web-search" action="/info/websearch" >
+			<input title="Enter Search Term" placeholder="Enter Search Term" type="text" name="q" >
+			<div class="wx-searchButton" name="googleSearchBtn" trackStr="footer_websearch" trackType="action" linkName="1">Search</div>
+			<ul>
+				<li><input type="radio" name="search" value="web" checked="true"/>Search Web</li>
+				<li><input type="radio" name="search" value="site" />Search Site</li>
+			</ul>
+		</form>
+	</div>
+	<div class="wx-links">
+			<dl class="wx-1">
+				<dt>
+					Company
+							<dd>
+					<a class="" href="/sitemap/"   from="rightnow_footer_nav_sec_1" title="">Sitemap</a>
+							</dd>
+							<dd>
+					<a class="" href="http://feedback.weather.com/knowledgebase"   from="rightnow_footer_nav_sec_2" title="">Support</a>
+							</dd>
+							<dd>
+					<a class="" href="http://feedback.weather.com/"   from="rightnow_footer_nav_sec_3" title="">Feedback</a>
+							</dd>
+							<dd>
+					<a class="" href="/careers/"   from="rightnow_footer_nav_sec_4" title="">Careers</a>
+							</dd>
+							<dd>
+					<a class="" href="/aboutus"   from="rightnow_footer_nav_sec_5" title="">About Us</a>
+							</dd>
+							<dd>
+					<a class="" href="http://press.weather.com/default.asp"  target="_blank" vrtrackType="_vrtrack" from="rightnow_footer_nav_sec_6" title="">Press Room</a>
+							</dd>
+							<dd>
+					<a class="" href="http://twcmediakit.com/"  target="_blank" vrtrackType="_vrtrack" from="rightnow_footer_nav_sec_7" title="">Advertising</a>
+							</dd>
+				</dt>
+			</dl>
+			<dl class="wx-2">
+				<dt>
+					Explore
+							<dd>
+					<a class="" href="/encyclopedia/"   from="rightnow_footer_nav_sec_1" title="">Storm Encyclopedia</a>
+							</dd>
+							<dd>
+					<a class="" href="/glossary/"   from="rightnow_footer_nav_sec_2" title="">Weather Glossary</a>
+							</dd>
+							<dd>
+					<a class="" href="/common/drilldown/US/top100.html"   from="rightnow_footer_nav_sec_3" title="">Top 100 U.S. Cities</a>
+							</dd>
+							<dd>
+					<a class="" href="/outlook/weatherbystate/"   from="rightnow_footer_nav_sec_4" title="">Search by State</a>
+							</dd>
+							<dd>
+					<a class="" href="/localguides/index.html"   from="rightnow_footer_nav_sec_5" title="">City Guides</a>
+							</dd>
+							<dd>
+					<a class="" href="/outlook/weather-news/severe-weather/articles/hurricane-main_2010-05-21"   from="rightnow_footer_nav_sec_6" title="">Hurricanes</a>
+							</dd>
+							<dd>
+					<a class="" href="/social/national"   from="rightnow_footer_nav_sec_7" title="">Top Social Weather Cities</a>
+							</dd>
+							<dd>
+					<a class="" href="/news/weather-tornado/tornado-torcon-index"   from="rightnow_footer_nav_sec_8" title="">TOR:CON</a>
+							</dd>
+				</dt>
+			</dl>
+			<dl class="wx-3">
+				<dt>
+					Partners
+							<dd>
+					<a class="" href="/outdoors/home-improvement/"   from="rightnow_footer_nav_sec_1" title="">The Home Depot Project of the Week</a>
+							</dd>
+							<dd>
+					<a class="" href="http://www.webmd.com/allergies/default.htm"  target="_blank" vrtrackType="_vrtrack" from="rightnow_footer_nav_sec_2" title="">WebMD Asthma & Allergy Center</a>
+							</dd>
+							<dd>
+					<a class="" href="http://www.godaddy.com/default.aspx?isc=gdweather2"  target="_blank" vrtrackType="_vrtrack" from="rightnow_footer_nav_sec_3" title="">Web Hosting at GoDaddy.com</a>
+							</dd>
+							<dd>
+					<a class="" href="http://www.huffingtonpost.com/"  target="_blank" vrtrackType="_vrtrack" from="rightnow_footer_nav_sec_4" title="">Breaking News</a>
+							</dd>
+				</dt>
+			</dl>
+			<dl class="wx-4">
+				<dt>
+					Our Products
+							<dd>
+					<a class="" href="/services/winapp.html"   from="rightnow_footer_nav_sec_1" title="">Desktop Weather</a>
+							</dd>
+							<dd>
+					<a class="" href="/mobile"   from="rightnow_footer_nav_sec_2" title="">Mobile Products</a>
+							</dd>
+							<dd>
+					<a class="" href="http://www.wunderground.com/weather/api/?ref=twc"  target="_blank" vrtrackType="_vrtrack" from="rightnow_footer_nav_sec_3" title="">Weather API</a>
+							</dd>
+							<dd>
+					<a class="" href="/services/"   from="rightnow_footer_nav_sec_4" title="">Weather Tools</a>
+							</dd>
+							<dd>
+					<a class="" href="/services/ie7.html"   from="rightnow_footer_nav_sec_5" title="">Toolbars</a>
+							</dd>
+							<dd>
+					<a class="" href="/services/screensaver/screensaver_email_lp.html"   from="rightnow_footer_nav_sec_6" title="">Screensavers</a>
+							</dd>
+							<dd>
+					<a class="" href="https://registration.weather.com/ursa/alerts/step1?initAlerts=SVR"   from="rightnow_footer_nav_sec_7" title="">Email/SMS Alerts</a>
+							</dd>
+							<dd>
+					<a class="" href="/services/notify.html"   from="rightnow_footer_nav_sec_8" title="">Notify! Voice Alerts</a>
+							</dd>
+				</dt>
+			</dl>
+		<ul class="wx-social">
+			<li>
+<!--page.fromString  -->
+<!--modulecode null_globalFooter -->
+<!--linkType null_globalFooter_footer_social_primary -->
+<!--linkNum null_globalFooter_footer_social_primary_1 -->
+					<a class="wx-facebook" href="javascript:void(0);" winheight="835" winwidth="1000" lnk="http://www.facebook.com/TheWeatherChannel" from="null_globalFooter_footer_social_primary_1" title="Like us"><span>Like us</span>Like us</a>
+			</li>
+			<li>
+<!--page.fromString  -->
+<!--modulecode null_globalFooter -->
+<!--linkType null_globalFooter_footer_social_primary -->
+<!--linkNum null_globalFooter_footer_social_primary_2 -->
+					<a class="wx-twitter" href="javascript:void(0);" winheight="835" winwidth="1000" lnk="http://www.twitter.com/weatherchannel" from="null_globalFooter_footer_social_primary_2" title="Follow us"><span>Follow us</span>Follow us</a>
+			</li>
+			<li>
+<!--page.fromString  -->
+<!--modulecode null_globalFooter -->
+<!--linkType null_globalFooter_footer_social_primary -->
+<!--linkNum null_globalFooter_footer_social_primary_3 -->
+					<a class="wx-googleplus" href="javascript:void(0);" winheight="835" winwidth="1000" lnk="https://plus.google.com/102191030161937606640/posts" from="null_globalFooter_footer_social_primary_3" title="Add us"><span>Add us</span>Add us</a>
+			</li>
+			<li>
+<!--page.fromString  -->
+<!--modulecode null_globalFooter -->
+<!--linkType null_globalFooter_footer_social_primary -->
+<!--linkNum null_globalFooter_footer_social_primary_4 -->
+					<a class="wx-youtube" href="javascript:void(0);" winheight="835" winwidth="1000" lnk="http://www.youtube.com/user/TheWeatherChannel/" from="null_globalFooter_footer_social_primary_4" title="Watch us"><span>Watch us</span>Watch us</a>
+			</li>
+			<li>
+<!--page.fromString  -->
+<!--modulecode null_globalFooter -->
+<!--linkType null_globalFooter_footer_social_primary -->
+<!--linkNum null_globalFooter_footer_social_primary_5 -->
+					<a class="wx-mobile" href="/services/mobilesplash.html"  from="null_globalFooter_footer_social_primary_5" title="Weather on Mobile"><span>Weather on Mobile</span>Weather on Mobile</a>
+			</li>
+			<li>
+<!--page.fromString  -->
+<!--modulecode null_globalFooter -->
+<!--linkType null_globalFooter_footer_social_primary -->
+<!--linkNum null_globalFooter_footer_social_primary_6 -->
+					<a class="wx-desktop" href="/services/desktop.html"  from="null_globalFooter_footer_social_primary_6" title="Download Desktop Weather"><span>Download Desktop Weather</span>Download Desktop Weather</a>
+			</li>
+		</ul>
+	</div>
+    <div class="wx-legal">
+		<p>&copy; 1995 - <script>document.write(new Date().getFullYear())</script>, The Weather Channel, LLC weather.com&reg; Licensed by TRUSTe</p>
+		<ul>
+				<li>
+					<a class="" href="/common/home/legal.html"   from="rightnow_globalFooter_links_footer_bottom_primary_1" title="">Terms of Service</a>
+				</li>
+				<li>
+					<a class="" href="/common/home/privacy.html"   from="rightnow_globalFooter_links_footer_bottom_primary_2" title="">Privacy Statement</a>
+				</li>
+				<li>
+					<a class="" href="http://www.controlyourtv.org/Intro.aspx"   from="rightnow_globalFooter_links_footer_bottom_primary_3" title="">Parental Controls</a>
+				</li>
+				<li>
+					<a class="wx-adchoices" href="/services/ad-choices.html"   from="rightnow_globalFooter_links_footer_bottom_primary_4" title="">Ad Choices</a>
+				</li>
+				<li>
+					<a class="wx-georgia" href="http://www.exploregeorgia.org/"  target="_blank" vrtrackType="_vrtrack" from="rightnow_globalFooter_links_footer_bottom_primary_5" title="">Georgia Org</a>
+				</li>
+				<li>
+					<a class="wx-accessibility" href="/services/essential-accessibility.html?role=&alt=EssentialAccessibility"  target="_blank" vrtrackType="_vrtrack" from="rightnow_globalFooter_links_footer_bottom_primary_6" title="">Accessibility</a>
+				</li>
+		</ul> 
+	</div>            
+</div> <!-- WX-FOOTER --> 
+		<div id="WX_Hidden" class="wx-module wx-gptADS"  >
+		<script>
+			A21.notifyRegistered('WX_Hidden');
+		</script>  
+	</div>
+		</div>
+		</div>
+		</div>
+    </div> 
+	<div id="fb-root"></div>
+				<script src="http://s.imwx.com/v.20121101.0/js/foresee-trigger.js"></script>
+				<script src="http://admin.brightcove.com/js/BrightcoveExperiences_all.js"></script>
+				<script src="http://admin.brightcove.com/js/APIModules_all.js"></script>
+			<script src="http://d.imwx.com/jsRollup?rollup=/managedfe/js/TWC/util/wx-theme.js,/managedfe/js/TWC/util/social-loader.js,/managedfe/js/TWC/util/rotatingLogo.js,/managedfe/js/TWC/util/social-share.js,/managedfe/js/wx-metrics-ts2.js,/managedfe/js/TWC/util/facebook-breakingnow.js,/managedfe/js/TWC/util/ie7-disable.js,/managedfe/js/TWC/class/Dialog.js,/managedfe/js/TWC/util/ls-social-share.js,/managedfe/js/TWC/util/lsr-savedlocations.js,/managedfe/js/TWC/util/gutter-nav.js,/managedfe/js/TWC/util/love-my-weather.js,/managedfe/js/TWC/util/nav-ls-lifestyles.js,/managedfe/js/TWC/util/ie7-zindex.js,/managedfe/js/jquery/plugins/spin.min.js,/managedfe/js/TWC/util/Tools.js,/managedfe/js/TWC/class/Carousel.js,/managedfe/js/TWC/class/VideoPlayer.js,/managedfe/js/TWC/class/impl/init_videoplayer.js,/managedfe/js/TWC/util/corsican.js,/managedfe/js/TWC/util/wx-pagelet.js,/managedfe/js/TWC/util/wx-ls-ccmaps.js,/managedfe/js/TWC/util/Debug.js,/managedfe/js/TWC/util/FBController.js,/managedfe/js/TWC/util/TWCWXController.js,/managedfe/js/jquery/plugins/jquery.events.input.js,/managedfe/js/jquery/plugins/jquery.elastic.js,/managedfe/js/jquery/plugins/jquery.mentionsInput.js,/managedfe/js/TWC/util/mfw-social-share.js,/managedfe/js/TWC/util/mfw-local-alerts.js,/managedfe/js/TWC/util/footer.js"></script>
+</body>
+</html>

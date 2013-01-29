@@ -55,11 +55,11 @@ gap_y 30
 
 #Orų duomenys
 #temperatūra
-template0 ${execpi 3600 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/temp.txt}
+template0 ${execpi 1800 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/temp.txt}
 #diena
-template1 ${execpi 3600 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/diena.txt}
+template1 ${execpi 1800 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/diena.txt}
 #raw_rn
-template2 ${execpi 1200 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/raw_rn}
+template2 ${execpi 1900 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/raw_rn}
 #paveiksliukas
 template3 ${image /home/gymka/Dev/conky_orai_LT/\1.png -s \2 -p \3 -n}
 #if else
@@ -77,7 +77,7 @@ ${goto 160}${color ffe595}Slėgis: $color${alignr}${template2 11}
 ${goto 160}${color ffe595}UV indeksas: $color${alignr}${template2 12}
 ${goto 160}${color ffe595}Atnaujinta: $color${alignr}${template2 14}
 ${goto 60}$color${font :size=15}${template2 3}°C${font}
-${execpi 1200 /home/gymka/Dev/conky_orai_LT/oras.sh}
+${execpi 1800 /home/gymka/Dev/conky_orai_LT/oras.sh}
 ${goto 20}${template1 1}${goto 110}${template1 2}${goto 190}${template1 3}
 
 
