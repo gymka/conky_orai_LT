@@ -21,13 +21,3 @@ conky -c /home/gymka/.scripts/oras/.conky &
 
 =======conky.rc=======
 Tai mano naudojamas .conkyrc failas.
-
-=======Padėkos=======
-Originaliai weath_com_metric sukūrė TeoBigusGeekus, aš padariau kelis pakeitimus:
-	*pakeičiau kokie duomenys rodomi ir kaip išdėstomi
-	*padariau jog vėjas būtų rodomas metrais per sekundę, o ne kilometrais per valandą
-	*padariau jog vėjo kryptis ir vėjo greitis būtų rodomi kaip du skirtingi duomenys
-	*pridėjau atnaujinimo laiko rodymą
-	*pridėjau galimybę lokalizuot
-	*išverčiau į Lietuvių kalbą(dar nebaigiau)
-7 dienų prognozę parašė gymka <gymka@archlinux.lt>

@@ -13,17 +13,12 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	
 	Copyright (C) 2012 gymka <gymka at archlinux.lt>'
-kelias=/home/gymka/Dev/conky_orai_LT
+kelias=$(dirname ${BASH_SOURCE[0]})
 
-set -u
-vejas_km=$(sed -n 7p $kelias/raw_rn)
-vejas_m=$(echo "scale=2; $vejas_km/3.6" | bc|tr "." ","|sed 's/^\,/0,/')
 
-sed -i "7s/.*/$vejas_m/" $kelias/raw_rn
-
-declare -A dangus
-declare -A vejas
-declare -A uv
+typeset -A dangus
+typeset -A vejas
+typeset -A uv
 dangus["tornado"]="tornadas"
 dangus["tropical storm"]="tropinė audra"
 dangus["hurricane"]="uraganas"
@@ -107,30 +102,30 @@ uv["???"]="???"
 
 
 #isverst dangaus ir vėjo būseną
-dangus_org=$(sed -n '4p' $kelias/raw_rn|tr '[:upper:]' '[:lower:]'|sed 's/^$/???/')
-vejas_org=$(sed -n '6p' $kelias/raw_rn|tr '[:upper:]' '[:lower:]'|sed 's/^$/???/')
-uv_org=$(sed -n '12p' $kelias/raw_rn|tr '[:upper:]' '[:lower:]'|sed 's/^$/???/')
+dangus_org=$(sed -n '3p' $kelias/oras_db_data.txt|tr '[:upper:]' '[:lower:]'|sed 's/^$/???/')
+vejas_org=$(sed -n '4p' $kelias/oras_db_data.txt|tr '[:upper:]' '[:lower:]'|sed 's/^$/???/')
+uv_org=$(sed -n '9p' $kelias/oras_db_data.txt|tr '[:upper:]' '[:lower:]'|sed 's/^$/???/')
 
 
-if [[ -z ${vejas[$vejas_org]-} ]]; #jei nėra tokios reikšmės tai arba jau išversta arba gauta nežinoma būsena, todėl paliekam originalią.
+if [[ -z ${vejas[$vejas_org]} ]]; #jei nėra tokios reikšmės tai arba jau išversta arba gauta nežinoma būsena, todėl paliekam originalią.
 	then vejas2=$vejas_org
 		echo "Vėjas: $vejas_org">>$kelias/neisversta.txt 
 		sort -u $kelias/neisversta.txt -o $kelias/neisversta.txt
 	else vejas2=${vejas[$vejas_org]}
 fi 
 
-if [[ -z ${dangus[$dangus_org]-} ]]; #jei nėra tokios reikšmės tai arba jau išversta arba gauta nežinoma būsena, todėl paliekam originalią.
+if [[ -z ${dangus[$dangus_org]} ]]; #jei nėra tokios reikšmės tai arba jau išversta arba gauta nežinoma būsena, todėl paliekam originalią.
 	then dangus2=$dangus_org 
 		echo "Dangus: $dangus_org">>$kelias/neisversta.txt 
 		sort -u $kelias/neisversta.txt -o $kelias/neisversta.txt
 	else dangus2=${dangus[$dangus_org]}
 fi 
 
-if [[ -z ${uv[$uv_org]-} ]]; #jei nėra tokios reikšmės tai arba jau išversta arba gauta nežinoma būsena, todėl paliekam originalią.
+if [[ -z ${uv[$uv_org]} ]]; #jei nėra tokios reikšmės tai arba jau išversta arba gauta nežinoma būsena, todėl paliekam originalią.
 	then uv2=$uv_org
 	else uv2=${uv[$uv_org]}
 fi 
 
-sed -i "4s/.*/$dangus2/" $kelias/raw_rn
-sed -i "6s/.*/$vejas2/" $kelias/raw_rn
-sed -i "12s/.*/$uv2/" $kelias/raw_rn
+sed -i "3s/.*/$dangus2/" $kelias/oras_db_data.txt
+sed -i "4s/.*/$vejas2/" $kelias/oras_db_data.txt
+sed -i "9s/.*/$uv2/" $kelias/oras_db_data.txt

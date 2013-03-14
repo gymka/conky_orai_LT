@@ -1,6 +1,7 @@
 # Create own window instead of using desktop (required in nautilus)
 own_window yes
 own_window_type normal
+own_window_title conky_orai
 own_window_transparent yes
 own_window_hints undecorated,below,skip_taskbar,skip_pager 
 own_window_argb_visual no  
@@ -54,29 +55,29 @@ gap_y 30
 
 #Orų duomenys
 #temperatūra
-template0 ${execpi 3600 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/temp.txt}
+template0 ${execpi 1800 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/temp.txt}
 #diena
-template1 ${execpi 3600 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/diena.txt}
-#raw_rn
-template2 ${execpi 1200 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/raw_rn}
+template1 ${execpi 1800 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/diena.txt}
+#oras_db_data.txt
+template2 ${execpi 1900 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/oras_db_data.txt}
 #paveiksliukas
 template3 ${image /home/gymka/Dev/conky_orai_LT/\1.png -s \2 -p \3 -n}
 #if else
-template4 ${if_match ${template0 \1}>0}${color red}${template0 \1}$color${endif}${if_match ${template0 \1}<0}${color blue}${template0 \1}$color${endif}${if_match ${template0 \1}==0}${color gray}${template0 \1}$color${endif}
+template4 ${if_match ${template0 \1}>0}${color red}${template0 \1}$color${endif}${if_match ${template0 \1}<0}${color deepskyblue}${template0 \1}$color${endif}${if_match ${template0 \1}==0}${color gray}${template0 \1}$color${endif}
 # stuff after 'TEXT' will be formatted on screen 
 
 TEXT  
-${execpi 600 /home/gymka/Dev/conky_orai_LT/weath_com_metric}
-${goto 160}${color ffe595}Dangus: $color${alignr}${template2 4}${template3 now 120x120 0,0}
-${goto 160}${color ffe595}Vėjo kryptis: $color${alignr}${template2 6} $color
-${goto 160}${color ffe595}Vėjo stiprumas:$color${alignr}${template2 7}m/s
-${goto 160}${color ffe595}Drėgnumas: $color${alignr}${template2 8}
-${goto 160}${color ffe595}Matomumas: $color${alignr}${template2 10}
-${goto 160}${color ffe595}Slėgis: $color${alignr}${template2 11}
-${goto 160}${color ffe595}UV indeksas: $color${alignr}${template2 12}
-${goto 160}${color ffe595}Atnaujinta: $color${alignr}${template2 14}
-${goto 60}$color${font :size=15}${template2 3}°C${font}
-${execpi 1200 /home/gymka/Dev/conky_orai_LT/oras.sh}
+${execpi 600 /home/gymka/Dev/conky_orai_LT/oras_db.sh}
+${goto 160}${color ffe595}Dangus: $color${alignr}${template2 3}${template3 now 120x120 0,0}
+${goto 160}${color ffe595}Vėjo kryptis: $color${alignr}${template2 4} $color
+${goto 160}${color ffe595}Vėjo stiprumas:$color${alignr}${template2 5}m/s
+${goto 160}${color ffe595}Drėgnumas: $color${alignr}${template2 6}
+${goto 160}${color ffe595}Matomumas: $color${alignr}${template2 7}
+${goto 160}${color ffe595}Slėgis: $color${alignr}${template2 8}
+${goto 160}${color ffe595}UV indeksas: $color${alignr}${template2 9}
+${goto 160}${color ffe595}Atnaujinta: $color${alignr}${template2 1}
+${goto 60}$color${font :size=15}${template2 2}°C${font}
+${execpi 1800 /home/gymka/Dev/conky_orai_LT/oras.sh}
 ${goto 20}${template1 1}${goto 110}${template1 2}${goto 190}${template1 3}
 
 
