@@ -80,8 +80,9 @@ ${execpi 1800 /home/gymka/Dev/conky_orai_LT_weather.com/oras.sh}
 ${goto 20}${template1 1}${goto 110}${template1 2}${goto 190}${template1 3}
 
 
-
-${font :size=10}${goto 27}${template4 1}${goto 69}${template4 2}${goto 111}${template4 3}${goto 153}${template4 4}${font}
+${font :size=11}${goto 40}${template4 3}${goto 100}${template4 4}${goto 170}${template4 5}${goto 240}${template4 6}${font}
+${font :size=11}${goto 40}${template4 7}${goto 100}${template4 8}${goto 170}${template4 9}${goto 240}${template4 10}${font}
+${font :size=10}${goto 40}${template0 16}${goto 100}${template0 17}${goto 170}${template0 18}${goto 240}${template0 19}${font}
 ${template3 1 60x60 0,120}${template3 2 60x60 70,120}${template3 3 60x60 140,120}${template3 4 60x60 210,120}$color ${font :size=10}${color gray}Sistema ${hr 2}$color${font}
 OS: ${goto 150}${pre_exec lsb_release -d | cut -f 2} $machine 
 Branduolys: ${goto 150}$kernel 
