@@ -45,7 +45,13 @@ for i in $winds
 do 
 echo "scale=2; ${i}/3.6" | bc|sed 's/^\./0./;s/\./,/;s/$/m\/s/'>>$kelias/oru_prognoze.txt
 done
-
+day=$(echo "$oras2"|grep "h3.*wx-label"|sed -n 's/.*">\(.*\)<\/.*/\1/p')
+IFS='
+'
+for i in $day
+	do
+		date -d "$i" +%A >> $kelias/oru_prognoze.txt
+done
 windd=${windd// S /$(echo -e '\U2191')}
 windd=${windd// N /$(echo -e '\U2193')}
 windd=${windd// E /$(echo -e '\U2190')}
@@ -71,3 +77,5 @@ for (( i=0; i <5; i++))
 		image=$(sed -n "${eil2}p" $kelias/oru_prognoze.txt)
 		ln -s $kelias/piktogramos/$image.png $kelias/$i.png
 done
+
+
