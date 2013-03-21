@@ -54,21 +54,17 @@ gap_x 990
 gap_y 30
 
 #Orų duomenys
-#temperatūra
-template0 ${execpi 1800 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/temp.txt}
-#diena
-template1 ${execpi 1800 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/diena.txt}
+
+template0 ${execpi 1800 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/oru_prognoze.txt}
 #oras_db_data.txt
 template2 ${execpi 1900 sed -n '\1p' /home/gymka/Dev/conky_orai_LT/oras_db_data.txt}
 #paveiksliukas
 template3 ${image /home/gymka/Dev/conky_orai_LT/\1.png -s \2 -p \3 -n}
 #if else
 template4 ${if_match ${template0 \1}>0}${color red}${template0 \1}$color${endif}${if_match ${template0 \1}<0}${color deepskyblue}${template0 \1}$color${endif}${if_match ${template0 \1}==0}${color gray}${template0 \1}$color${endif}
-# stuff after 'TEXT' will be formatted on screen 
 
 TEXT  
-${execpi 600 /home/gymka/Dev/conky_orai_LT/oras_db.sh}
-${goto 160}${color ffe595}Dangus: $color${alignr}${template2 3}${template3 now 120x120 0,0}
+${execpi 600 /home/gymka/Dev/conky_orai_LT/oras_db.sh}${goto 160}${color ffe595}Dangus: $color${alignr}${template2 3}${template3 now 120x120 0,0}
 ${goto 160}${color ffe595}Vėjo kryptis: $color${alignr}${template2 4} $color
 ${goto 160}${color ffe595}Vėjo stiprumas:$color${alignr}${template2 5}m/s
 ${goto 160}${color ffe595}Drėgnumas: $color${alignr}${template2 6}
@@ -78,9 +74,12 @@ ${goto 160}${color ffe595}UV indeksas: $color${alignr}${template2 9}
 ${goto 160}${color ffe595}Atnaujinta: $color${alignr}${template2 1}
 ${goto 60}$color${font :size=15}${template2 2}°C${font}
 ${execpi 1800 /home/gymka/Dev/conky_orai_LT/oras.sh}
-${goto 20}${template1 1}${goto 110}${template1 2}${goto 190}${template1 3}
+${template0 22}${goto 90}${template0 23}${goto 160}${template0 24}${goto 230}${template0 25}
 
 
 
-${font :size=10}${goto 27}${template4 1}${goto 69}${template4 2}${goto 111}${template4 3}${goto 153}${template4 4}${goto 193}${template4 5}${goto 233}${template4 6}${font}
-${template3 1 40x40 0,148}${template3 2 40x40 40,148}${template3 3 40x40 85,148}${template3 4 40x40 125,148}${template3 5 40x40 165,148}${template3 6 40x40 205,148}$color
+
+${font :size=9}Naktis: ${font}${font :size=11}${goto 60}${template4 4}${goto 115}${template4 6}${goto 180}${template4 8}${goto 250}${template4 10}${font}
+${font :size=9}Diena: ${font}${font :size=11}${goto 60}${template4 3}${goto 115}${template4 5}${goto 180}${template4 7}${goto 250}${template4 9}${font}
+${font :size=8}${goto 20}${template0 16}${goto 90}${template0 17}${goto 155}${template0 18}${goto 220}${template0 19}${font}
+${template3 1 60x60 10,130}${template3 2 60x60 80,130}${template3 3 60x60 150,130}${template3 4 60x60 220,130}$color

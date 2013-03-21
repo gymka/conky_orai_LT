@@ -8,7 +8,8 @@ Scenarijus parašytas asmeniniam naudojimui, viešinamas žmonėms kaip pavyzdys
 conky, wget
 
 =======Diegimas ir konfigūracija:=======
-1. Faile „.conky“ pakeičiam 
+1. Faile „.conky“ pakeičiam „.conky“ pakeičiam (tam reikalui yra trumpinys CTRL+H) „/home/gymka/Dev/conky_orai_LT/“ į tą aplanką kuriame parsiuntėt failą „.conky“. 
+2. Faile „miestas.txt“ ištrinam nereikalingus miestus, paliekam tik reikalingo miesto eilutę. Pvz. tik „Panevezys+LHXX0007:1:LH“, scenarijus naudoja tą miestą kuris faile yra pirmoje eilutėje. Jei nėra reikalingo miesto nueinam į http://weather.com paieškos laukelyje įrašom reikalingą miestą pvz. „marijampolė“, weather.com mums siūlo neegzistuojantį miestą „Mariampole“ (dėkui dievui jog ne „Kapsukas“), bet jis yra lietuvoj todėl pasirenkam jį ir tada viršuj matom adresą „http://www.weather.com/weather/today/Mariampole+LHXX0056:1:LH“ į failą „miestas.txt“ įrašom (svarbiausia į pirmą eilutę, nesvarbu kas bus kitose eilutėse) „Mariampole+LHXX0056:1:LH“. Konfigūracija baigta, galima naudotis.
 
 =======Naudojimas=======
 1. Į savo esamo ~/.conkyrc TEXT sritį pridedam viską po „TEXT“ iš failo „.conky“.
@@ -19,4 +20,4 @@ mano atveju
 conky -c /home/gymka/.scripts/oras/.conky &
 
 =======conky.rc=======
-Tai mano naudojamas .conkyrc failas. Pateikiamas kaip „tikro“ .conky konfigūracijos failo pavyzdys.
+Tai mano naudojamas .conkyrc failas. Pateikiamas kaip „tikro“ .conky konfigūracijos failo pavyzdys. Jis visada tikrai veikia ir visada „up-to-date“ :) „.conky“ gali ir neveikt...

@@ -15,25 +15,9 @@
 	Copyright (C) 2012 gymka <gymka@archlinux.lt>'
 kelias=$(dirname ${BASH_SOURCE[0]})
 
-miestas="Kaunas"
+miestas=$(sed -n "1p" $kelias/miestas.txt)
 
-if [[ "$miestas" == "Vilnius" ]]
-then
-	addr_now="http://www.weather.com/weather/right-now/Vilnius+LHXX0005:1:LH"
-elif [[ "$miestas" == "Klaipėda" ]]
-then
-	addr_now="http://www.weather.com/weather/right-now/Klaipeda+LHXX0008:1:LH"
-elif [[ "$miestas" == "Šiauliai" ]]
-then
-	addr_now="http://www.weather.com/weather/right-now/Siauliai+LHXX0009:1:LH"
-elif [[ "$miestas" == "Panevėžys" ]]
-then
-	addr_now="http://www.weather.com/weather/right-now/Panevezys+LHXX0007:1:LH"
-else 
-	addr_now="http://www.weather.com/weather/right-now/Kaunas+LHXX0002:1:LH"
-fi
-
-wget --tries=10 --retry-connrefused --wait=1 --user-agent="Firefox" --load-cookies $kelias/cookie -O $kelias/oras_db.txt $addr_now
+wget --tries=10 --retry-connrefused --wait=1 --user-agent="Firefox" --load-cookies $kelias/cookie -O $kelias/oras_db.txt http://www.weather.com/weather/right-now/$miestas
 
 time12=$(grep -o -m 1 'updated">.*Local Time' $kelias/oras_db.txt|sed  's/.*[0-9]\{4\}, \(.*\)Local.*/\1/')
 time24=$(date -d $time12 +%H:%M>$kelias/oras_db_data.txt)

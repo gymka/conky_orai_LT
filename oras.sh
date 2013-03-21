@@ -15,26 +15,11 @@
 	Copyright (C) 2012 gymka <gymka at archlinux.lt>'
 	
 kelias=$(dirname ${BASH_SOURCE[0]})
+miestas=$(sed -n "1p" $kelias/miestas.txt)
 
-miestas="Kaunas"
+wget --tries=10 --retry-connrefused --wait=1 --user-agent="Firefox" --load-cookies $kelias/cookie -O $kelias/oras.txt "http://www.weather.com/weather/5-day/$miestas"
 
-if [[ "$miestas" == "Vilnius" ]]
-then
-	url="http://www.weather.com/weather/5-day/Vilnius+LHXX0005:1:LH"
-elif [[ "$miestas" == "Klaipėda" ]]
-then
-	url="http://www.weather.com/weather/5-day/Klaipeda+LHXX0008:1:LH"
-elif [[ "$miestas" == "Šiauliai" ]]
-then
-	url="http://www.weather.com/weather/5-day/Siauliai+LHXX0009:1:LH"
-elif [[ "$miestas" == "Panevėžys" ]]
-then
-	url="http://www.weather.com/weather/5-day/Panevezys+LHXX0007:1:LH"
-else 
-	url="http://www.weather.com/weather/5-day/Kaunas+LHXX0002:1:LH"
-fi
 
-wget --load-cookies cookie -O $kelias/oras.txt $url
 data=$(sed -n '/5 Day Forecast<\/h2>/,/10 Day Forecast/p' $kelias/oras.txt>oras2.txt)
 oras2=$(cat $kelias/oras2.txt)
 temp=$(echo "$oras2"|grep wx-temp|sed -n 's/.* \([0-9,-]*\)<.*/\1/p'>$kelias/oru_prognoze.txt)
