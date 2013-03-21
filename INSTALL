@@ -1,7 +1,0 @@
-#!/bin/bash
-find . -maxdepth 1 -type f -exec sed -i "s#/home/gymka/Dev/conky_orai_LT#${PWD}#g" {} \;
-
-miestas=$(zenity --list --height=240 --radiolist --column " " --text "Pasirinkite savo miestą:" --column "Miestas"  TRUE "Kaunas" FALSE "Vilnius"  FALSE "Panevėžys" FALSE "Klaipėda" FALSE "Šiauliai")
-sed -i "s/miestas=\"Kaunas\"/miestas=\"${miestas}\"/" ${PWD}/oras.sh
-sed -i "s/miestas=\"Kaunas\"/miestas=\"${miestas}\"/" ${PWD}/oras_db.sh
-
