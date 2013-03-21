@@ -39,41 +39,35 @@ data=$(sed -n '/5 Day Forecast<\/h2>/,/10 Day Forecast/p' $kelias/oras.txt>oras2
 oras2=$(cat $kelias/oras2.txt)
 temp=$(echo "$oras2"|grep wx-temp|sed -n 's/.* \([0-9,-]*\)<.*/\1/p'>$kelias/oru_prognoze.txt)
 cond=$(echo "$oras2"|sed -n 's/<img src=.*wxicon\/100\/\([0-9]*\).png.*class="wx-weather-icon">/\1/p'>>$kelias/oru_prognoze.txt)
-windd=$(echo "$oras2"|grep -a2 "<dt>Wind:</dt>"|sed -n 's/\(.*\) at \(.*\) km\/h/ \1 /p'>>$kelias/oru_prognoze.txt)
+windd=$(echo "$oras2"|grep -a2 "<dt>Wind:</dt>"|sed -n 's/\(.*\) at \(.*\) km\/h/ \1 /p')
 winds=$(echo "$oras2"|grep -a2 "<dt>Wind:</dt>"|sed -n 's/\(.*\) at \(.*\) km\/h/\2/p')
 for i in $winds
 do 
-echo "scale=2; ${i}/3.6" | bc|sed 's/^\./0./;s/\./,/;s/$/ m\/s/'>>$kelias/oru_prognoze.txt
+echo "scale=2; ${i}/3.6" | bc|sed 's/^\./0./;s/\./,/;s/$/m\/s/'>>$kelias/oru_prognoze.txt
 done
 
-windd1=$(sed -n '16,20p' $kelias/oru_prognoze.txt)
-windd=${windd1// S /P}
-windd=${windd// N /Š}
-windd=${windd// E /R}
-windd=${windd// W /V}
-windd=${windd// NE /ŠR}
-windd=${windd// NW /ŠV}
-windd=${windd// SE /PR}
-windd=${windd// SW /PV}
-windd=${windd// NNE /ŠŠR}
-windd=${windd// SSW /PPV}
-windd=${windd// WSW /VPV}
-windd=${windd// SSE /PPR}
-windd=${windd// ESE /RPT}
-windd=${windd// ENE /RŠR}
-windd=${windd// NNW /ŠŠV}
-windd=${windd// WNW /VŠV}
+windd=${windd// S /$(echo -e '\U2191')}
+windd=${windd// N /$(echo -e '\U2193')}
+windd=${windd// E /$(echo -e '\U2190')}
+windd=${windd// W /$(echo -e '\U2192')}
+windd=${windd// NE /$(echo -e '\U2199')}
+windd=${windd// NW /$(echo -e '\U2198')}
+windd=${windd// SE /$(echo -e '\U2196')}
+windd=${windd// SW /$(echo -e '\U2197')}
+windd=${windd// NNE /$(echo -e '\U2199')}
+windd=${windd// SSW /$(echo -e '\U2197')}
+windd=${windd// WSW /$(echo -e '\U2197')}
+windd=${windd// SSE /$(echo -e '\U2196')}
+windd=${windd// ESE /$(echo -e '\U2196')}
+windd=${windd// ENE /$(echo -e '\U2199')}
+windd=${windd// NNW /$(echo -e '\U2198')}
+windd=${windd// WNW /$(echo -e '\U2198')}
 windd=($windd)
 for (( i=0; i <5; i++))
 	do
 		eil=$(echo 16+$i|bc)
-		sed -i "$eil c\
-		"${windd[$i]}"" $kelias/oru_prognoze.txt
-done
-
-for (( i=0; i <5; i++))
-	do
-		eil=$(echo 11+$i|bc)
-		image=$(sed -n "${eil}p" $kelias/oru_prognoze.txt)
+		sed -i "${eil}s/\(.*\)/${windd[$i]} \1/" $kelias/oru_prognoze.txt
+		eil2=$(echo 11+$i|bc)
+		image=$(sed -n "${eil2}p" $kelias/oru_prognoze.txt)
 		ln -s $kelias/piktogramos/$image.png $kelias/$i.png
 done
