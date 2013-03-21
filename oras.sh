@@ -20,7 +20,7 @@ miestas=$(sed -n "1p" $kelias/miestas.txt)
 wget --tries=10 --retry-connrefused --wait=1 --user-agent="Firefox" --load-cookies $kelias/cookie -O $kelias/oras.txt "http://www.weather.com/weather/5-day/$miestas"
 
 
-data=$(sed -n '/5 Day Forecast<\/h2>/,/10 Day Forecast/p' $kelias/oras.txt>oras2.txt)
+data=$(sed -n '/5 Day Forecast<\/h2>/,/10 Day Forecast/p' $kelias/oras.txt>$kelias/oras2.txt)
 oras2=$(cat $kelias/oras2.txt)
 temp=$(echo "$oras2"|grep wx-temp|sed -n 's/.* \([0-9,-]*\)<.*/\1/p'>$kelias/oru_prognoze.txt)
 cond=$(echo "$oras2"|sed -n 's/<img src=.*wxicon\/100\/\([0-9]*\).png.*class="wx-weather-icon">/\1/p'>>$kelias/oru_prognoze.txt)
@@ -56,11 +56,10 @@ windd=${windd// WNW /$(echo -e '\U2198')}
 windd=($windd)
 for (( i=0; i <5; i++))
 	do
-		eil=$(echo 16+$i|bc)
+		eil=$(echo 17+$i|bc)
 		sed -i "${eil}s/\(.*\)/${windd[$i]} \1/" $kelias/oru_prognoze.txt
 		eil2=$(echo 11+$i|bc)
 		image=$(sed -n "${eil2}p" $kelias/oru_prognoze.txt)
 		ln -s $kelias/piktogramos/$image.png $kelias/$i.png
 done
-
 
