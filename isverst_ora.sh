@@ -106,9 +106,10 @@ uv["???"]="???"
 
 
 #isverst dangaus ir vėjo būseną
-dangus_org=$(sed -n '3p' $kelias/oras_db_data.txt|tr '[:upper:]' '[:lower:]'|sed 's/^$/???/')
-vejas_org=$(sed -n '4p' $kelias/oras_db_data.txt|tr '[:upper:]' '[:lower:]'|sed 's/^$/???/')
-uv_org=$(sed -n '9p' $kelias/oras_db_data.txt|tr '[:upper:]' '[:lower:]'|sed 's/^$/???/')
+vejas_org=$(tr '[:upper:]' '[:lower:]' < $kelias/oras_db_data.txt)
+#vejas_org2=$(tr '[:upper:]' '[:lower:]' < $kelias/oru_prognoze.txt)
+dangus_org=$(sed -n '3p' $kelias/oras_db_data.txt|sed 's/^$/???/')
+uv_org=$(sed -n '9p' $kelias/oras_db_data.txt|sed 's/^$/???/')
 
 
 if [[ -z ${vejas[$vejas_org]} ]]; #jei nėra tokios reikšmės tai arba jau išversta arba gauta nežinoma būsena, todėl paliekam originalią.
@@ -117,6 +118,7 @@ if [[ -z ${vejas[$vejas_org]} ]]; #jei nėra tokios reikšmės tai arba jau išv
 		sort -u $kelias/neisversta.txt -o $kelias/neisversta.txt
 	else vejas2=${vejas[$vejas_org]}
 fi 
+
 
 if [[ -z ${dangus[$dangus_org]} ]]; #jei nėra tokios reikšmės tai arba jau išversta arba gauta nežinoma būsena, todėl paliekam originalią.
 	then dangus2=$dangus_org 
@@ -133,3 +135,16 @@ fi
 sed -i "3s/.*/$dangus2/" $kelias/oras_db_data.txt
 sed -i "4s/.*/$vejas2/" $kelias/oras_db_data.txt
 sed -i "9s/.*/$uv2/" $kelias/oras_db_data.txt
+
+if [[ -z ${vejas[$vejas_org2]} ]]; #jei nėra tokios reikšmės tai arba jau išversta arba gauta nežinoma būsena, todėl paliekam originalią.
+	then vejas2=${vejas_org2}
+		echo "Vėjas: $vejas_org">>$kelias/neisversta.txt 
+		sort -u $kelias/neisversta.txt -o $kelias/neisversta.txt
+	else vejas2=${vejas[$vejas_org2]}
+fi 
+
+for (( i=0; i < 5; i++ ))
+	do 
+		eil_nr=$(echo -e "16+${i}"|bc)
+		sed -i "${eil_nr}s/.*/$vejas2/" $kelias/oru_prognoze.txt
+done
