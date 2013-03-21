@@ -1,15 +1,14 @@
 =======Kas tai:=======
-„Conky“ scenarijus skirtas orų peržiūrai. Dabartinių oro sąlygų šaltinis - http://weather.com , 7 dienų prognozė - http://meteo.lt
+„Conky“ scenarijus skirtas orų peržiūrai. Oro sąlygų šaltinis - http://weather.com. „lhmt“ atšakoj prognozių šaltinis yra meteo.lt, nuo v1.5 visur naudojamas weather.com 
 
 ====Paskirtis:========
-Scenarijus parašytas asmeniniam naudojimui, viešinamas žmonėms kaip pavyzdys kaip galima padaryti ir kaip „raw“ materialas savo scenarijui(atšakai) sukurti. Nesitaikau į galutinį naudotoją, todėl scenarijai nesupakuoti, nepritaikyta kiekvienai distribucijai.
+Scenarijus parašytas asmeniniam naudojimui, viešinamas žmonėms kaip pavyzdys kaip galima padaryti ir kaip „raw“ materialas savo scenarijui(atšakai) sukurti. Nesitaikau į galutinį naudotoją, todėl scenarijai nesupakuoti, nepritaikyta kiekviena distributyvui. 
+
 ======Priklausomybės:======
-conky, wget, paste.
+conky, wget
 
 =======Diegimas ir konfigūracija:=======
-$ chmod a+x INSTALL isverst_ora.sh oras.sh weath_com_metric
-
-Ir tada terminale(tam aplanke kur yra tas failas) paleidžiam INSTALL failą:)
+1. Faile „.conky“ pakeičiam 
 
 =======Naudojimas=======
 1. Į savo esamo ~/.conkyrc TEXT sritį pridedam viską po „TEXT“ iš failo „.conky“.
@@ -20,4 +19,4 @@ mano atveju
 conky -c /home/gymka/.scripts/oras/.conky &
 
 =======conky.rc=======
-Tai mano naudojamas .conkyrc failas.
+Tai mano naudojamas .conkyrc failas. Pateikiamas kaip „tikro“ .conky konfigūracijos failo pavyzdys.
