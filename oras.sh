@@ -56,7 +56,7 @@ windd=${windd// WNW /$(echo -e '\U2198')}
 windd=($windd)
 for (( i=0; i <5; i++))
 	do
-		eil=$(echo 17+$i|bc)
+		eil=$(echo 16+$i|bc)
 		sed -i "${eil}s/\(.*\)/${windd[$i]} \1/" $kelias/oru_prognoze.txt
 		eil2=$(echo 11+$i|bc)
 		image=$(sed -n "${eil2}p" $kelias/oru_prognoze.txt)

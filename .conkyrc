@@ -81,7 +81,7 @@ ${template0 22}${goto 90}${template0 23}${goto 160}${template0 24}${goto 230}${t
 
 ${font :size=9}Naktis: ${font}${font :size=11}${goto 60}${template4 4}${goto 115}${template4 6}${goto 180}${template4 8}${goto 250}${template4 10}${font}
 ${font :size=9}Diena: ${font}${font :size=11}${goto 60}${template4 3}${goto 115}${template4 5}${goto 180}${template4 7}${goto 250}${template4 9}${font}
-${font :size=8}${goto 20}${template0 16}${goto 90}${template0 17}${goto 155}${template0 18}${goto 220}${template0 19}${font}
+${font :size=8}${goto 20}${template0 17}${goto 90}${template0 18}${goto 155}${template0 19}${goto 220}${template0 20}${font}
 ${template3 1 60x60 10,130}${template3 2 60x60 80,130}${template3 3 60x60 150,130}${template3 4 60x60 220,130}$color ${font :size=10}${color gray}Sistema ${hr 2}$color${font}
 OS: ${goto 150}${pre_exec lsb_release -d | cut -f 2} $machine 
 Branduolys: ${goto 150}$kernel 
