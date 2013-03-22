@@ -54,6 +54,7 @@ windd=${windd// ENE /$(echo -e '\U2199')}
 windd=${windd// NNW /$(echo -e '\U2198')}
 windd=${windd// WNW /$(echo -e '\U2198')}
 windd=($windd)
+rm 1.png 2.png 3.png 4.png 
 for (( i=0; i <5; i++))
 	do
 		eil=$(echo 16+$i|bc)
