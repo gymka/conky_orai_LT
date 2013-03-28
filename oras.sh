@@ -30,7 +30,7 @@ for i in $winds
 do 
 echo "scale=2; ${i}/3.6" | bc|sed 's/^\./0./;s/\./,/;s/$/m\/s/'>>$kelias/oru_prognoze.txt
 done
-day=$(echo "$oras2"|grep "h3.*wx-label"|sed -n 's/.*">\(.*\)<\/.*/\1/p')
+day=$(echo "$oras2"|sed -n '/<h3>/{ N; s/<h3>.*\n<span class=\"wx-label\">\(.*\)<\/span>/\1/p }')
 IFS='
 '
 for i in $day
