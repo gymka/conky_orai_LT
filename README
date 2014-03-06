@@ -1,0 +1,25 @@
+=======Kas tai:=======
+„Conky“ scenarijus skirtas orų peržiūrai. Oro sąlygų šaltinis - http://weather.com. „lhmt“ atšakoj prognozių šaltinis yra meteo.lt, nuo v1.5 visur naudojamas weather.com 
+
+====Paskirtis:========
+Scenarijus parašytas asmeniniam naudojimui, viešinamas žmonėms kaip pavyzdys kaip galima padaryti ir kaip „raw“ materialas savo scenarijui(atšakai) sukurti. Nesitaikau į galutinį naudotoją, todėl scenarijai nesupakuoti, nepritaikyta kiekviena distributyvui. 
+
+======Priklausomybės:======
+conky, wget
+
+=======Diegimas ir konfigūracija:=======
+1. Faile „conky.desktop“ pakeičiam „/home/gymka/Dev/conky_orai_LT/“ į tą aplanką kuriame yra šis README failas. Įdedam conky.desktop failą į ~/.config/autostart aplanką ir viskas:) 
+2. Faile „miestas.txt“ ištrinam nereikalingus miestus, paliekam tik reikalingo miesto eilutę. Pvz. tik „Panevezys+LHXX0007:1:LH“, scenarijus naudoja tą miestą kuris faile yra pirmoje eilutėje. Jei nėra reikalingo miesto nueinam į http://weather.com paieškos laukelyje įrašom reikalingą miestą pvz. „marijampolė“, weather.com mums siūlo neegzistuojantį miestą „Mariampole“ (dėkui dievui jog ne „Kapsukas“), bet jis yra lietuvoj todėl pasirenkam jį ir tada viršuj matom adresą „http://www.weather.com/weather/today/Mariampole+LHXX0056:1:LH“ į failą „miestas.txt“ įrašom (svarbiausia į pirmą eilutę, nesvarbu kas bus kitose eilutėse) „Mariampole+LHXX0056:1:LH“. Konfigūracija baigta, galima naudotis. 
+
+=======Naudojimas=======
+1. Į savo esamo ~/.conkyrc TEXT sritį pridedam viską po „TEXT“ iš failo „.conky“.
+
+2. Arba paleidžiam naują conky langą tik su oru:
+$ conky -c kelias_iki_failu/.conky
+mano atveju  
+cd /home/gymka/.scripts/oras/; conky -c ./.conky &
+
+3. Scenarijus parašytas taip jog prieš paleidžiant conky reikia pakeist aplanką į tą kuriame yra konfigūracijos failas. Ta prasme „cd /aplankas_kuriame/yra_konfigūracijos/failas/; conky -c ./.conky &
+
+=======conky.rc=======
+Tai mano naudojamas .conkyrc failas. Pateikiamas kaip „tikro“ .conky konfigūracijos failo pavyzdys. Jis visada tikrai veikia ir visada „up-to-date“ :) „.conky“ gali ir neveikt...
