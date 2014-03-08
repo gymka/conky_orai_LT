@@ -77,23 +77,23 @@ class orai():
 class orai_day():
 	def dangus():
 		if klaida is not True:
-			print(re.findall("<img src=\"(http://symbol\.yr\.no/grafikk/sym/b38/.*\.png)\"",orai_short[0],re.IGNORECASE)[0])
+			return re.findall("<img src=\"http://symbol\.yr\.no/grafikk/sym/b38/(.*\.png)\"",orai_short[0],re.IGNORECASE)[0]
 		else:
 			return klaidos_rez
 	def temp():
 		if klaida is not True:
-			print(re.findall("<td class=\"temperature .*\" title=\"Temperature:.*For the period: (14:00|11:00)\">(.*°)</td>",orai_short[0],re.IGNORECASE)[0][1])
+			return re.findall("<td class=\"temperature .*\" title=\"Temperature:.*For the period: (14:00|11:00)\">(.*°)</td>",orai_short[0],re.IGNORECASE)[0][1]
 		else:
 			return klaidos_rez
 	def krituliai():
 		if klaida is not True:
-			print(re.findall("td title=\"Precipitation:.*For the period: (11:00–17:00|14:00–20:00).*>(.*mm)</td>",orai_short[0],re.IGNORECASE)[0][1])
+			return re.findall("td title=\"Precipitation:.*For the period: (11:00–17:00|14:00–20:00).*>(.*mm)</td>",orai_short[0],re.IGNORECASE)[0][1]
 		else:
 			return klaidos_rez
 	def vejas():
 		#grąžina masyvą su 3 elementais
 		if klaida is not True:
-			return re.findall("class=\"wind\" alt=\"(.*), (.*m/s) (.*)\" ",orai_short[0],re.IGNORECASE)[0]
+			return re.findall("class=\"wind\" alt=\"(.*), (.*m/s) from (.*)\" ",orai_short[0],re.IGNORECASE)[0]
 		else:
 			return klaidos_rez			
 
@@ -108,5 +108,14 @@ for i in range(0,9): #TODO jei pasikeis kodas ir ras mažiau elementų, bus bėd
 	failas.write(orai.temp_nakti(orai_html_long)[i][1]+"\n")
 	failas.write(orai.temp_diena(orai_html_long)[i][1]+"\n")
 	failas.write("-"*20+"\n")
+
+failas.write("="*10+"Dienos prognozė"+"="*10+"\n")
+failas.write(orai_day.dangus()+"\n")
+failas.write(orai_day.temp()+"\n")
+failas.write(orai_day.krituliai()+"\n")
+failas.write(orai_day.vejas()[0]+"\n")
+failas.write(orai_day.vejas()[1]+"\n")
+failas.write(orai_day.vejas()[2]+"\n")
+failas.write("-"*20+"\n")
 failas.close()
 
