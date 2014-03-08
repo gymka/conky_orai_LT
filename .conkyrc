@@ -105,17 +105,14 @@ Swap:  $swapperc%   ${swapbar 6}$color
 ${font :size=10}${color gray}HDD ${hr 2}$color${font}
 Samsung:${goto 260}${execi 30 nc localhost 7634 |cut -d\| -f4;}°C
 ExcelStor Technology:${goto 260}${execi 30 nc localhost 7634 |cut -d\| -f9;}°C
-Toshiba:${goto 260}${execi 30 nc localhost 7634 |cut -d\| -f14;}°C
-Root:  ${fs_used_perc /}%   ${fs_bar 6 /}$color 
-       ${fs_used /}/${fs_size /}
-Home:  ${fs_used_perc /home}% ${fs_bar 6 /home}$color
-       ${fs_used /home}/${fs_size /home}
-Media:  ${fs_used_perc /media/media}% ${fs_bar 6 /media/media}$color
-       ${fs_used /media/media}/${fs_size /media/media}
-Media2:  ${fs_used_perc /media/media2}% ${fs_bar 6 /media/media2}$color
-       ${fs_used /media/media2}/${fs_size /media/media2}
-Media3:  ${fs_used_perc /media/media3}% ${fs_bar 6 /media/media3}$color
-       ${fs_used /media/media3}/${fs_size /media/media3}
+Root:  ${fs_free_perc /}%   ${fs_bar 6 /}$color 
+       ${fs_free /}/${fs_size /}
+Home:  ${fs_free_perc /home}% ${fs_bar 6 /home}$color
+       ${fs_free /home}/${fs_size /home}
+Media:  ${fs_free_perc /media/media}% ${fs_bar 6 /media/media}$color
+       ${fs_free /media/media}/${fs_size /media/media}
+Media2:  ${fs_free_perc /media/media2}% ${fs_bar 6 /media/media2}$color
+       ${fs_free /media/media2}/${fs_size /media/media2}
 Disko apkrova $alignr ${diskio}
 ${diskiograph 16,000 ffffff 0000ff}
 ${font :size=10}${color gray}Tinklas (${addr eth0}) ${hr 2}$color${font}
