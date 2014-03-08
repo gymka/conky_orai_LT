@@ -2,7 +2,7 @@
 
 import re
 import urllib.request
-import sys
+import os
 
 #======Duomenų parsiuntimas=======
 user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:27.0) Gecko/20100101 Firefox/27.0'
@@ -103,14 +103,14 @@ failas=open("orai.txt","w")
 failas.write("="*10+"Prognozė"+"="*10+"\n")
 for i in range(0,9): #TODO jei pasikeis kodas ir ras mažiau elementų, bus bėda.
 	failas.write(orai.dienos(orai_html_long)[i]+"\n")
-	failas.write("paveiksliukai/"+orai.dangus_diena(orai_html_long)[i][1]+"\n")
-	failas.write("paveiksliukai/"+orai.dangus_nakti(orai_html_long)[i][1]+"\n")
+	os.system('ln -s -f ${PWD}/paveiksliukai/'+orai.dangus_diena(orai_html_long)[i][1]+' ./'+str(i)+'.png')
+	os.system('ln -s -f ${PWD}/paveiksliukai/'+orai.dangus_nakti(orai_html_long)[i][1]+' ./'+str(i)+'N.png')
 	failas.write(orai.temp_nakti(orai_html_long)[i][1]+"\n")
 	failas.write(orai.temp_diena(orai_html_long)[i][1]+"\n")
 	failas.write("-"*20+"\n")
 
 failas.write("="*10+"Dienos prognozė"+"="*10+"\n")
-failas.write(orai_day.dangus()+"\n")
+os.system('ln -s -f ${PWD}/paveiksliukai/'+orai_day.dangus()+' ./now.png')
 failas.write(orai_day.temp()+"\n")
 failas.write(orai_day.krituliai()+"\n")
 failas.write(orai_day.vejas()[0]+"\n")
