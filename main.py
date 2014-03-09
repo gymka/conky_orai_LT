@@ -6,18 +6,19 @@ import os
 import random
 
 #======Duomenų parsiuntimas=======
-headers = { "User-Agent" : "Mozilla/5.0 (X11; Linux x86_64; rv:27.0) Gecko/20100101 Firefox/27.0", "Accept" : "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", "Accept-Language" : "lt,en;q=0.7,ru;q=0.3", "Accept-Encoding" : "gzip, deflate", "DNT" : "1", "Connection" : "keep-alive" } #nesiunčiant header'ių po kažkiek laiko nebeleidžia prisijungt:)
-
 url="http://www.yr.no/place/Lithuania/Kaunas/Kaunas/long.html"
 url2="http://www.yr.no/place/Lithuania/Kaunas/Kaunas/"
+url3="http://www.akmc.lt"
 klaida=False
 orai_html_long=""
+
 try:
-	orai_html_long = urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': user_agent})).read().decode("utf-8")
+	orai_html_long = urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent" : "Mozilla/5.0 (X11; Linux x86_64; rv:27.0) Gecko/20100101 Firefox/27.0", "Accept" : "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", "Accept-Language" : "lt,en;q=0.7,ru;q=0.3", "DNT" : "1", "Connection" : "keep-alive"})).read().decode("utf-8")
 except:
 	klaida=True
+
 try:
-	orai_html_short = urllib.request.urlopen(urllib.request.Request(url2, headers={'User-Agent': user_agent})).read().decode("utf-8")
+	orai_html_short = urllib.request.urlopen(urllib.request.Request(url2, headers={"User-Agent" : "Mozilla/5.0 (X11; Linux x86_64; rv:27.0) Gecko/20100101 Firefox/27.0", "Accept" : "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", "Accept-Language" : "lt,en;q=0.7,ru;q=0.3", "DNT" : "1", "Connection" : "keep-alive"})).read().decode("utf-8")
 	orai_short=re.split("<td> 11:00–17:00|14:00–20:00</td>",orai_html_short)
 	orai_short=orai_short[1].split("</tr>")
 except:
