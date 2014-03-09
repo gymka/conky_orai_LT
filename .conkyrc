@@ -55,34 +55,33 @@ gap_y 30
 
 #Orų duomenys
 
-template0 ${execpi 1800 sed -n '\1p' ./oru_prognoze.txt}
-#oras_db_data.txt
-template2 ${execpi 1900 sed -n '\1p' ./oras_db_data.txt}
+template0 ${execpi 3600 sed -n '\1p' ./orai.txt}
 #paveiksliukas
 template3 ${image ./\1.png -s \2 -p \3 -n}
 #if else
 template4 ${if_match ${template0 \1}>0}${color red}${template0 \1}$color${endif}${if_match ${template0 \1}<0}${color deepskyblue}${template0 \1}$color${endif}${if_match ${template0 \1}==0}${color gray}${template0 \1}$color${endif}
 
 TEXT  
-${execpi 1800 ./oras.sh}
-${execpi 600 ./oras_db.sh}${goto 160}${color ffe595}Dangus: $color${alignr}${template2 3}${template3 now 120x120 0,0}
-${goto 160}${color ffe595}Vėjo kryptis: $color${alignr}${template2 4} $color
-${goto 160}${color ffe595}Vėjo stiprumas:$color${alignr}${template2 5}m/s
-${goto 160}${color ffe595}Drėgnumas: $color${alignr}${template2 6}
-${goto 160}${color ffe595}Matomumas: $color${alignr}${template2 7}
-${goto 160}${color ffe595}Slėgis: $color${alignr}${template2 8}
-${goto 160}${color ffe595}UV indeksas: $color${alignr}${template2 9}
-${goto 160}${color ffe595}Atnaujinta: $color${alignr}${template2 1}
-${goto 60}$color${font :size=15}${template2 2}°C${font}
-${template0 21}${goto 90}${template0 22}${goto 160}${template0 23}${goto 230}${template0 24}
+${execpi 3600 ./main.py}${alignr}${template3 dabar 120x120 0,0}
+${goto 125}${color ffe595}Vėjas pučia iš: $color${alignr}${template0 60} $color
+${goto 125}${color ffe595}Vėjo stiprumas:$color${alignr}${template0 59}
+${goto 125}${color ffe595}Kritulių: $color${alignr}${template0 58}
 
 
 
 
-${font :size=9}Naktis: ${font}${font :size=11}${goto 60}${template4 2}${goto 115}${template4 4}${goto 180}${template4 6}${goto 250}${template4 8}${font}
-${font :size=9}Diena: ${font}${font :size=11}${goto 60}${template4 1}${goto 115}${template4 3}${goto 180}${template4 5}${goto 250}${template4 7}${font}
-${font :size=8}${goto 20}${template0 16}${goto 90}${template0 17}${goto 155}${template0 18}${goto 220}${template0 19}${font}
-${template3 0 60x60 10,130}${template3 1 60x60 80,130}${template3 2 60x60 150,130}${template3 3 60x60 220,130}$color$color ${font :size=10}${color gray}Sistema ${hr 2}$color${font}
+
+${goto 60}$color${font :size=15}${template0 57}C${font}
+${template0 2}${goto 90}${template0 8}${goto 160}${template0 14}${goto 230}${template0 20}
+
+${font :size=9}Dieną: ${font}
+${font :size=8}${goto 65}${template0 4}${goto 120}${template0 10}${goto 185}${template0 16}${goto 250}${template0 22}${font}
+${font :size=11}${goto 65}${template4 6}${goto 115}${template4 12}${goto 180}${template4 18}${goto 250}${template4 24}${font}
+
+${font :size=9}Naktį: ${font}
+${font :size=11}${goto 65}${template4 5}${goto 115}${template4 11}${goto 180}${template4 17}${goto 250}${template4 23}${font}
+${template3 0 30x30 40,140}${template3 0N 30x30 40,195}${template3 1 30x30 95,140}${template3 1N 30x30 95,195}${template3 2 30x30 160,140}${template3 2N 30x30 160,195}${template3 3 30x30 225,140}${template3 3N 30x30 225,195}$color
+${font :size=10}${color gray}Sistema ${hr 2}$color${font}
 OS: ${goto 150}${pre_exec lsb_release -d | cut -f 2} $machine 
 Branduolys: ${goto 150}$kernel 
 Uptime: ${goto 150}${uptime}
@@ -105,13 +104,14 @@ Swap:  $swapperc%   ${swapbar 6}$color
 ${font :size=10}${color gray}HDD ${hr 2}$color${font}
 Samsung:${goto 260}${execi 30 nc localhost 7634 |cut -d\| -f4;}°C
 ExcelStor Technology:${goto 260}${execi 30 nc localhost 7634 |cut -d\| -f9;}°C
-Root:  ${fs_free_perc /}%   ${fs_bar 6 /}$color 
+Toshiba:${goto 260}${execi 30 nc localhost 7634 |cut -d\| -f14;}°C
+Root:  ${fs_used_perc /}%   ${fs_bar 6 /}$color 
        ${fs_free /}/${fs_size /}
-Home:  ${fs_free_perc /home}% ${fs_bar 6 /home}$color
+Home:  ${fs_used_perc /home}% ${fs_bar 6 /home}$color
        ${fs_free /home}/${fs_size /home}
-Media:  ${fs_free_perc /media/media}% ${fs_bar 6 /media/media}$color
+Media:  ${fs_used_perc /media/media}% ${fs_bar 6 /media/media}$color
        ${fs_free /media/media}/${fs_size /media/media}
-Media2:  ${fs_free_perc /media/media2}% ${fs_bar 6 /media/media2}$color
+Media2:  ${fs_used_perc /media/media2}% ${fs_bar 6 /media/media2}$color
        ${fs_free /media/media2}/${fs_size /media/media2}
 Disko apkrova $alignr ${diskio}
 ${diskiograph 16,000 ffffff 0000ff}
