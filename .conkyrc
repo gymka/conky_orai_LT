@@ -64,14 +64,14 @@ template4 ${if_match ${template0 \1}>0}${color red}${template0 \1}$color${endif}
 TEXT  
 ${execpi 1800 ./main.py}${alignr}${template3 dabar 120x120 0,0}
 ${goto 125}${color ffe595}Vėjas pučia iš: $color${alignr}${template0 58} $color
-${goto 125}${color ffe595}Vėjo stiprumas:$color${alignr}${template0 59}m/h
+${goto 125}${color ffe595}Vėjo stiprumas:$color${alignr}${template0 59}km/h
+${goto 125}${color ffe595}Atnaujinta:$color${alignr}${template0 60}
 
 
 
 
 
-
-${goto 60}$color${font :size=15}${template0 57}C${font}
+${goto 60}$color${font :size=15}${template0 57}°C${font}
 ${template0 2}${goto 90}${template0 8}${goto 160}${template0 14}${goto 230}${template0 20}
 
 ${font :size=9}Dieną: ${font}
