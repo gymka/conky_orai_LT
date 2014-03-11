@@ -62,7 +62,7 @@ orai()
 
 failas=open("orai.txt","w")
 failas.write("="*10+"Prognozė"+"="*10+"\n")
-for i in range(0,9): #TODO jei pasikeis kodas ir ras mažiau elementų, bus bėda.
+for i in range(0,4): #išvis yra 8dienos, man reik 4
 	failas.write(isverst_diena[orai.dienos[i]]+"\n")
 	vejasx=orai.vejas_diena[i][2]
 	failas.write(isverst_veja(vejasx)[0]+"\n")
