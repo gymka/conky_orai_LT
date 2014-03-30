@@ -17,24 +17,24 @@ class orai():
 	dienos=re.findall("<th scope=\"col\".*?>(.*?)<span>.*?</span>.*</th>",orai_html_long,re.IGNORECASE)
 
 	#gražina numerį paveiksliuko su debesuotumu dieną.dangus_diena[0][1])
-	dangus_diena=re.findall("<img alt=\".*For the period.*(11:00–17:00|12:00–18:00|14:00–20:00|15:00–21:00)\" src=\"http://symbol.yr.no/grafikk/sym/b38/(.*.png)\" width=\"38\" height=\"38",orai_html_long,re.IGNORECASE)
+	dangus_diena=re.findall("<img alt=\".*For the period.*(12:00–18:00|15:00–21:00)\" src=\"http://symbol.yr.no/grafikk/sym/b38/(.*.png)\" width=\"38\" height=\"38",orai_html_long,re.IGNORECASE)
 	
 
 	#gražina numerį paveiksliuko su debesuotumu naktį. orai_long.dangus_naktis()[0][1])
-	dangus_nakti=re.findall("<img alt=\".*For the period.*(23:00–05:00|02:00–08:00|00:00–06:00|03:00–09:00)\" src=\"http://symbol.yr.no/grafikk/sym/b38/(.*.png)\" width=\"38\" height=\"38",orai_html_long,re.IGNORECASE)
+	dangus_nakti=re.findall("<img alt=\".*For the period.*(00:00–06:00|03:00–09:00)\" src=\"http://symbol.yr.no/grafikk/sym/b38/(.*.png)\" width=\"38\" height=\"38",orai_html_long,re.IGNORECASE)
 		
 	#temperatūros naktį. orai_long.temp_nakti()[0][1])
-	temp_nakti=re.findall("<td class=\"temperature .*\" title=\"Temperature:.*Feels like.*For the period: (23:00|02:00|00:00|03:00)\">(.*)°</td>",orai_html_long,re.IGNORECASE)
+	temp_nakti=re.findall("<td class=\"temperature .*\" title=\"Temperature:.*Feels like.*For the period: (00:00|03:00)\">(.*)°</td>",orai_html_long,re.IGNORECASE)
 
 	#temperatūros dieną. orai_long.temp_diena()[0][1])
-	temp_diena=re.findall("<td class=\"temperature .*\" title=\"Temperature:.*Feels like.*For the period: (11:00|14:00|12:00|15:00)\">(.*)°</td>",orai_html_long,re.IGNORECASE)
+	temp_diena=re.findall("<td class=\"temperature .*\" title=\"Temperature:.*Feels like.*For the period: (12:00|15:00)\">(.*)°</td>",orai_html_long,re.IGNORECASE)
 
 	#grąžina masyvą su 3 elementais
-	vejas_diena=re.findall("<td class=\"txt-left\" title=\"(.*), (.*m/s) from (.*)\.  For the period: (11:00|12:00|14:00|15:00)\">",orai_html_long,re.IGNORECASE)
+	vejas_diena=re.findall("<td class=\"txt-left\" title=\"(.*), (.*m/s) from (.*)\.  For the period: (12:00|15:00)\">",orai_html_long,re.IGNORECASE)
 	
 
 	#grąžina masyvą su 3 elementais
-	vejas_naktis=re.findall("<td class=\"txt-left\" title=\"(.*), (.*m/s) from (.*)\.  For the period: (23:00|02:00|00:00|03:00)\">",orai_html_long,re.IGNORECASE)
+	vejas_naktis=re.findall("<td class=\"txt-left\" title=\"(.*), (.*m/s) from (.*)\.  For the period: (00:00|03:00)\">",orai_html_long,re.IGNORECASE)
 
 class orai_day():
 	orai_short=re.split("<h2>Right Now</h2>",orai_html_short)
