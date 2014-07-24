@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+# coding=utf-8
 import re
 import subprocess
 import os
@@ -7,9 +7,8 @@ from datetime import *
 
 #======Duomenų parsiuntimas=======
 #tiek requests, tiek urllib moduliai pastoviai po kažkiek bandymų pradeda rašyt jog negali resolvint adreso, nors naršyklėj viskas gerai. Todėl naudoju linux'ų curl, žymiai patikimesnis
-orai_html_long = subprocess.check_output(["curl", "http://www.yr.no/place/Lithuania/Kaunas/Kaunas/long.html"]).decode("utf-8")
-orai_html_short = subprocess.check_output(["curl", "http://www.weather.com/weather/today/Kaunas+LHXX0002:1:LH"]).decode("utf-8")
-
+orai_html_long = subprocess.check_output(["curl", "http://www.yr.no/place/Lithuania/Kaunas/Kaunas/long.html"])
+orai_html_short = subprocess.check_output(["curl", "http://www.weather.com/weather/today/Kaunas+LHXX0002:1:LH"])
 
 #=======Duomenų apdorojimas=========
 class orai():
@@ -17,8 +16,8 @@ class orai():
 	dienos=re.findall("<th scope=\"col\".*?>(.*?)<span>.*?</span>.*</th>",orai_html_long,re.IGNORECASE)
 
 	#gražina numerį paveiksliuko su debesuotumu dieną.dangus_diena[0][1])
-	dangus_diena=re.findall("<img alt=\".*For the period.*(12:00–18:00|15:00–21:00)\" src=\"http://symbol.yr.no/grafikk/sym/b38/(.*.png)\" width=\"38\" height=\"38",orai_html_long,re.IGNORECASE)
-	
+	dangus_diena=re.findall("<img alt=\".*For the period.*(12:00–18:00|15:00–21:00)\" src=\"http://symbol.yr.no/grafikk/sym/b38/(.*.png)\" width=",orai_html_long,re.IGNORECASE)
+
 
 	#gražina numerį paveiksliuko su debesuotumu naktį. orai_long.dangus_naktis()[0][1])
 	dangus_nakti=re.findall("<img alt=\".*For the period.*(00:00–06:00|03:00–09:00)\" src=\"http://symbol.yr.no/grafikk/sym/b38/(.*.png)\" width=\"38\" height=\"38",orai_html_long,re.IGNORECASE)
@@ -53,8 +52,9 @@ class orai_day():
 	vejas_stiprumas=round(int(vejas_stiprumas[0])*1.609344)	
 
 def isverst_veja(vejas):
-	veju_array={"south":("pietų","\u2191"),"north":("šiaurės","\u2193"), "east":("rytų","\u2190"), "west":("vakarų","\u2192"), "northeast":("šiaurės rytų","\u2199"), "northwest":("šiaurės vakarų","\u2198"), "southeast":("pietryčių","\u2196"), "southwest":("pietvakarių","\u2197"), "north-northeast":("šiaurės šiaurės rytų","\u2199"), "south-southwest":("pietų pietryčių","\u2197"), "west-southwest":("vakarų pietvakarių","\u2197"), "south-southeast":("pietų pietryčių","\u2196"), "east-southeast":("rytų pietryčių","\u2196"), "east-northeast":("rytų šiaurės rytų","\u2199"), "north-northwest":("rytų šiaurės vakarų","\u2198"), "west-northwest":("vakarų šiaurės vakarų","\u2198"),"S":"Pietų","N":"Šiaurės","E":"Rytų","W":"Vakarų","NE":"Šiaurės rytų","NW":"Šiaurės vakarų","SE":"Pietryčių","SW":"Pietvakarių","NNE":"Šiaurės šiaurės rytų","SSW":"Pietų pietvakarių","WSW":"Vakarų pietvakarių","SSE":"Pietų pietryčių","ESE":"Rytų pietryčių","ENE":"Rytų šiaurės rytų","NNW":"Šiaurės šiaurės vakarų","WNW":"Vakarų šiaurės vakarų"}
+	veju_array={"south":("pietų","↑"),"north":("šiaurės",'↓'), "east":("rytų","←"),"west":("vakarų",'→'),"northeast":("šiaurės rytų",'↙'),"northwest":("šiaurės vakarų",'↘'),"southeast":("pietryčių",'↖'),"southwest":("pietvakarių",'↗'),"north-northeast":("šiaurės šiaurės rytų",'↙'),"south-southwest":("pietų pietryčių",'↗'),"west-southwest":("vakarų pietvakarių",'↗'),"south-southeast":("pietų pietryčių",'↖'),"east-southeast":("rytų pietryčių",'↖'),"east-northeast":("rytų šiaurės rytų",'↙'),"north-northwest":("rytų šiaurės vakarų",'↘'),"west-northwest":("vakarų šiaurės vakarų",'↘'),"S":"Pietų","N":"Šiaurės","E":"Rytų","W":"Vakarų","NE":"Šiaurės rytų","NW":"Šiaurės vakarų","SE":"Pietryčių","SW":"Pietvakarių","NNE":"Šiaurės šiaurės rytų","SSW":"Pietų pietvakarių","WSW":"Vakarų pietvakarių","SSE":"Pietų pietryčių","ESE":"Rytų pietryčių","ENE":"Rytų šiaurės rytų","NNW":"Šiaurės šiaurės vakarų","WNW":"Vakarų šiaurės vakarų"}
 	return veju_array[vejas]
+	
 isverst_diena={"Monday":"Pirmadienis","Tuesday":"Antradienis","Wednesday":"Trečiadienis","Thursday":"Ketvirtadienis","Friday":"Penktadienis","Saturday":"Šeštadienis","Sunday":"Sekmadienis"}
 
 
@@ -82,4 +82,5 @@ failas.write(str(orai_day.vejas_stiprumas)+"\n")
 failas.write(str(orai_day.atnaujinta)+"\n")
 failas.write("-"*20+"\n")
 failas.close()
+
 

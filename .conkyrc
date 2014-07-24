@@ -50,7 +50,7 @@ alignment top_left
 #alignment bottom_right   
 maximum_width 290
 # Gap between borders of screen and text
-gap_x 990
+gap_x 1800
 gap_y 30
 
 #Orų duomenys
@@ -70,7 +70,6 @@ ${goto 125}${color ffe595}Atnaujinta:$color${alignr}${template0 30}
 
 
 
-
 ${goto 60}$color${font :size=15}${template0 27}°C${font}
 ${template0 2}${goto 90}${template0 8}${goto 160}${template0 14}${goto 230}${template0 20}
 
@@ -86,7 +85,7 @@ OS: ${goto 150}${pre_exec lsb_release -d | cut -f 2} $machine
 Branduolys: ${goto 150}$kernel 
 Uptime: ${goto 150}${uptime}
 ${font :size=10}${color gray}CPU ${hr 2}$color${font}
-Temperatūra: ${hwmon 0 temp 1}°C 
+Temperatūra: ${alignr}${hwmon 0 temp 1}°C
 CPU: ${cpu 0}%   ${cpubar 6} 
 CPU Dažnis: ${freq_g} GHz
 ${cpugraph 000000 ffffff}
@@ -99,19 +98,17 @@ ${top name 5}${goto 100}${top pid 5}${goto 150}${top cpu 5}${goto 200}${top mem 
 ${font :size=10}${color gray}Atmintis ${hr 2}$color${font}
 RAM:   $memperc%  ${membar 6}$color
        ${mem} / ${memmax}
-Swap:  $swapperc%   ${swapbar 6}$color
-       ${swap} / ${swapmax}
 ${font :size=10}${color gray}HDD ${hr 2}$color${font}
-Samsung:${goto 260}${execi 30 nc localhost 7634 |cut -d\| -f4;}°C
-ExcelStor Technology:${goto 260}${execi 30 nc localhost 7634 |cut -d\| -f9;}°C
+Toshiba: ${goto 260}${execi 30 nc localhost 7634 |cut -d\| -f4;}°C
+Samsung: ${goto 260}${execi 30 nc localhost 7634 |cut -d\| -f9;}°C
 Root:  ${fs_used_perc /}%   ${fs_bar 6 /}$color 
        ${fs_free /}/${fs_size /}
 Home:  ${fs_used_perc /home}% ${fs_bar 6 /home}$color
        ${fs_free /home}/${fs_size /home}
-Media:  ${fs_used_perc /media/media}% ${fs_bar 6 /media/media}$color
-       ${fs_free /media/media}/${fs_size /media/media}
-Media2:  ${fs_used_perc /media/media2}% ${fs_bar 6 /media/media2}$color
-       ${fs_free /media/media2}/${fs_size /media/media2}
+Media:  ${fs_used_perc /media/gymka/media}% ${fs_bar 6 /media/gymka/media}$color
+       ${fs_free /media/gymka/media}/${fs_size /media/gymka/media}
+Media2:  ${fs_used_perc /media/gymka/media2}% ${fs_bar 6 /media/gymka/media2}$color
+       ${fs_free /media/gymka/media2}/${fs_size /media/gymka/media2}
 Disko apkrova $alignr ${diskio}
 ${diskiograph 16,000 ffffff 0000ff}
 ${font :size=10}${color gray}Tinklas (${addr eth0}) ${hr 2}$color${font}
