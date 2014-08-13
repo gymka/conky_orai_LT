@@ -13,30 +13,30 @@ orai_html_short = subprocess.check_output(["curl", "http://www.weather.com/weath
 #=======Duomenų apdorojimas=========
 class orai():
 	#grazina savaitės dienas. dienos[0])
-	dienos=re.findall("<th scope=\"col\".*?>(.*?)<span>.*?</span>.*</th>",orai_html_long,re.IGNORECASE)
+	dienos=re.findall("<th scope=\"col\".*?>(.*?)<span>.*?</span>.*</th>",orai_html_long.decode(),re.IGNORECASE)
 
 	#gražina numerį paveiksliuko su debesuotumu dieną.dangus_diena[0][1])
-	dangus_diena=re.findall("<img alt=\".*For the period.*(12:00–18:00|15:00–21:00)\" src=\"http://symbol.yr.no/grafikk/sym/b38/(.*.png)\" width=",orai_html_long,re.IGNORECASE)
+	dangus_diena=re.findall("<img alt=\".*For the period.*(12:00–18:00|15:00–21:00)\" src=\"http://symbol.yr.no/grafikk/sym/b38/(.*.png)\" width=",orai_html_long.decode(),re.IGNORECASE)
 
 
 	#gražina numerį paveiksliuko su debesuotumu naktį. orai_long.dangus_naktis()[0][1])
-	dangus_nakti=re.findall("<img alt=\".*For the period.*(00:00–06:00|03:00–09:00)\" src=\"http://symbol.yr.no/grafikk/sym/b38/(.*.png)\" width=\"38\" height=\"38",orai_html_long,re.IGNORECASE)
+	dangus_nakti=re.findall("<img alt=\".*For the period.*(00:00–06:00|03:00–09:00)\" src=\"http://symbol.yr.no/grafikk/sym/b38/(.*.png)\" width=\"38\" height=\"38",orai_html_long.decode(),re.IGNORECASE)
 		
 	#temperatūros naktį. orai_long.temp_nakti()[0][1])
-	temp_nakti=re.findall("<td class=\"temperature .*\" title=\"Temperature:.*Feels like.*For the period: (00:00|03:00)\">(.*)°</td>",orai_html_long,re.IGNORECASE)
+	temp_nakti=re.findall("<td class=\"temperature .*\" title=\"Temperature:.*Feels like.*For the period: (00:00|03:00)\">(.*)°</td>",orai_html_long.decode(),re.IGNORECASE)
 
 	#temperatūros dieną. orai_long.temp_diena()[0][1])
-	temp_diena=re.findall("<td class=\"temperature .*\" title=\"Temperature:.*Feels like.*For the period: (12:00|15:00)\">(.*)°</td>",orai_html_long,re.IGNORECASE)
+	temp_diena=re.findall("<td class=\"temperature .*\" title=\"Temperature:.*Feels like.*For the period: (12:00|15:00)\">(.*)°</td>",orai_html_long.decode(),re.IGNORECASE)
 
 	#grąžina masyvą su 3 elementais
-	vejas_diena=re.findall("<td class=\"txt-left\" title=\"(.*), (.*m/s) from (.*)\.  For the period: (12:00|15:00)\">",orai_html_long,re.IGNORECASE)
+	vejas_diena=re.findall("<td class=\"txt-left\" title=\"(.*), (.*m/s) from (.*)\.  For the period: (12:00|15:00)\">",orai_html_long.decode(),re.IGNORECASE)
 	
 
 	#grąžina masyvą su 3 elementais
-	vejas_naktis=re.findall("<td class=\"txt-left\" title=\"(.*), (.*m/s) from (.*)\.  For the period: (00:00|03:00)\">",orai_html_long,re.IGNORECASE)
+	vejas_naktis=re.findall("<td class=\"txt-left\" title=\"(.*), (.*m/s) from (.*)\.  For the period: (00:00|03:00)\">",orai_html_long.decode(),re.IGNORECASE)
 
 class orai_day():
-	orai_short=re.split("<h2>Right Now</h2>",orai_html_short)
+	orai_short=re.split("<h2>Right Now</h2>",orai_html_short.decode())
 	orai_short=orai_short[1].split("<div class=\"wx-timepart-title\">Tonight</div>")
 	atnaujinta=re.findall("Updated: <span class=\"wx-value\" itemprop=\"last-updated\">(.*), (.*) Local Time</span>",orai_short[0],re.IGNORECASE)
 	atnaujinta=atnaujinta[0][1]
@@ -75,7 +75,8 @@ for i in range(0,4): #išvis yra 8dienos, man reik 4
 	failas.write(orai.temp_diena[i][1]+"\n")
 	failas.write("-"*20+"\n")
 failas.write("="*10+"Dienos prognozė"+"="*10+"\n")
-os.system('ln -s -f ${PWD}/paveiksliukai/weathercom/'+orai_day.piktograma[0]+'.png ./dabar.png')
+print(orai_day.piktograma[0])
+os.system('ln -s -f ${PWD}/paveiksliukai/'+orai_day.piktograma[0]+'.png ./dabar.png')
 failas.write(str(round(orai_day.temperatura))+"\n")
 failas.write(isverst_veja(orai_day.vejas_day[0])+"\n")
 failas.write(str(orai_day.vejas_stiprumas)+"\n")
