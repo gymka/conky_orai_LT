@@ -105,14 +105,14 @@ Root:  ${fs_used_perc /}%   ${fs_bar 6 /}$color
        ${fs_free /}/${fs_size /}
 Home:  ${fs_used_perc /home}% ${fs_bar 6 /home}$color
        ${fs_free /home}/${fs_size /home}
-Media:  ${fs_used_perc /media/gymka/media}% ${fs_bar 6 /media/gymka/media}$color
-       ${fs_free /media/gymka/media}/${fs_size /media/gymka/media}
-Media2:  ${fs_used_perc /media/gymka/media2}% ${fs_bar 6 /media/gymka/media2}$color
-       ${fs_free /media/gymka/media2}/${fs_size /media/gymka/media2}
+Media:  ${fs_used_perc /media/media}% ${fs_bar 6 /media/media}$color
+       ${fs_free /media/media}/${fs_size /media/media}
+Media2:  ${fs_used_perc /media/media2}% ${fs_bar 6 /media/media2}$color
+       ${fs_free /media/media2}/${fs_size /media/media2}
 Disko apkrova $alignr ${diskio}
 ${diskiograph 16,000 ffffff 0000ff}
-${font :size=10}${color gray}Tinklas (${addr eth0}) ${hr 2}$color${font}
-Pars.: $color${downspeed eth0}/s ${goto 170}Išs.: ${upspeed eth0}/s
-${downspeedgraph eth0 25,140 000000 ff0000} ${alignr}${upspeedgraph eth0 
+${font :size=10}${color gray}Tinklas (${addr enp3s0}) ${hr 2}$color${font}
+Pars.: $color${downspeed enp3s0}/s ${goto 170}Išs.: ${upspeed enp3s0}/s
+${downspeedgraph enp3s0 25,140 000000 ff0000} ${alignr}${upspeedgraph enp3s0 
 25,140 000000 00ff00}$color
-Viso: ${totaldown eth0} ${alignr}Viso: ${totalup eth0} 
+Viso: ${totaldown enp3s0} ${alignr}Viso: ${totalup enp3s0} 
